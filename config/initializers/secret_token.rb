@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Doorsnwindows::Application.config.secret_key_base = 'c589acbd7a1168d3255677d050c02bf7746259da867a6aa5b1049b74ac4be0c41845d50d150fbfa0b8266e31ee9bc86a8865fe2020e99652a90a7980c5560ec0'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Doorsnwindows::Application.config.secret_key_base = secure_token
