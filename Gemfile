@@ -11,6 +11,7 @@ gem 'bootstrap-sass', '~> 2.3.2.2'
 gem 'figaro'
 gem 'haml-rails'
 gem 'pg'
+gem 'rails_12factor', group: :production
 gem 'puma'
 gem 'simple_form'
 gem 'capistrano', '~> 3.0.1'
@@ -40,4 +41,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner', '1.0.1'
   gem 'email_spec'
+end
+group :production do
+
 end
