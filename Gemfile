@@ -30,8 +30,6 @@ group :development do
   gem 'rb-inotify', :require=>false
 end
 group :development, :test do
-  gem 'pry', :github => 'pry/pry', :branch => 'master'
-  gem 'guard', :github => 'guard/guard', :branch => 'master'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'spork-rails'
