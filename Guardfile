@@ -1,5 +1,7 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
+require 'guard/guard'
+require 'active_support/inflector'
 
 guard :bundler do
   watch('Gemfile')
@@ -12,7 +14,7 @@ guard 'rails' do
   watch(%r{^(config|lib)/.*})
 end
 
-guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
+guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch('config/environments/test.rb')
@@ -23,7 +25,7 @@ guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAIL
   watch(%r{features/support/}) { :cucumber }
 end
 
-guard :rspec, :cmd => '--drb --format Fuubar' do
+guard :rspec, :cmd => '--drb --color --format Fuubar' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }

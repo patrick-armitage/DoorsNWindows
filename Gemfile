@@ -11,31 +11,31 @@ gem 'bootstrap-sass', '~> 2.3.2.2'
 gem 'figaro'
 gem 'haml-rails'
 gem 'pg'
-gem 'rails_12factor', group: :production
 gem 'puma'
 gem 'simple_form'
 gem 'capistrano', '~> 3.0.1'
+gem 'rb-readline'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
   gem 'guard-bundler'
   gem 'guard-rails'
+  gem 'guard-spork'
+  gem 'guard-rspec'
+  gem 'growl'
   gem 'html2haml'
   gem 'quiet_assets'
   gem 'rails_layout'
   gem 'rb-fchange', :require=>false
-  gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
 end
 group :development, :test do
+  gem 'pry', :github => 'pry/pry', :branch => 'master'
+  gem 'guard', :github => 'guard/guard', :branch => 'master'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'spork'
   gem 'spork-rails'
-  gem 'guard-rspec'
-  gem 'guard-spork'
   gem 'fuubar'
-  gem 'growl'
 end
 group :test do
   gem 'capybara'
@@ -43,5 +43,5 @@ group :test do
   gem 'email_spec'
 end
 group :production do
-
+  gem 'rails_12factor'
 end
