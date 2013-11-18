@@ -7,15 +7,16 @@
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
+    = render 'layouts/shim'
   %body
     -# application layout styled for Twitter Bootstrap 2.3
     %header
       = render 'layouts/navigation'
     %main{:role => "main"}
-      .container-fluid
+      .container
         .content
           .row-fluid
             .span12
               = render 'layouts/messages'
               = yield
-          %footer
+        = render 'layouts/footer'
