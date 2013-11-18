@@ -15,6 +15,7 @@ gem 'puma'
 gem 'simple_form'
 gem 'capistrano', '~> 3.0.1'
 gem 'rb-readline' #OSX fix
+gem 'rdiscount'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
