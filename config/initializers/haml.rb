@@ -1,7 +1,8 @@
 require 'rdiscount'
 
 module Doorsnwindows
-  module Filters
+  module Haml::Filters
+  	remove_filter("Markdown")
     module Markdown
       include Haml::Filters::Base
 
