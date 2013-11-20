@@ -1,2 +1,11 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+- provide(:title, @user.name.humanize)
+%h1= @user.name.humanize
+.center.hero-unit
+	%ul.nav.nav-list
+		%li.nav-header User Info
+		%li.divider
+		%li
+			.row-fluid
+				.span4 Username: #{ @user.name }
+				.span4 Email: #{ @user.email }
+		%li.divider
