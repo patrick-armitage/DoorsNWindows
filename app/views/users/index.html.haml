@@ -1,11 +1,14 @@
-%h1 Users
+- provide(:title, 'All Users')
+
+%h1 All Users
 .center.hero-unit
+
+	#{ will_paginate }
+
 	%ul.nav.nav-list
-		%li.nav-header All Users
+		%li.nav-header User List
 		%li.divider
-		- @users.each do |user|
-			%li
-				.row-fluid
-					.span4 Username: #{ user.name }
-					.span4 Email: #{ user.email }
-			%li.divider
+		= render @users
+
+
+	#{ will_paginate }

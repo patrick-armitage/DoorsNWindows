@@ -1,5 +1,5 @@
-#error_explanation
-	.alert.alert_error Whoops! The form has #{ pluralize(@user.errors.count, "error") }
-	%ul
-		- @user.errors.full_messages.each do |msg|
-			%li= msg
+%span The form has #{ pluralize(@user.errors.count, "problem") }.  Please review below
+%a.close{"data-dismiss" => "alert"} &times;
+%ul
+	- @user.errors.full_messages.each do |msg|
+		%li= msg
