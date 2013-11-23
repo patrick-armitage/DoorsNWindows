@@ -1,0 +1,10 @@
+= simple_form_for(@lead, :html => { :honeypot => true, :class => 'form-horizontal pull-right' }) do |f|
+  = f.error_notification
+
+  = f.input :name, placeholder: 'First Last', input_html: { pattern: "[a-zA-Z-. ]+" }
+  = f.input :phone, placeholder: '123-456-7890', input_html: { pattern: "[(]?[0-9]{3}[)]?[-. ]?[0-9]{3}[-. ]?[0-9]{4}" }
+  = f.input :email, placeholder: 'user@example.com'
+  = f.input :zip, placeholder: '12345', input_html: { pattern: "[0-9]{5}" }
+  = f.input :interest, :label => "Interested in:", :collection => @lead.interests, :as => :radio_buttons, :item_wrapper_class => 'inline'
+
+  = f.button :submit, "Free Quote", :class => 'btn-large btn-primary pull-right'

@@ -1,0 +1,10 @@
+%li
+  .row-fluid
+    .span2 Name: #{ lead.name }
+    .span2 Phone #{ lead.phone }
+    .span2 Email: #{ lead.email }
+    .span2 Zip Code: #{ lead.zip }
+    .span2 Interest: #{ lead.interest }
+    / - if current_user.admin? && !current_user?(user)
+    /   #delete.span1.offset1= link_to "&times;".html_safe, user, method: :delete, data: { confirm: "Delete User?" }, class: 'close'
+%li.divider

@@ -17,6 +17,7 @@ gem 'haml-rails'
 gem 'pg'
 gem 'puma'
 gem 'simple_form'
+gem 'honeypot-captcha'
 gem 'capistrano', '~> 3.0.1'
 gem 'rdiscount'
 group :development do

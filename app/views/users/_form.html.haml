@@ -1,8 +1,8 @@
-= simple_form_for(@user) do |f|
+= simple_form_for(@user, :html => { :honeypot => true }) do |f|
   = f.error_notification message: render('shared/error_messages')
 
   = f.input :name
   = f.input :email
-  = f.input :password
+  = f.input :password, :required => true
   = f.input :password_confirmation, :label => "Confirm password"
   = f.button :submit, submit_title

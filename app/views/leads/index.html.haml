@@ -1,0 +1,12 @@
+%h1 All Leads
+
+.row-fluid
+
+  #{ will_paginate }
+
+  %ul.nav.nav-list
+    %li.nav-header Lead List
+    %li.divider
+    = render @leads
+
+  #{ will_paginate }
