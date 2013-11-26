@@ -5,8 +5,13 @@
   #{ will_paginate }
 
   %ul.nav.nav-list
-    %li.nav-header Lead List
+    %li
+      .row-fluid
+        .span2.nav-header Name:
+        .span2.nav-header Phone Number:
+        .span2.nav-header Email:
+        .span2.nav-header Name:
     %li.divider
-    = render @leads
+    = render 'leads/leads'
 
   #{ will_paginate }

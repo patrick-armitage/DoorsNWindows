@@ -2,6 +2,7 @@ class LeadsController < ApplicationController
   before_action :signed_in_user, only: [:index]
 
   def index
+    @lead = Lead.new
     @leads = Lead.paginate(page: params[:page])
   end
 

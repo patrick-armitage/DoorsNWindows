@@ -6,6 +6,9 @@ class Lead < ActiveRecord::Base
     self.zip = zip.gsub(/[^0-9]/i, '')
   end
 
+  #bootstrap-will_paginate
+  self.per_page = 10
+
   VALID_PHONE_REGEX = /\A\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_ZIP_REGEX   = /\A\d{5}\z/
