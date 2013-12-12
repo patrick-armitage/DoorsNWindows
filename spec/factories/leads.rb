@@ -2,11 +2,10 @@
 
 FactoryGirl.define do
   factory :lead do
-    name "MyString"
-    phone "MyString"
-    email "MyString"
-    zip "MyString"
-    wants_doors false
-    wants_windows false
+    name "John Customer"
+    phone "123-456-7890"
+    email "john@customers.com"
+    zip "12345"
+    interest "Both"
   end
 end

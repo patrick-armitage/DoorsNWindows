@@ -1,0 +1,8 @@
+.simple_form {
+  div, .form-actions, fieldset, legend, .control-group, .controls, input, label.text, .btn {
+    // @include box-sizing(border-box);
+    min-width: 0;
+    // width: 100%;
+    max-width: 100%;
+  }
+}

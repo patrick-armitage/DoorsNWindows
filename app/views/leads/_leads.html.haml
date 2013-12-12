@@ -1,22 +1,24 @@
 - @leads.each do |lead|
-  %li
-    .row-fluid
-      = simple_form_for(lead, :html => { :class => 'form-vertical' }) do |f|
-        = f.error_notification
-
+  %li{:id => "lead_"+lead.id.to_s}
+    = simple_form_for(lead, :html => { :class => 'form-vertical' }, remote: true) do |f|
+      = f.error_notification
+      .row-fluid.alert-placeholder
+      .row-fluid.lead-data
+        .span1
+          %strong ID#: #{ lead.id }
+          %small.row-fluid.muted Created On:
+          %strong.muted= l(lead.created_at, format: :short)
+        .span2= f.input :name, placeholder: 'First Last', input_html: { pattern: "[a-zA-Z-. ]+" }
+        .span1= f.input :phone, placeholder: '123-456-7890', input_html: { pattern: "[(]?[0-9]{3}[)]?[-. ]?[0-9]{3}[-. ]?[0-9]{4}" }
+        .span2= f.input :email, placeholder: 'user@example.com'
+        .span1= f.input :zip, placeholder: '12345', input_html: { pattern: "[0-9]{5}" }
+        .span1= f.input :interest, :label => false, :collection => @lead.interests, :as => :radio_buttons
         .span2
-          = f.input :name, placeholder: 'First Last', input_html: { pattern: "[a-zA-Z-. ]+" }
-        .span2
-          = f.input :phone, placeholder: '123-456-7890', input_html: { pattern: "[(]?[0-9]{3}[)]?[-. ]?[0-9]{3}[-. ]?[0-9]{4}" }
-        .span2
-          = f.input :email, placeholder: 'user@example.com'
-        .span2
-          = f.input :zip, placeholder: '12345', input_html: { pattern: "[0-9]{5}" }
-        .span2
-          = f.input :interest, :label => "Interested in:", :collection => @lead.interests, :as => :radio_buttons
-
-        .span2
-          = f.button :submit, "Update Lead", :class => 'btn-primary'
-      / - if current_user.admin? && !current_user?(user)
-      /   #delete.span1.offset1= link_to "&times;".html_safe, user, method: :delete, data: { confirm: "Delete User?" }, class: 'close'
-  %li.divider
+        .span1
+          %small.row-fluid.muted Last Updated:
+          %strong.updated-at= l(lead.updated_at, format: :short)
+        .span1= f.button :submit, "Update", :disabled => true#, data: {disable_with: "Updating..."}
+        / - if current_user.admin? && !current_user?(user)
+        /   #delete.span1.offset1= link_to "&times;".html_safe, user, method: :delete, data: { confirm: "Delete User?" }, class: 'close'
+      / .span1= button_to "Update", lead_path(lead), :method => "patch", :remote => true, :class => 'btn', id: ''
+      .row-fluid.divider

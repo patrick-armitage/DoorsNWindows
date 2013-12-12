@@ -13,8 +13,9 @@
     %header
       = render 'layouts/navigation'
     %main{:role => "main"}
-      .container
-        .content
+      %div{:class => container_class}
+        / = container_class
+        .content{:id => params[:controller]}
           .row-fluid
             .span12
               = render 'layouts/messages'

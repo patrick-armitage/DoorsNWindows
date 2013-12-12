@@ -21,7 +21,7 @@ describe "User pages" do
       end
     end
 
-    describe "pagination" do
+    describe "pagination", :slow do
 
       before(:all) { 30.times { FactoryGirl.create(:user) } }
       after(:all)  { User.delete_all }

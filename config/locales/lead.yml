@@ -1,0 +1,4 @@
+lead:
+  time:
+    formats:
+      short: "%b/%d/%Y %H:%M"

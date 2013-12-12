@@ -60,6 +60,9 @@ Spork.prefork do
     end
 
     config.include Capybara::DSL
+
+    config.treat_symbols_as_metadata_keys_with_true_values = true
+    config.filter_run_excluding :slow unless ENV["SLOW_SPECS"]
   end
 
 end

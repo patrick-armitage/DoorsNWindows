@@ -9,4 +9,11 @@ module ApplicationHelper
     end
   end
 
+  def container_class
+    if current_page?(controller: 'leads')
+      'container-fluid'
+    else
+      'container'
+    end
+  end
 end

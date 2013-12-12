@@ -20,3 +20,13 @@ def sign_in(user, options={})
     click_button "Sign in"
   end
 end
+
+def lead_gen(lead)
+  visit root_path
+  fill_in "Name",  with: lead.name
+  fill_in "Phone", with: lead.phone
+  fill_in "Email", with: lead.email
+  fill_in "Zip",   with: lead.zip
+  choose lead.interest
+  click_button "Free Quote"
+end

@@ -1,17 +1,29 @@
-%h1 All Leads
-
 .row-fluid
+  %h1
+    All Leads
+    = form_tag @lead, :class => "navbar-search pull-right", :method => :get do
+      = text_field_tag :name, nil, :class => "search-query", :placeholder => "Search Leads"
 
-  #{ will_paginate }
+/ %table#leads_table.table.table-striped.table-bordered.table-hover
+/   %thead
+/     %tr
+= will_paginate
 
-  %ul.nav.nav-list
-    %li
-      .row-fluid
-        .span2.nav-header Name:
-        .span2.nav-header Phone Number:
-        .span2.nav-header Email:
-        .span2.nav-header Name:
-    %li.divider
-    = render 'leads/leads'
+%ul.nav.nav-list.table-striped
+  %li#leads_header
+    .navbar
+      .navbar-inner
+        .row-fluid
+          .span1 <span>Lead</span>
+          .span2 <span>Name</span>
+          .span1 <span>Phone #</span>
+          .span2 <span>Email</span>
+          .span1 <span>Zip Code</span>
+          .span1 <span>Interest</span>
+          .span2 <span>Status</span>
+          .span1 <span>Updates</span>
+          .span1 <span>Save</span>
 
-  #{ will_paginate }
+  = render 'leads/leads'
+
+= will_paginate

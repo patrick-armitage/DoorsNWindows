@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe StaticPagesController do
+
   describe "GET 'about'" do
     it "returns http success" do
       get 'about'
