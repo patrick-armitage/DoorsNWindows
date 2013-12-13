@@ -3,7 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #leads {
+  #lead-controls {
+    margin: 10px 0;
+
+    .pagination {
+      float: left;
+      margin: 5px 0 0 0;
+    }
+  }
+
   ul {
+    padding: 0 0 0 0;
+
     li {
       [class*="span"] {
         border-left: 1px solid #eee;

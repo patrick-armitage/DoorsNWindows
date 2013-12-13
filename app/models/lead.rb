@@ -7,7 +7,7 @@ class Lead < ActiveRecord::Base
   end
 
   #bootstrap-will_paginate
-  self.per_page = 10
+  self.per_page = 6
 
   VALID_PHONE_REGEX = /\A\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})\z/
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
