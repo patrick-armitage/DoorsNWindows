@@ -4,7 +4,7 @@
 
 #leads {
   #lead-controls {
-    margin: 10px 0;
+    margin: 0 0 10px 0;
 
     .pagination {
       float: left;
@@ -22,7 +22,7 @@
       }
 
       .lead-data {
-        @include transition (background-color 0.4s ease-in-out);
+        @include transition (background-color 0.4s ease-out);
       }
     }
 
@@ -49,12 +49,21 @@
           border-left: none;
         }
 
-        span {
+        span, a {
+          @extend .muted;
           display: block;
           min-width: 60px;
           padding: {
             left: 6px;
             top: 10px;
+          }
+
+          &:hover {
+            text-decoration: none;
+          }
+
+          i {
+            @extend .pull-right;
           }
         }
       }

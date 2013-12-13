@@ -1,11 +1,11 @@
 - @leads.each do |lead|
   %li{:id => "lead_"+lead.id.to_s}
-    = simple_form_for(lead, :html => { :class => 'form-vertical' }, remote: true) do |f|
+    = simple_form_for(lead, :defaults => { :required => false }, :html => { :class => 'form-vertical' }, remote: true) do |f|
       = f.error_notification
       .row-fluid.alert-placeholder
       .row-fluid.lead-data
         .span1
-          %strong ID#: #{ lead.id }
+          %strong ##{ lead.id }
           %small.row-fluid.muted Created On:
           %strong.muted= l(lead.created_at, format: :short)
         .span2= f.input :name, placeholder: 'First Last', input_html: { pattern: "[a-zA-Z-. ]+" }

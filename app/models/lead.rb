@@ -23,4 +23,12 @@ class Lead < ActiveRecord::Base
   def interests
     ['Doors', 'Windows', 'Both']
   end
+
+  def self.search(search)
+    if search
+      where('name LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
 end

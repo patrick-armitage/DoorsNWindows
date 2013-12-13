@@ -17,10 +17,23 @@
   background-color: #D9EDF7 !important;
 }
 .success, .error, .warning, .info {
-  @include transition (background-color 0.4s ease-in-out);
+  @include transition (background-color 0.4s ease-out);
 }
 
 // UL Table Simulation
 .table-striped > li:nth-child(even) {
   background-color: #F9F9F9;
+}
+
+// Icons
+i {
+  opacity: 0.25 !important;
+  @include transition (opacity 0.2s ease-out);
+}
+
+a:hover {
+  i {
+    opacity: 0.5 !important;
+    @include transition (opacity 0.2s ease-out);
+  }
 }

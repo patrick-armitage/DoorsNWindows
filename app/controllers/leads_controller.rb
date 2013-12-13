@@ -3,7 +3,7 @@ class LeadsController < ApplicationController
 
   def index
     @lead = Lead.new
-    @leads = Lead.reorder("created_at DESC").paginate(page: params[:page])
+    @leads = Lead.reorder(sort_column + " " + sort_direction).paginate(page: params[:page]).search(params[:search])
   end
 
   def new

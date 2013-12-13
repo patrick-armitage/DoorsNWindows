@@ -2,26 +2,25 @@
   %h2
     All Leads
 
+.label.label-info= page_entries_info @leads
 #lead-controls.row-fluid
-  = will_paginate @leads, :class => 'pagination pagination-small'
+  = will_paginate @leads, :class => 'pagination', :inner_window => 2, :previous_label => icon("icon-chevron-left"), :next_label => icon("icon-chevron-right")
   = form_tag @lead, :class => "navbar-search pull-right", :method => :get do
-    = text_field_tag :name, nil, :class => "search-query", :placeholder => "Search Leads"
+    = text_field_tag :search, params[:search], :class => "search-query", :placeholder => "Search Leads"
 
 %ul.nav.nav-list.table-striped
   %li#leads_header
     .navbar
       .navbar-inner
         .row-fluid
-          .span1 <span>Lead</span>
-          .span2 <span>Name</span>
-          .span1 <span>Phone #</span>
-          .span2 <span>Email</span>
-          .span1 <span>Zip Code</span>
-          .span1 <span>Interest</span>
-          .span2 <span>Status</span>
-          .span1 <span>Updates</span>
-          .span1 <span>Save</span>
+          .span1= sortable "created_at", "Lead"
+          .span2= sortable "name"
+          .span1= sortable "phone"
+          .span2= sortable "email"
+          .span1= sortable "zip", "Zip Code"
+          .span1= sortable "interest"
+          .span2= sortable "status"
+          .span1= sortable "updated_at", "Updates"
+          .span1 <span>Actions</span>
 
   = render 'leads/leads'
-
-.label.label-info= page_entries_info @leads
