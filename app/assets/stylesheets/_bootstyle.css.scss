@@ -26,14 +26,20 @@
 }
 
 // Icons
-i {
-  opacity: 0.25 !important;
-  @include transition (opacity 0.2s ease-out);
-}
-
 a:hover {
-  i {
+  i.icon-opaque {
     opacity: 0.5 !important;
     @include transition (opacity 0.2s ease-out);
   }
 }
+
+i.icon-opaque {
+  opacity: 0.25 !important;
+  @include transition (opacity 0.2s ease-out);
+}
+
+//Buttons
+a:focus, input:focus, select:focus, textarea:focus, button:focus {
+    outline: none !important;
+}
+

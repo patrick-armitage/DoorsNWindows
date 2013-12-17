@@ -1,9 +1,23 @@
 - @leads.each do |lead|
-  %li{:id => "lead_"+lead.id.to_s}
+  %li.lead-item{:id => "lead_"+lead.id.to_s}
+    .row-fluid.lead-data{:id => "leaddata_"+lead.id.to_s}
+      .span1
+        %strong ##{ lead.id }
+      .span2.lead-name=     lead.name
+      .span1.lead-phone=    lead.phone
+      .span2.lead-email=    lead.email
+      .span1.lead-zip=      lead.zip
+      .span1.lead-interest= lead.interest
+      .span2
+      .span1
+        %strong.updated-at= l(lead.updated_at, format: :short)
+      .span1
+        %button{ :class => "btn-edit btn btn-mini btn-primary" }
+          #{ icon("icon-edit icon-white") }
     = simple_form_for(lead, :defaults => { :required => false }, :html => { :class => 'form-vertical' }, remote: true) do |f|
       = f.error_notification
       .row-fluid.alert-placeholder
-      .row-fluid.lead-data
+      .row-fluid.lead-form{:id => "leadform_"+lead.id.to_s}
         .span1
           %strong ##{ lead.id }
           %small.row-fluid.muted Created On:
@@ -17,8 +31,12 @@
         .span1
           %small.row-fluid.muted Last Updated:
           %strong.updated-at= l(lead.updated_at, format: :short)
-        .span1= f.button :submit, "Update", :disabled => true#, data: {disable_with: "Updating..."}
+        .span1
+          %button{ :class => "btn-collapse btn btn-mini btn-success" }
+            #{ icon("icon-check icon-white") }
+          = f.button :submit, "Update", :disabled => true, :class => "btn-action btn-update"#, data: {disable_with: "Updating..."}
+          / = link_to "Delete", lead, :action => "delete", :class => "btn btn-action btn-danger", data: { :confirm => 'Delete "'+lead.name+'" permanently?' }
+          = button_link_to "Delete", lead_path(lead), :class => "btn btn-action btn-danger", :remote => true, :method => :delete, :data => { :confirm => 'Delete "'+lead.name+'" permanently?' }
         / - if current_user.admin? && !current_user?(user)
         /   #delete.span1.offset1= link_to "&times;".html_safe, user, method: :delete, data: { confirm: "Delete User?" }, class: 'close'
-      / .span1= button_to "Update", lead_path(lead), :method => "patch", :remote => true, :class => 'btn', id: ''
       .row-fluid.divider

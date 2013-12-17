@@ -17,8 +17,9 @@ module ApplicationHelper
     end
   end
 
-  def icon(css_class)
-    content_tag(:i, "", :class => css_class).html_safe
+  def icon(css_class, opaque=nil)
+    opaque_class = opaque ? " icon-opaque" : ""
+    content_tag(:i, "", :class => css_class + opaque_class).html_safe
   end
 
   def sortable(column, title = nil)

@@ -21,7 +21,7 @@
         padding: 5px;
       }
 
-      .lead-data {
+      .lead-data, .lead-form {
         @include transition (background-color 0.4s ease-out);
       }
     }
@@ -64,9 +64,11 @@
 
           i {
             @extend .pull-right;
+            @extend .icon-opaque;
           }
         }
       }
+
     }
 
     .divider {
@@ -74,64 +76,65 @@
     }
   }
 
-  .simple_form {
+  .lead-data, .simple_form {
     @include box-sizing(border-box);
     max-width: 100%;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
+  }
 
-    .row-fluid {
-
-      [class*="span"] {
-        // background: #EEE;
-        min-height: 100px;
-        overflow: visible;
+  .lead-data, .simple_form .lead-form {
+    .span1 {
+      .control-group, small, strong, .row-fluid {
+        display: block;
+        min-width: 140%;
+        max-width: 140%;
+        width: 140%;
       }
-      [class*="span"] [class*="span"] { background: #FEE; }
+    }
 
-      .span1 {
-        .control-group, small, strong, .row-fluid {
-          display: block;
-          min-width: 140%;
-          max-width: 140%;
-          width: 140%;
-        }
+    .span2 {
+      .control-group, small, strong, .row-fluid {
+        display: block;
+        min-width: 115%;
+        max-width: 115%;
+        width: 115%;
       }
+    }
+  }
 
-      .span2 {
-        .control-group, small, strong, .row-fluid {
-          display: block;
-          min-width: 115%;
-          max-width: 115%;
-          width: 115%;
-        }
-      }
+  .simple_form .lead-form {
+    [class*="span"] {
+      min-height: 100px;
+      overflow: visible;
+    }
 
-      .control-group {
-        input.string {
-          @include box-sizing(border-box);
-          padding: 15px 6px;
-          width: 100%;
-        }
-
-        .control-label {
-          @extend .muted;
-          @extend .small;
-        }
-      }
-
-      .btn {
-        padding: {
-          left: 0;
-          right: 0;
-        }
-        text-align: center;
+    .control-group {
+      input.string {
+        @include box-sizing(border-box);
+        padding: 15px 6px;
         width: 100%;
       }
 
-      .radio_buttons {
-        padding: 0 8px;
+      .control-label {
+        @extend .muted;
+        @extend .small;
       }
+    }
+
+    .radio_buttons {
+      padding: 0 8px;
+    }
+
+    .btn { margin-bottom: 2px; }
+
+    .btn-action {
+      padding: {
+        left: 0;
+        right: 0;
+      }
+      text-align: center;
+      width: 100%;
     }
   }
 }

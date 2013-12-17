@@ -4,18 +4,32 @@
 
 
 ready = ->
-  form = $('form')
+  lead = $('.lead-item')
+
+  # Collapse
+  lead.find('.lead-form').hide()
+
+  lead.find('.btn-edit').on 'click', (event) =>
+    $(event.target).closest('.lead-item').find('.lead-form').show()
+    $(event.target).closest('.lead-data').hide()
+
+  lead.find('.btn-collapse').on 'click', (event) =>
+    event.preventDefault()
+    $(event.target).closest('.lead-item').find('.lead-data').show()
+    $(event.target).closest('.lead-form').hide()
+
+
+  # Forms
+  form = lead.find('.simple_form')
   formInput = form.find('input')
 
   formInput.on 'change', ->
-    $(this).closest('form').find(':submit').removeAttr('disabled')
-    $(this).closest('.lead-data').addClass('info')
+    $(this).closest('form').find('.btn-update').removeAttr('disabled')
+    $(this).closest('.lead-form').addClass('info')
 
   form.submit ->
-    $(this).find(':submit').attr('disabled', 'disabled')
-    $(this).find('.lead-data').removeClass('info')
-
-  # $(".pagination a").on 'click', ->
+    $(this).find('.btn-update').attr('disabled', 'disabled')
+    $(this).find('.lead-form').removeClass('info')
 
 
 $(document).ready(ready)

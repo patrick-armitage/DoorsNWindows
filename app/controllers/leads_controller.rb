@@ -52,6 +52,24 @@ class LeadsController < ApplicationController
     # end
   end
 
+  def destroy
+    @lead = Lead.find(params[:id])
+    @leads = Lead.reorder("created_at DESC").paginate(page: params[:page])
+    @id = @lead.id
+
+    respond_to do |format|
+      if @lead.destroy
+        format.html { render action: "index" }
+        format.js   {}
+        format.json { render json: @lead, status: :deleted, location: @lead }
+      else
+        format.html { render action: "index" }
+        format.js   {}
+        format.json { render json: @lead.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     def lead_params
       params.require(:lead).permit(:name, :phone, :email, :zip,

@@ -42,6 +42,7 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.1.4)
+    button_link_to (0.0.3)
     capistrano (3.0.1)
       i18n
       rake (>= 10.0.0)
@@ -266,6 +267,7 @@ DEPENDENCIES
   bootstrap-sass (~> 2.3.2.2)
   bootstrap-will_paginate
   bourbon
+  button_link_to
   capistrano (~> 3.0.1)
   capybara
   coffee-rails (~> 4.0.0)
