@@ -10,3 +10,10 @@ bootstrap_alert = function(el, type, message, errors, nohide) {
     }, 2200);
   }
 }
+
+bootstrap_badge = function(content, badge_class) {
+  var css_class = "badge " + badge_class.replace(' ', '-').toLowerCase();
+
+  var badge = $('<span class="'+css_class+'">'+content+'</span>');
+  return badge;
+}

@@ -18,6 +18,7 @@
     li {
       [class*="span"] {
         border-left: 1px solid #eee;
+        overflow: hidden;
         padding: 5px;
       }
 
@@ -81,6 +82,22 @@
     max-width: 100%;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
+  }
+
+  .lead-data {
+    .lead-new-lead {
+      @extend .badge-warning;
+    }
+    .lead-voicemail-left {}
+    .lead-non-responsive {
+      @extend .badge-inverse;
+    }
+    .lead-appointment-set {
+      @extend .badge-info;
+    }
+    .lead-job-sold {
+      @extend .badge-success;
+    }
   }
 
   .lead-data, .simple_form .lead-form {

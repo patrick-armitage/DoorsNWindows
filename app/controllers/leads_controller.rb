@@ -1,5 +1,5 @@
 class LeadsController < ApplicationController
-  before_action :signed_in_user, only: [:index]
+  before_action :signed_in_user, only: [:index, :update, :destroy]
 
   def index
     @lead = Lead.new
@@ -13,10 +13,11 @@ class LeadsController < ApplicationController
   def create
     @lead = Lead.new(lead_params)
     if @lead.save
-      flash[:success] = "Your Free Quote request has been received! We will contact you shortly."
       if signed_in?
+        flash[:success] = "New Quote Available."
         redirect_to leads_path
       else
+        flash[:success] = "Your Free Quote request has been received! We will contact you shortly."
         redirect_to root_path
       end
     else
@@ -30,7 +31,6 @@ class LeadsController < ApplicationController
 
   def update
     @lead = Lead.find(params[:id])
-    @leads = Lead.reorder("created_at DESC").paginate(page: params[:page])
 
     respond_to do |format|
       if @lead.update_attributes(lead_params)
@@ -54,7 +54,6 @@ class LeadsController < ApplicationController
 
   def destroy
     @lead = Lead.find(params[:id])
-    @leads = Lead.reorder("created_at DESC").paginate(page: params[:page])
     @id = @lead.id
 
     respond_to do |format|
@@ -73,6 +72,6 @@ class LeadsController < ApplicationController
   private
     def lead_params
       params.require(:lead).permit(:name, :phone, :email, :zip,
-                                   :interest)
+                                   :interest, :status)
     end
 end

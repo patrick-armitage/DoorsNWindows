@@ -7,12 +7,14 @@ namespace :db do
       phone    = Faker::PhoneNumber.phone_number.gsub(/[^0-9]/i, '')[0..9]
       email    = Faker::Internet.email
       zip      = Faker::Address.zip_code.gsub(/[^0-9]/i, '')[0..4]
-      interest = ['Doors', 'Windows', 'Both'].sample
+      interest = Lead.interests.sample
+      status   = Lead.status_options.sample
       Lead.create!(name: name,
                    phone: phone,
                    email: email,
                    zip: zip,
-                   interest: interest)
+                   interest: interest,
+                   status: status)
     end
   end
 end

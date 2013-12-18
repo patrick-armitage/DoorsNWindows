@@ -21,7 +21,7 @@ ready = ->
 
   # Forms
   form = lead.find('.simple_form')
-  formInput = form.find('input')
+  formInput = form.find('input, select')
 
   formInput.on 'change', ->
     $(this).closest('form').find('.btn-update').removeAttr('disabled')

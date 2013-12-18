@@ -1,6 +1,8 @@
+# Include Helper
+
 # Current Lead
 lead = $("#lead_<%= @lead.id %>")
-alertP = lead.find(".alert-placeholder")
+alertP = lead.find(".error-placeholder")
 leadForm = lead.find(".lead-form")
 success = undefined
 
@@ -24,9 +26,11 @@ else
 
 # Text updates
 if success
+  lead.find(".lead-id").html         bootstrap_badge "<%= @lead.id %>", "<%= 'lead-' + @lead.status.to_s %>"
   lead.find(".lead-name").text       "<%= @lead.name %>"
   lead.find(".lead-phone").text      "<%= @lead.phone %>"
   lead.find(".lead-email").text      "<%= @lead.email %>"
   lead.find(".lead-zip").text        "<%= @lead.zip %>"
   lead.find(".lead-interest").text   "<%= @lead.interest %>"
+  lead.find(".lead-status").text     "<%= @lead.status %>"
   lead.find(".updated-at").text      "<%= l(@lead.updated_at, format: :short) %>"
