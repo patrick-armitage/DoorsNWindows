@@ -1,0 +1,26 @@
+%li
+  - if activity.trackable
+    %small.muted #{ time_ago_in_words(activity.created_at) } ago
+    %br
+    = link_to activity.owner.name, {:controller => "users", :action => "show", :id => activity.owner.id } if activity.owner
+    updated a lead,
+    = link_to activity.trackable.name, {:controller => "leads", :action => "index", :search => activity.trackable.name }
+    - unless activity.parameters.empty?
+      , by changing:
+      %code.label.label-info{ :data => { toggle: 'collapse', target: '#activity-'+activity.id.to_s } }
+        %strong #{ activity.parameters.keys.join(", ").titleize }
+        = icon('icon-white icon-chevron-down')
+      %ul.collapse{ :id => 'activity-'+activity.id.to_s }
+        - activity.parameters.each do |key, value|
+          %li
+            Updated
+            %code.label.label-info= key.titleize
+            from
+            %code.label.label-important= value[0]
+            to
+            %code.label.label-success= value[1]
+
+  - else
+    which has since been removed
+
+%li.divider

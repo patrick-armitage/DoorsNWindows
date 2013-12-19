@@ -1,0 +1,7 @@
+%h1 Activities Feed
+
+= will_paginate @activities, :class => 'pagination', :previous_label => icon("icon-chevron-left", true), :next_label => icon("icon-chevron-right", true)
+%ul.nav.nav-list
+  - @activities.each do |activity|
+    .activity
+      = render_activity activity

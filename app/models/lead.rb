@@ -1,4 +1,5 @@
 class Lead < ActiveRecord::Base
+  include PublicActivity::Model
   include LeadsHelper
 
   before_save do

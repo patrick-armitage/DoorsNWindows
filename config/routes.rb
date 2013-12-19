@@ -1,6 +1,8 @@
 Doorsnwindows::Application.routes.draw do
+  get "activities/index"
   resources :leads
 	resources :users
+  resources :activities
 	resources :sessions, only: [:new, :create, :destroy]
 
   match '/signup',  to: 'users#new',            via: 'get'
