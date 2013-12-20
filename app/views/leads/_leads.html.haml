@@ -29,6 +29,7 @@
         .span1= f.input :interest, :label => false, :collection => lead_interests, :as => :radio_buttons
         .span2
           = f.input :status, :label => false, :collection => lead_status_options, :include_blank => false
+          = f.input :notes, input_html: { :class => "small" }
         .span1
           - if @activity
             %small.muted Recent Activity:

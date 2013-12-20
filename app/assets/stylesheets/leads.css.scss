@@ -121,15 +121,23 @@
 
   .simple_form .lead-form {
     [class*="span"] {
-      min-height: 100px;
+      min-height: 130px;
       overflow: visible;
     }
 
     .control-group {
-      input.string {
+      input.string, select, textarea {
         @include box-sizing(border-box);
-        padding: 15px 6px;
         width: 100%;
+      }
+
+      input.string {
+        padding: 15px 6px;
+      }
+
+      select, textarea {
+        margin-bottom: 0;
+        resize: vertical;
       }
 
       .control-label {

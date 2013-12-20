@@ -13,12 +13,16 @@
       %ul.collapse{ :id => 'activity-'+activity.id.to_s }
         - activity.parameters.each do |key, value|
           %li
-            Updated
-            %code.label.label-info= key.titleize
-            from
-            %code.label.label-important= value[0]
-            to
-            %code.label.label-success= value[1]
+            - if key != 'notes'
+              Updated
+              %code.label.label-info= key.titleize
+              from
+              %code.label.label-important= value[0]
+              to
+              %code.label.label-success= value[1]
+            - else
+              Updated
+              %code.label.label-info Notes
 
   - else
     which has since been removed

@@ -71,7 +71,7 @@ class LeadsController < ApplicationController
   private
     def lead_params
       params.require(:lead).permit(:name, :phone, :email, :zip,
-                                   :interest, :status)
+                                   :interest, :status, :notes)
     end
 
     def activity_params(model)
