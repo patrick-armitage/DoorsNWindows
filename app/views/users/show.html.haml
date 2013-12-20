@@ -1,11 +1,18 @@
 - provide(:title, @user.name)
-%h1= @user.name.humanize
+%h1= @user.name.titleize
 .center.hero-unit
-	%ul.nav.nav-list
-		%li.nav-header User Info
-		%li.divider
-		%li
-			.row-fluid
-				.span4 Username: #{ @user.name }
-				.span4 Email: #{ @user.email }
-		%li.divider
+  %ul.nav.nav-list
+    %li.nav-header User Info
+    %li.divider
+    %li
+      .row-fluid
+        .span4 Username: #{ @user.name }
+        .span4 Email: #{ @user.email }
+    %li.divider
+
+%h3 #{ @user.name.titleize }'s Recent Activity
+= will_paginate @activities, :class => 'pagination', :previous_label => icon("icon-chevron-left", true), :next_label => icon("icon-chevron-right", true)
+%ul.nav.nav-list
+  - @activities.each do |activity|
+    .activity
+      = render_activity activity

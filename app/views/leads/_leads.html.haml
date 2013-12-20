@@ -1,4 +1,5 @@
 - @leads.each do |lead|
+  - @activity = lead.activities.order('created_at DESC').first unless lead.activities.empty?
   %li.lead-item{:id => "lead_"+lead.id.to_s}
     .row-fluid.lead-data{:id => "leaddata_"+lead.id.to_s}
       .span1.lead-id=       lead_badge(lead.id, lead.status)
@@ -26,10 +27,17 @@
         .span2= f.input :email, placeholder: 'user@example.com'
         .span1= f.input :zip, placeholder: '12345', input_html: { pattern: "[0-9]{5}" }
         .span1= f.input :interest, :label => false, :collection => lead_interests, :as => :radio_buttons
-        .span2= f.input :status, :label => false, :collection => lead_status_options, :include_blank => false
+        .span2
+          = f.input :status, :label => false, :collection => lead_status_options, :include_blank => false
         .span1
-          %small.row-fluid.muted Last Updated:
-          %strong.updated-at= l(lead.updated_at, format: :short)
+          - if @activity
+            %small.muted Recent Activity:
+            %small
+              = link_to @activity.owner.name, {:controller => "users", :action => "show", :id => @activity.owner.id } if @activity.owner
+              #{ @activity.key.gsub('lead.', '') }d #{ time_ago_in_words(@activity.created_at) } ago
+          - else
+            %small.row-fluid.muted Last Updated:
+            %strong.updated-at= l(lead.updated_at, format: :short)
         .span1
           %button{ :class => "btn-collapse btn btn-mini btn-success" }
             #{ icon("icon-check icon-white") }
