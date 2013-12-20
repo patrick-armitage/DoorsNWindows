@@ -1,6 +1,7 @@
+require 'rake'
 namespace :db do
   desc "Fill database with sample data"
-  task populate: :environment do
+  task :populate => :environment do
     Faker::Config.locale = :en_us
     100.times do |n|
       name     = Faker::Name.name
