@@ -1,0 +1,20 @@
+- provide(:title, @lead.name)
+%h1= @lead.name.titleize
+.center.hero-unit
+  %ul.nav.nav-list
+    %li.nav-header User Info
+    %li.divider
+    %li
+      .row-fluid
+        .span4 Lead: #{ @lead.name }
+        .span4 Email: #{ @lead.email }
+    %li.divider
+
+- unless @activities.empty?
+  %h3 Recent Activities performed on #{ @lead.name.titleize }
+
+  = will_paginate @activities, :class => 'pagination', :previous_label => icon("icon-chevron-left", true), :next_label => icon("icon-chevron-right", true)
+  %ul.nav.nav-list
+    - @activities.each do |activity|
+      .activity
+        = render_activity activity

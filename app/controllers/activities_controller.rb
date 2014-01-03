@@ -4,4 +4,8 @@ class ActivitiesController < ApplicationController
   def index
     @activities = PublicActivity::Activity.order("created_at desc").paginate(page: params[:page])
   end
+
+  def show
+    @activity = PublicActivity::Activity.find(params[:id])
+  end
 end

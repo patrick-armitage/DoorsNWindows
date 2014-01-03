@@ -1,9 +1,10 @@
 - @leads.each do |lead|
-  - @activity = lead.activities.order('created_at DESC').first unless lead.activities.empty?
-  %li.lead-item{:id => "lead_"+lead.id.to_s}
-    .row-fluid.lead-data{:id => "leaddata_"+lead.id.to_s}
+  - @id = lead.id.to_s
+  / - @activity = lead.activities ? lead.activities.order('created_at DESC').first : nil
+  %li.lead-item{:id => "lead_"+@id, :class => lead_staleness(lead)}
+    .row-fluid.lead-data{:id => "leaddata_"+@id}
       .span1.lead-id=       lead_badge(lead.id, lead.status)
-      .span2.lead-name=     lead.name
+      .span2.lead-name=     link_to lead.name, lead
       .span1.lead-phone=    lead.phone
       .span2.lead-email=    lead.email
       .span1.lead-zip=      lead.zip
@@ -17,33 +18,35 @@
     = simple_form_for(lead, :defaults => { :required => false }, :html => { :class => 'form-vertical' }, remote: true) do |f|
       = f.error_notification
       .row-fluid.error-placeholder
-      .row-fluid.lead-form{:id => "leadform_"+lead.id.to_s}
+      .row-fluid.lead-form{:id => "leadform_"+@id}
         .span1
           %strong ##{ lead.id }
           %small.row-fluid.muted Created On:
           %strong.muted= l(lead.created_at, format: :short)
-        .span2= f.input :name, placeholder: 'First Last', input_html: { pattern: "[a-zA-Z-. ]+" }
-        .span1= f.input :phone, placeholder: '123-456-7890', input_html: { pattern: "[(]?[0-9]{3}[)]?[-. ]?[0-9]{3}[-. ]?[0-9]{4}" }
-        .span2= f.input :email, placeholder: 'user@example.com'
-        .span1= f.input :zip, placeholder: '12345', input_html: { pattern: "[0-9]{5}" }
-        .span1= f.input :interest, :label => false, :collection => lead_interests, :as => :radio_buttons
+        .span2= f.input :name, placeholder: 'First Last', input_html: { pattern: "[a-zA-Z-. ]+", id: nil }
+        .span1= f.input :phone, placeholder: '123-456-7890', input_html: { pattern: "[(]?[0-9]{3}[)]?[-. ]?[0-9]{3}[-. ]?[0-9]{4}", id: nil }
+        .span2= f.input :email, placeholder: 'user@example.com', input_html: { id: nil }
+        .span1= f.input :zip, placeholder: '12345', input_html: { pattern: "[0-9]{5}", id: nil }
+        .span1= f.input :interest, :label => false, :collection => lead_interests, :as => :radio_buttons, input_html: { id: nil }
         .span2
-          = f.input :status, :label => false, :collection => lead_status_options, :include_blank => false
-          = f.input :notes, input_html: { :class => "small" }
+          = f.input :status, :label => false, :collection => lead_status_options, :include_blank => false, input_html: { id: nil }
+          = f.input :notes, input_html: { :class => "small", id: nil }
         .span1
-          - if @activity
-            %small.muted Recent Activity:
-            %small
-              = link_to @activity.owner.name, {:controller => "users", :action => "show", :id => @activity.owner.id } if @activity.owner
-              #{ @activity.key.gsub('lead.', '') }d #{ time_ago_in_words(@activity.created_at) } ago
-          - else
-            %small.row-fluid.muted Last Updated:
-            %strong.updated-at= l(lead.updated_at, format: :short)
+          / - if @activity
+          /   %small.muted Recent Activity:
+          /   %small
+          /     = link_to @activity.owner.name, {:controller => "users", :action => "show", :id => @activity.owner.id } if @activity.owner
+          /     #{ @activity.key.gsub('lead.', '') }d
+          /     = link_to time_ago_in_words(@activity.created_at), {:controller => "activities", :action => "show", :id => @activity.id }
+          /     ago
+          / - else
+          %small.row-fluid.muted Last Updated:
+          %strong.updated-at= l(lead.updated_at, format: :short)
         .span1
           %button{ :class => "btn-collapse btn btn-mini btn-success" }
             #{ icon("icon-check icon-white") }
-          = f.button :submit, "Update", :disabled => true, :class => "btn-action btn-update", data: {disable_with: "Saving..."}
-          = button_link_to "Delete", lead_path(lead), :class => "btn btn-action btn-danger", :remote => true, :method => :delete, :data => { :confirm => 'Delete "'+lead.name+'" permanently?' }
+          = f.button :submit, "Update", :disabled => true, :class => "btn-action btn-update", :id => nil#, data: {disable_with: "Saving..."}
+          = button_link_to "Delete", lead_path(lead), :class => "btn btn-action btn-danger", :id => nil, :remote => true, :method => :delete, :data => { :confirm => 'Delete "'+lead.name+'" permanently?' }
         / - if current_user.admin? && !current_user?(user)
         /   #delete.span1.offset1= link_to "&times;".html_safe, user, method: :delete, data: { confirm: "Delete User?" }, class: 'close'
       .row-fluid.divider

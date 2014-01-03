@@ -43,3 +43,7 @@ a:focus, input:focus, select:focus, textarea:focus, button:focus {
     outline: none !important;
 }
 
+//Collapse
+.collapse {
+  @include transition (height 0.15s ease);
+}

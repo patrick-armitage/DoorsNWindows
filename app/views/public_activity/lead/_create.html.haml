@@ -1,0 +1,7 @@
+%li
+  %small.muted #{ time_ago_in_words(activity.created_at) } ago
+  %br
+  = link_to activity.owner.name, {:controller => "users", :action => "show", :id => activity.owner.id } if activity.owner
+  created a lead
+  %code.label.label-success= activity.trackable.name if activity.trackable
+%li.divider

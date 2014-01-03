@@ -24,9 +24,10 @@ class Lead < ActiveRecord::Base
   validates_inclusion_of :interest, :in => :lead_interests
   validates_inclusion_of :status, :in => :lead_status_options
 
-  def self.search(search)
+  def self.search(search, type=nil)
+    type = 'name' unless type
     if search
-      where('name LIKE ?', "%#{search}%")
+      where(type+' LIKE ?', "%#{search}%")
     else
       all
     end

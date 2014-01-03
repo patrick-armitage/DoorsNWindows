@@ -1,0 +1,5 @@
+%h1 Recent Activity #{ 'from '+@activity.owner.name.to_s.titleize if @activity.owner }
+
+%ul.nav.nav-list
+  .activity
+    = render_activity @activity

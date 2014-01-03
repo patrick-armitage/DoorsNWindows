@@ -1,9 +1,15 @@
 class LeadsController < ApplicationController
   before_action :signed_in_user, only: [:index, :update, :destroy]
+  before_action :delete_activity, only: [:destroy]
 
   def index
     @lead = Lead.new
-    @leads = Lead.reorder(sort_column + " " + sort_direction).paginate(page: params[:page]).search(params[:search])
+    @leads = Lead.reorder(sort_column + " " + sort_direction).paginate(page: params[:page]).search(params[:search], params[:type])
+  end
+
+  def show
+    @lead = Lead.find(params[:id])
+    @activities = @lead.activities.paginate(page: params[:page])
   end
 
   def new
@@ -38,7 +44,7 @@ class LeadsController < ApplicationController
 
     respond_to do |format|
       if @lead.save
-        @lead.create_activity :update, owner: current_user, params: changes
+        @lead.create_activity :update, owner: current_user, params: changes unless changes.empty?
         format.html { render action: "index" }
         format.js   {}
         format.json { render json: @lead, status: :updated, location: @lead }
@@ -53,10 +59,10 @@ class LeadsController < ApplicationController
   def destroy
     @lead = Lead.find(params[:id])
     @id = @lead.id
+    @name = @lead.name
 
     respond_to do |format|
       if @lead.destroy
-        @lead.create_activity :delete, owner: current_user
         format.html { render action: "index" }
         format.js   {}
         format.json { render json: @lead, status: :deleted, location: @lead }
@@ -74,9 +80,11 @@ class LeadsController < ApplicationController
                                    :interest, :status, :notes)
     end
 
-    def activity_params(model)
-      model.changed.each do |change|
-        params[change]
-      end
+    def delete_activity
+      @lead = Lead.find(params[:id])
+      @params = {}
+      @lead.attributes.each { |k, v| @params[k] = v }
+
+      @lead.create_activity :delete, owner: current_user, params: @params
     end
 end

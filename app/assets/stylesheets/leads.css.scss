@@ -10,6 +10,10 @@
       float: left;
       margin: 5px 0 0 0;
     }
+
+    .lead-links {
+      margin: 10px;
+    }
   }
 
   ul {
@@ -21,10 +25,10 @@
         overflow: hidden;
         padding: 5px;
       }
+    }
 
-      .lead-data, .lead-form {
-        @include transition (background-color 0.4s ease-out);
-      }
+    .lead-item, .lead-data, .lead-form {
+      @include transition (background-color 0.4s ease-out);
     }
 
     #leads_header {
@@ -83,7 +87,7 @@
     padding: 0 0 0 0;
   }
 
-  .lead-data {
+  #lead-controls, .lead-data  {
     .lead-new-lead {
       @extend .badge-warning;
     }
@@ -96,6 +100,22 @@
     }
     .lead-job-sold {
       @extend .badge-success;
+    }
+  }
+
+  #lead-controls {
+    .badge {
+      padding: 0 0 0 0;
+
+      a, a:hover, a:visited {
+        color: #fff;
+        display: block;
+        padding: 2px 9px;
+        text-decoration: none;
+      }
+      &:hover {
+        box-shadow: 0 0 10px 10px rgba(180, 0, 180, 0.4) inset
+      }
     }
   }
 
