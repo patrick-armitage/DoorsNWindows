@@ -62,9 +62,8 @@ Doorsnwindows::Application.configure do
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
   # config.assets.precompile += %w( search.js )
 
-  # Precompile fonts
-  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
-  config.assets.precompile += %w(.svg .eot .woff .ttf)
+  # Serve fonts in production
+  config.serve_static_assets = true
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
