@@ -15,4 +15,14 @@
 //= require turbolinks
 //= require button_link_to
 //= require bootstrap
+//= require fancybox
+//= require flexslider
+//= require isotope
+//= require jquery.fitvids
+//= require jquery.gmap.min
+//= require selectnav
+//= require sliderjs
+//= require switcher
+//= require twitter
+//= require custom
 //= require_tree .
