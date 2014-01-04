@@ -11,8 +11,11 @@
  *= require_self
  */
 
+//Framework Imports
 @import "bourbon";
 @import "framework_and_overrides";
+
+//Website Imports
 @import "static_pages";
 @import "simple_form";
 @import "leads";

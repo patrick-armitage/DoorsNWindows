@@ -1,7 +1,16 @@
-// import the CSS framework
+//Bootstrap
 @import "bootstrap";
 @import "bootstrap-responsive";
 @import "bootstyle";
+
+//Template Imports
+@import "fancybox";
+@import "flexslider";
+@import "font-awesome";
+@import "font-awesome-ie7";
+@import "style";
+@import "style-responsive";
+@import "switcher";
 
 // rails dev
 .debug_dump {
