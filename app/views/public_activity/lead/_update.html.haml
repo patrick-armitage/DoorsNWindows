@@ -4,7 +4,7 @@
     %br
     = link_to activity.owner.name, {:controller => "users", :action => "show", :id => activity.owner.id } if activity.owner
     updated a lead,
-    = link_to activity.trackable.name, {:controller => "leads", :action => "index", :search => activity.trackable.name }
+    = link_to activity.trackable.name, {:controller => "leads", :action => "show", :id => activity.trackable.id }
     - unless activity.parameters.empty?
       , by changing:
       %code.label.label-info{ :data => { toggle: 'collapse', target: '#activity-'+activity.id.to_s } }

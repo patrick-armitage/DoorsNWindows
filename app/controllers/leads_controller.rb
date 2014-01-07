@@ -20,11 +20,11 @@ class LeadsController < ApplicationController
     @lead = Lead.new(lead_params)
     if @lead.save
       if signed_in?
-        @lead.create_activity :create, owner: current_user
-        flash[:success] = "New Quote Available."
+        @lead.create_activity :create, owner: current_user, params: @lead.attributes
+        flash[:success] = "New Lead Available."
         redirect_to leads_path
       else
-        @lead.create_activity :new
+        @lead.create_activity :new, params: @lead.attributes
         flash[:success] = "Your Free Quote request has been received! We will contact you shortly."
         redirect_to root_path
       end

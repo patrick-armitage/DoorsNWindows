@@ -1,8 +1,7 @@
 %li
   %small.muted #{ time_ago_in_words(activity.created_at) } ago
   %br
-  = link_to activity.owner.name, {:controller => "users", :action => "show", :id => activity.owner.id } if activity.owner
-  created a lead
+  A new lead was requested from
   %code.label.label-success{ :data => { toggle: 'collapse', target: '#activity-'+activity.id.to_s } }
     = activity.parameters['name']
     = icon('icon-white icon-chevron-down')
