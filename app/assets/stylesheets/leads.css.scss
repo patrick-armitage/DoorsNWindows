@@ -46,6 +46,7 @@
       [class*="span"] {
         @extend .nav-header;
 
+        border-left: 1px solid #35945E;
         min-height: 40px;
         overflow: visible;
         padding: 0;
@@ -55,21 +56,23 @@
         }
 
         span, a {
-          @extend .muted;
+          color: #fff;
           display: block;
-          min-width: 60px;
+          min-width: 66px;
           padding: {
             left: 6px;
             top: 10px;
           }
+          opacity: 1;
 
           &:hover {
+            opacity: 0.8;
             text-decoration: none;
           }
 
           i {
             @extend .pull-right;
-            @extend .icon-opaque;
+            @extend .icon-white;
           }
         }
       }
@@ -126,6 +129,11 @@
         min-width: 140%;
         max-width: 140%;
         width: 140%;
+      }
+
+      .updated-at {
+        @extend .small;
+        letter-spacing: -1px;
       }
     }
 

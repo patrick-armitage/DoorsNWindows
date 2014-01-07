@@ -1,8 +1,29 @@
-%footer.footer
-  %small
+/ %footer.footer
+/   %small
+/     %span ©
+/     = link_to 'DoorsNWindows', root_path
+/     %span #{Time.now.year}
+/     %ul.nav.nav-pills.pull-right
+/       %li= link_to "Home", root_path
+/       %li= link_to "About", about_path
+#footer
+  .container
     %span ©
     = link_to 'DoorsNWindows', root_path
     %span #{Time.now.year}
-    %ul.nav.nav-pills.pull-right
-      %li= link_to "Home", root_path
-      %li= link_to "About", about_path
+    .links
+      %ul.unstyled
+        %li
+          %a{href: "#"} About Us
+        %li
+          %a{href: "#"} Press
+        %li
+          %a{href: "#"} Partner with maJoo
+        %li
+          %a{href: "#"} Terms
+        %li
+          %a{href: "#"} Privacy Policy
+        %li
+          %a{href: "#"} Jobs
+        %li
+          %a{href: "#"} Contact Us
