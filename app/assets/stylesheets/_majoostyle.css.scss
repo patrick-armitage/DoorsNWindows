@@ -86,3 +86,23 @@ input {
     background-image: none;
   }
 }
+
+// Helper Styles
+
+.no-height {
+  height: 0px;
+  max-height: 0px;
+  overflow: visible;
+  z-index: 9999;
+
+  > div {
+    > div {
+      position: relative;
+      height: 100%;
+      max-height: 100%;
+      width: 100%;
+      max-width: 100%;
+      z-index: 9999;
+    }
+  }
+}
