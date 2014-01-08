@@ -3,6 +3,11 @@
   font-size: 85%;
 }
 
+// Dropdown Navigation
+.dropdown-menu {
+  z-index: 9999;
+}
+
 // Alert BG Colors
 .success {
   background-color: #DFF0D8 !important;
