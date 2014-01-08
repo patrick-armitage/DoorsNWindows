@@ -1,0 +1,202 @@
+%main
+  .container
+    .content
+      #homepage
+        #slides
+          .row
+            %ul.paging
+              .slide-btn
+                .span2
+                  %li
+                    %a#sweepstake.feature-tab{href: "#0"}
+                      %i.icon-group
+                .span2
+                  %li
+                    %a#dashboard.feature-tab{href: "#1"}
+                      %i.icon-signal
+                .span2
+                  %li
+                    %a#responsive.feature-tab{href: "#2"}
+                      %i.icon-resize-full
+                .span2
+                  %li
+                    %a#cloud.feature-tab{href: "#3"}
+                      %i.icon-cloud
+                .span2
+                  %li
+                    %a#security.feature-tab{href: "#4"}
+                      %i.icon-lock
+                .span2
+                  %li
+                    %a#roi.feature-tab{href: "#5"}
+                      %i.icon-bullhorn
+          .feature-content.slides_container
+            #sweepstake-content.slide-content{style: "display:block"}
+              .row
+                .span5
+                  = image_tag "2.jpg", align: "right"
+                .span7
+                  %h2 24x7 Customer Support
+                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit elit, non suscipit elit. Duis quis nisl et orci pretium mollis ut a risus. Fusce dapibus euismod est, sed consectetur justo laoreet dapibus. Nullam aliquet erat sed tellus porttitor vehicula. Sed ac egestas purus.
+                  %ul.unstyled.icons
+                    %li
+                      %i.icon-ok>
+                      Live Calls
+                    %li
+                      %i.icon-ok>
+                      Email Support
+                    %li
+                      %i.icon-ok>
+                      Forums
+                    %li
+                      %i.icon-ok>
+                      Other
+              / .fslider-nav
+              /   %a.btn.btn-cta{href: "#", onclick: "show_feature('dashboard','link'); return false;"}
+              /     Next
+              /     %i.icon-chevron-right.icon-white
+            #dashboard-content.slide-content
+              .row
+                .span5
+                  = image_tag "4.jpg", align: "right"
+                .span7
+                  %h2 Aliquam a nisi sed turpis ornare volutpat
+                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit elit, non suscipit elit. Duis quis nisl et orci pretium mollis ut a risus. Fusce dapibus euismod est, sed consectetur justo laoreet dapibus. Nullam aliquet erat sed tellus porttitor vehicula. Sed ac egestas purus.
+                  %ul.icons.unstyled
+                    %li
+                      %i.icon-ok
+                      feature 1
+                    %li
+                      %i.icon-ok
+                      feature 1
+                    %li
+                      %i.icon-ok
+                      feature 1
+                    %li
+                      %i.icon-ok
+                      feature 1
+              / .fslider-nav
+              /   .btn-group
+              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('sweepstake','link'); return false;"}
+              /       %i.icon-chevron-left.icon-white
+              /       Previous
+              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('responsive','link'); return false;"}
+              /       Next
+              /       %i.icon-chevron-right.icon-white
+            #responsive-content.slide-content
+              .row
+                .span5
+                  = image_tag "5.jpg", align: "right"
+                .span7
+                  %h2 Full Responsive
+                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit elit, non suscipit elit. Duis quis nisl et orci pretium mollis ut a risus. Fusce dapibus euismod est, sed consectetur justo laoreet dapibus. Nullam aliquet erat sed tellus porttitor vehicula. Sed ac egestas purus.
+                  %ul.icons.unstyled
+                    %li
+                      %i.icon-ok
+                      feature 1
+                    %li
+                      %i.icon-ok
+                      feature 1
+                    %li
+                      %i.icon-ok
+                      feature 1
+                    %li
+                      %i.icon-ok
+                      feature 1
+              / .fslider-nav
+              /   .btn-group
+              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('dashboard','link'); return false;"}
+              /       %i.icon-chevron-left.icon-white
+              /       Previous
+              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('cloud','link'); return false;"}
+              /       Next
+              /       %i.icon-chevron-right.icon-white
+            #cloud-content.slide-content
+              .row
+                .span5
+                  %br/
+                  %br/
+                  %i#features-icon.icon-cloud
+                  %i#features-icon.icon-cloud{style: "color:#f4f4f4; font-size:10em;"}
+                  %i#features-icon.icon-cloud{style: "color:#d8d8d8; font-size:8em;"}
+                .span7
+                  %h2 100% Cloud Computing
+                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit elit, non suscipit elit. Duis quis nisl et orci pretium mollis ut a risus. Fusce dapibus euismod est, sed consectetur justo laoreet dapibus. Nullam aliquet erat sed tellus porttitor vehicula. Sed ac egestas purus.
+                  %ul.icons.unstyled
+                    %li
+                      %i.icon-cloud
+                      feature 1
+                    %li
+                      %i.icon-cloud
+                      feature 1
+                    %li
+                      %i.icon-cloud
+                      feature 1
+                    %li
+                      %i.icon-cloud
+                      feature 1
+              / .fslider-nav
+              /   .btn-group
+              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('responsive','link'); return false;"}
+              /       %i.icon-chevron-left.icon-white
+              /       Previous
+              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('security','link'); return false;"}
+              /       Next
+              /       %i.icon-chevron-right.icon-white
+            #security-content.slide-content
+              .row{style: ""}
+                .span7
+                  %h2 128 Bit Hash Security
+                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit elit, non suscipit elit. Duis quis nisl et orci pretium mollis ut a risus. Fusce dapibus euismod est, sed consectetur justo laoreet dapibus. Nullam aliquet erat sed tellus porttitor vehicula. Sed ac egestas purus.
+                  %ul.icons.unstyled
+                    %li
+                      %i.icon-lock
+                      feature 1
+                    %li
+                      %i.icon-lock
+                      feature 1
+                    %li
+                      %i.icon-lock
+                      feature 1
+                    %li
+                      %i.icon-lock
+                      feature 1
+                .span5
+                  = image_tag "3.jpg", align: "center"
+              / .fslider-nav
+              /   .btn-group
+              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('cloud','link'); return false;"}
+              /       %i.icon-chevron-left.icon-white
+              /       Previous
+              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('roi','link'); return false;"}
+              /       Next
+              /       %i.icon-chevron-right.icon-white
+            #roi-content.slide-content
+              .row
+                .span5
+                  = image_tag "1_1.png", align: "right"
+                .span7
+                  %h2 Clean & Simple Design
+                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit elit, non suscipit elit. Duis quis nisl et orci pretium mollis ut a risus. Fusce dapibus euismod est, sed consectetur justo laoreet dapibus. Nullam aliquet erat sed tellus porttitor vehicula. Sed ac egestas purus.
+                  %ul.icons.unstyled
+                    %li
+                      %i.icon-ok
+                      feature 1
+                    %li
+                      %i.icon-ok
+                      feature 1
+                    %li
+                      %i.icon-ok
+                      feature 1
+                    %li
+                      %i.icon-ok
+                      feature 1
+              / .fslider-nav
+              /   .btn-group
+              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('security','link'); return false;"}
+              /       %i.icon-chevron-left.icon-white
+              /       Previous
+              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('sweepstake','link'); return false;"}
+              /       Next
+              /       %i.icon-chevron-right.icon-white
+    %hr

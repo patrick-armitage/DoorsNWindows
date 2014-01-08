@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-migrate-min
 //= require turbolinks
 //= require button_link_to
 //= require bootstrap
@@ -22,7 +23,6 @@
 //= require jquery.gmap.min
 //= require selectnav
 //= require sliderjs
-//= require switcher
 //= require twitter
 //= require custom
 //= require_tree .

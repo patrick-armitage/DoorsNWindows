@@ -4,20 +4,34 @@ body {
   background-color: #087135;
 }
 
-main, header {
+main {
   background-color: #fff;
+  padding-top: 20px;
 }
 
+.main-top {
+  height: 370px;
+  max-height: 370px;
+  overflow: hidden;
+
+  .flexslider {
+    height: 340px;
+    max-height: 340px;
+  }
+}
 // Nav Styles
 
 .topnav {
   position: relative;
   z-index: 0;
+
+  i {
+    background-image: none;
+  }
 }
 
 .navbar-static-top {
   margin-bottom: 0;
-  padding-bottom: 20px;
   overflow: visible;
 
   .navbar-inner {
@@ -63,4 +77,12 @@ input {
 
 .label.label-info {
   background-color: #3A87AD;
+}
+
+// SliderJS
+
+#slides {
+  i {
+    background-image: none;
+  }
 }
