@@ -9,7 +9,7 @@ class Lead < ActiveRecord::Base
     self.zip = zip.gsub(/[^0-9]/i, '')
   end
 
-  #bootstrap-will_paginate
+  #will_paginate
   self.per_page = 12
 
   VALID_PHONE_REGEX = /\A\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})\z/

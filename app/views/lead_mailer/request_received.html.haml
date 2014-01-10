@@ -1,0 +1,28 @@
+%p Thank you for your interest, #{ @lead.name }!
+
+%p A DoorsNWindows representative will be giving you a call shortly.  Here is the information you provided:
+
+%table
+  %tbody
+    %tr
+      %td ID:
+      %td #{ @lead.id }
+    %tr
+      %td Name:
+      %td #{ @lead.name }
+    %tr
+      %td Phone:
+      %td #{ @lead.phone }
+    %tr
+      %td Email:
+      %td #{ @lead.email }
+    %tr
+      %td Zip:
+      %td #{ @lead.zip }
+    %tr
+      %td Interest:
+      %td #{ @lead.interest }
+
+%p
+  If you have any further questions, or would like to contact us, feel free to call us at 1-877-218-4695.  Or you can always contact us over at
+  = link_to "DoorsNWindows.com", root_url

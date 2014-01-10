@@ -1,6 +1,7 @@
 class LeadsController < ApplicationController
-  before_action :signed_in_user, only: [:index, :update, :destroy]
+  before_action :signed_in_user, only: [:index, :show, :update, :destroy]
   before_action :delete_activity, only: [:destroy]
+  # after_action :new_lead_notify, only: [:create]
 
   def index
     @lead = Lead.new
@@ -19,9 +20,10 @@ class LeadsController < ApplicationController
   def create
     @lead = Lead.new(lead_params)
     if @lead.save
+      MailerWorker.perform_async(@lead.id)
       if signed_in?
         @lead.create_activity :create, owner: current_user, params: @lead.attributes
-        flash[:success] = "New Lead Available."
+        flash[:success] = "#{ current_user.name } successfully created a lead."
         redirect_to leads_path
       else
         @lead.create_activity :new, params: @lead.attributes
@@ -86,5 +88,9 @@ class LeadsController < ApplicationController
       @lead.attributes.each { |k, v| @params[k] = v }
 
       @lead.create_activity :delete, owner: current_user, params: @params
+    end
+
+    def new_lead_notify
+      MailerWorker.perform_async(@lead.id)
     end
 end

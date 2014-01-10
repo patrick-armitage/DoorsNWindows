@@ -1,0 +1,28 @@
+%p Hey #{ @user.name },
+
+%p A new customer just registered as a lead:
+
+%table
+  %tbody
+    %tr
+      %td ID:
+      %td #{ @lead.id }
+    %tr
+      %td Name:
+      %td #{ @lead.name }
+    %tr
+      %td Phone:
+      %td #{ @lead.phone }
+    %tr
+      %td Email:
+      %td #{ @lead.email }
+    %tr
+      %td Zip:
+      %td #{ @lead.zip }
+    %tr
+      %td Interest:
+      %td #{ @lead.interest }
+
+%p
+  Check them out here:
+  = link_to @lead.name, lead_url(@lead)
