@@ -34,9 +34,6 @@ Doorsnwindows::Application.configure do
     port: 3000
   }
 
-  # Redis duplicate
-  ENV["REDISCLOUD_URL"] = 'redis://rediscloud:ocTgqsiTZpP1CvES@pub-redis-18360.us-east-1-1.2.ec2.garantiadata.com:18360'
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
