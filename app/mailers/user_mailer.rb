@@ -6,8 +6,18 @@ class UserMailer < ActionMailer::Base
     @lead = lead
 
     @users.each do |user|
-      @user = user
+      @user = user #for haml email template
       mail to: user.email, subject: "New Lead: #{ @lead.name }"
+    end
+  end
+
+  def new_inquiry_notice(inquiry)
+    @users = User.all
+    @inquiry = inquiry
+
+    @users.each do |user|
+      @user = user
+      mail to: user.email, subject: "Inquiry received from: #{ @inquiry.email }"
     end
   end
 end
