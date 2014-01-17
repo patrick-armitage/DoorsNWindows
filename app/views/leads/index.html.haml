@@ -22,12 +22,13 @@
         .row-fluid
           .span1= sortable "created_at", "Lead"
           .span2= sortable "name"
-          .span1= sortable "phone"
+          .span2= sortable "phone"
+          / .span1= sortable "phone"
           .span2= sortable "email"
           .span1= sortable "zip", "Zip Code"
           .span1= sortable "interest"
           .span2= sortable "status"
-          .span1= sortable "updated_at", "Updates"
+          / .span1= sortable "updated_at", "Updates"
           .span1 <span>Actions</span>
 
   = render 'leads/leads'

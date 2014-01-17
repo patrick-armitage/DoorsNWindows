@@ -34,4 +34,12 @@ module LeadsHelper
     end
     return css_class
   end
+
+  def phone_format(phone)
+    formatted = '(' +
+    phone[0..2] + ') ' +
+    phone[3..5] + '-' +
+    phone[6..9]
+    formatted
+  end
 end

@@ -5,13 +5,14 @@
     .row-fluid.lead-data{:id => "leaddata_"+@id}
       .span1.lead-id=       lead_badge(lead.id, lead.status)
       .span2.lead-name=     link_to lead.name, lead
-      .span1.lead-phone=    lead.phone
+      .span2.lead-phone=    phone_format(lead.phone)
+      / .span1.lead-phone=    lead.phone
       .span2.lead-email=    lead.email
       .span1.lead-zip=      lead.zip
       .span1.lead-interest= lead.interest
       .span2.lead-status=   lead.status
-      .span1
-        %strong.updated-at= l(lead.updated_at, format: :short)
+      / .span1
+      /   %strong.updated-at= l(lead.updated_at, format: :short)
       .span1
         %button{ :class => "btn-edit btn btn-mini btn-primary" }
           #{ icon("icon-edit icon-white") }
@@ -24,14 +25,14 @@
           %small.row-fluid.muted Created On:
           %strong.muted= l(lead.created_at, format: :short)
         .span2= f.input :name, placeholder: 'First Last', input_html: { pattern: "[a-zA-Z-. ]+", id: nil }
-        .span1= f.input :phone, placeholder: '123-456-7890', input_html: { pattern: "[(]?[0-9]{3}[)]?[-. ]?[0-9]{3}[-. ]?[0-9]{4}", id: nil }
+        .span2= f.input :phone, placeholder: '123-456-7890', input_html: { pattern: "[(]?[0-9]{3}[)]?[-. ]?[0-9]{3}[-. ]?[0-9]{4}", id: nil }
+        / .span1= f.input :phone, placeholder: '123-456-7890', input_html: { pattern: "[(]?[0-9]{3}[)]?[-. ]?[0-9]{3}[-. ]?[0-9]{4}", id: nil }
         .span2= f.input :email, placeholder: 'user@example.com', input_html: { id: nil }
         .span1= f.input :zip, placeholder: '12345', input_html: { pattern: "[0-9]{5}", id: nil }
         .span1= f.input :interest, :label => false, :collection => lead_interests, :as => :radio_buttons, input_html: { id: nil }
         .span2
           = f.input :status, :label => false, :collection => lead_status_options, :include_blank => false, input_html: { id: nil }
           = f.input :notes, input_html: { :class => "small", id: nil }
-        .span1
           / - if @activity
           /   %small.muted Recent Activity:
           /   %small
@@ -40,8 +41,8 @@
           /     = link_to time_ago_in_words(@activity.created_at), {:controller => "activities", :action => "show", :id => @activity.id }
           /     ago
           / - else
-          %small.row-fluid.muted Last Updated:
-          %strong.updated-at= l(lead.updated_at, format: :short)
+          / %small.row-fluid.muted Last Updated:
+          / %strong.updated-at= l(lead.updated_at, format: :short)
         .span1
           %button{ :class => "btn-collapse btn btn-mini btn-success" }
             #{ icon("icon-check icon-white") }
