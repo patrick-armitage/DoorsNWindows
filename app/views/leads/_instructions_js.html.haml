@@ -1,25 +1,9 @@
 :javascript
-  $(document).ready(function() {
-    $('.image-slider').flexslider({
-      animation: "fade",
-      slideshowSpeed: 4000,
-      animationDuration: 1000,
-      controlNav: false,
-      keyboardNav: true,
-      directionNav: true,
-      pauseOnHover: true,
-      pauseOnAction: true
-    });
-
-
-  });
-:javascript
   //  Slider
   $(document).ready(function(){
     $('#slides').slides({
       effect: 'fade',
-      play: 2000,
-      pause: 2500,
+      bigTarget: true,
       autoWidth: true,
       hoverPause: true,
       paginationClass: 'paging',

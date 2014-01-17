@@ -27,8 +27,7 @@ class LeadsController < ApplicationController
         redirect_to leads_path
       else
         @lead.create_activity :new, params: @lead.attributes
-        flash[:success] = "Your Free Quote request has been received! We will contact you shortly."
-        redirect_to root_path
+        render :thank_you
       end
     else
       if request.env["HTTP_REFERER"].to_s.include? 'leads'
