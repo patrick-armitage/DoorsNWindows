@@ -88,8 +88,4 @@ class LeadsController < ApplicationController
 
       @lead.create_activity :delete, owner: current_user, params: @params
     end
-
-    def new_lead_notify
-      MailerWorker.perform_async(@lead.id)
-    end
 end

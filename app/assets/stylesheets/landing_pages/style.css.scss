@@ -1,0 +1,461 @@
+/*
+ *
+ * Template Name: Eli
+ * Template URI: http://azmind.com
+ * Description: Eli - Responsive Fullscreen Coming Soon Template
+ * Author: Anli Zaimi
+ * Author URI: http://azmind.com
+ *
+ */
+
+body {
+  background: #f8f8f8;
+  text-align: left;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+::-moz-selection, ::selection {
+  background: #ff7f6b;
+  color: #fff;
+  text-shadow: none;
+}
+
+.page-container {
+  padding: 0 0 80px 0;
+}
+
+/* ----- Show/hide button (top of page) ----- */
+
+.show-hide {
+  text-align: center;
+  a {
+    display: inline-block;
+    width: 45px;
+    height: 30px;
+    padding-top: 10px;
+    background: #2d2d2d;
+    /* browsers that don't support rgba */
+    background: rgba(45, 45, 45, 0.7);
+    font-size: 20px;
+    color: #f8f8f8;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -ms-transition: all .3s;
+    &:hover {
+      background: #ff7f6b;
+      color: #fff;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+      text-decoration: none;
+    }
+    &:active {
+      -moz-box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2) inset, 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+      -webkit-box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2) inset, 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2) inset, 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+/* ----- Page title ----- */
+
+.page-title {
+  padding: 0 40px;
+  h1 {
+    margin: 40px 0 0 0;
+    font-family: 'Patua One', cursive;
+    font-size: 64px;
+    line-height: 66px;
+    font-weight: normal;
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* ----- Page description ----- */
+
+.page-description {
+  margin-top: 40px;
+  padding: 0 40px;
+  font-size: 20px;
+  line-height: 34px;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ----- Subscription form ----- */
+
+.subscription-form {
+  margin-top: 40px;
+  padding: 0 40px;
+  input {
+    width: 300px;
+    height: 48px;
+    margin: 0;
+    padding: 0 18px;
+    background: #2d2d2d;
+    /* browsers that don't support rgba */
+    background: rgba(45, 45, 45, 0.7);
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 48px;
+    color: #f8f8f8;
+    font-style: italic;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    border: 0;
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 9px;
+    border-radius: 9px;
+    -moz-box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1) inset, 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1) inset, 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1) inset, 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    &:-moz-placeholder, &:-ms-input-placeholder, &::-webkit-input-placeholder {
+      color: #f8f8f8;
+    }
+  }
+  button, .btn {
+    width: 120px;
+    height: 48px;
+    margin: 0;
+    padding: 0;
+    background: #ff7f6b;
+    border: 0;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 48px;
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 9px;
+    border-radius: 9px;
+    -moz-box-shadow: 0 20px 35px 0 rgba(255, 255, 255, 0.2) inset, 0 -3px 1px 0 rgba(0, 0, 0, 0.3) inset, 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 20px 35px 0 rgba(255, 255, 255, 0.2) inset, 0 -3px 1px 0 rgba(0, 0, 0, 0.3) inset, 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 35px 0 rgba(255, 255, 255, 0.2) inset, 0 -3px 1px 0 rgba(0, 0, 0, 0.3) inset, 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -ms-transition: all .3s;
+    &:hover {
+      background: #ff7f6b;
+      color: #fff;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 0 -20px 35px 0 rgba(255, 255, 255, 0.2) inset, 0 -3px 1px 0 rgba(0, 0, 0, 0.3) inset, 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+      -webkit-box-shadow: 0 -20px 35px 0 rgba(255, 255, 255, 0.2) inset, 0 -3px 1px 0 rgba(0, 0, 0, 0.3) inset, 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+      box-shadow: 0 -20px 35px 0 rgba(255, 255, 255, 0.2) inset, 0 -3px 1px 0 rgba(0, 0, 0, 0.3) inset, 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+      -o-transition: all .3s;
+      -moz-transition: all .3s;
+      -webkit-transition: all .3s;
+      -ms-transition: all .3s;
+    }
+    &:active {
+      background: #ff7f6b;
+      color: #fff;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 0 -20px 35px 0 rgba(255, 255, 255, 0.2) inset, 0 6px 8px 0 rgba(0, 0, 0, 0.2) inset;
+      -webkit-box-shadow: 0 -20px 35px 0 rgba(255, 255, 255, 0.2) inset, 0 6px 8px 0 rgba(0, 0, 0, 0.2) inset;
+      box-shadow: 0 -20px 35px 0 rgba(255, 255, 255, 0.2) inset, 0 6px 8px 0 rgba(0, 0, 0, 0.2) inset;
+    }
+  }
+}
+
+.success-message, .error-message {
+  font-size: 14px;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.success-message {
+  font-size: 20px;
+}
+
+/* ----- Timer ----- */
+
+.timer {
+  margin-top: 15px;
+  padding: 0 40px;
+  font-size: 20px;
+  line-height: 30px;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  span {
+    font-size: 26px;
+  }
+}
+
+/* ----- Progress bar ----- */
+
+.progress {
+  height: 64px;
+  margin: 30px 0 0 0;
+  background: transparent url(../img/slider-bg2.jpg) left bottom repeat-x;
+  border: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  filter: none;
+  .bar {
+    background: url(../img/slider-bg1.jpg) right bottom no-repeat, url(../img/slider-bg.jpg) left bottom repeat-x;
+    border: 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    filter: none;
+    text-shadow: none;
+    div {
+      float: right;
+      width: 47px;
+      height: 49px;
+      padding: 15px 0 0 0;
+      background: transparent url(../img/slider-bg3.png) center top no-repeat;
+      font-size: 14px;
+      text-align: center;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+/* ----- Footer ----- */
+
+.footer {
+  margin: 0;
+  padding: 50px 0;
+  min-height: 96px;
+  background: #2d2d2d;
+  /* browsers that don't support rgba */
+  background: rgba(45, 45, 45, 0.7);
+  color: #f8f8f8;
+  -moz-box-shadow: 0 -15px 40px 0 rgba(0, 0, 0, 0.05) inset, 0 -10px 50px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 -15px 40px 0 rgba(0, 0, 0, 0.05) inset, 0 -10px 50px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -15px 40px 0 rgba(0, 0, 0, 0.05) inset, 0 -10px 50px 0 rgba(0, 0, 0, 0.2);
+  a {
+    color: #ff7f6b;
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+    -webkit-transition: all .3s;
+    -ms-transition: all .3s;
+    &:hover {
+      color: #f8f8f8;
+      text-decoration: none;
+    }
+  }
+}
+
+.tweets {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.show-tweets {
+  min-height: 30px;
+  margin: 0 0 0 40px;
+  padding: 0 0 0 40px;
+  overflow-y: hidden;
+  background: url(../img/tweets.png) left 7px no-repeat;
+}
+
+.tweet_list {
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+  list-style: none;
+  li {
+    overflow-y: auto;
+    overflow-x: hidden;
+    list-style-type: none;
+    line-height: 24px;
+  }
+  .tweet_avatar {
+    float: left;
+    img {
+      vertical-align: middle;
+    }
+  }
+}
+
+.flickr-feed {
+  margin: 0;
+  overflow: hidden;
+  li {
+    float: left;
+    padding: 0 4px 4px 0;
+    list-style: none;
+    img {
+      width: 40px;
+      border: 2px solid #f8f8f8;
+    }
+  }
+  a:hover {
+    opacity: 0.7;
+  }
+}
+
+.social-links {
+  margin-right: 40px;
+  a {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin: 0 8px 7px 0;
+    vertical-align: middle;
+    &.twitter {
+      background: url(../img/social-icons/twitter.png) left bottom no-repeat;
+    }
+    &.dribbble {
+      background: url(../img/social-icons/dribbble.png) left bottom no-repeat;
+    }
+    &.rss {
+      background: url(../img/social-icons/rss.png) left bottom no-repeat;
+    }
+    &.pinterest {
+      background: url(../img/social-icons/pinterest.png) left bottom no-repeat;
+    }
+    &.digg {
+      background: url(../img/social-icons/digg.png) left bottom no-repeat;
+    }
+    &.flickr {
+      background: url(../img/social-icons/flickr.png) left bottom no-repeat;
+    }
+    &.forrst {
+      background: url(../img/social-icons/forrst.png) left bottom no-repeat;
+    }
+    &.vimeo {
+      background: url(../img/social-icons/vimeo.png) left bottom no-repeat;
+    }
+    &.reddit {
+      background: url(../img/social-icons/reddit.png) left bottom no-repeat;
+    }
+    &.linkedin {
+      background: url(../img/social-icons/linkedin.png) left bottom no-repeat;
+    }
+    &.facebook {
+      background: url(../img/social-icons/facebook.png) left bottom no-repeat;
+    }
+    &.paypal {
+      background: url(../img/social-icons/paypal.png) left bottom no-repeat;
+    }
+    &.stumbleupon {
+      background: url(../img/social-icons/stumbleupon.png) left bottom no-repeat;
+    }
+    &.email {
+      background: url(../img/social-icons/email.png) left bottom no-repeat;
+    }
+    &.deviantart {
+      background: url(../img/social-icons/deviantart.png) left bottom no-repeat;
+    }
+    &.netvibes {
+      background: url(../img/social-icons/netvibes.png) left bottom no-repeat;
+    }
+    &.yahoo {
+      background: url(../img/social-icons/yahoo.png) left bottom no-repeat;
+    }
+    &.github {
+      background: url(../img/social-icons/github.png) left bottom no-repeat;
+    }
+    &.addthis {
+      background: url(../img/social-icons/addthis.png) left bottom no-repeat;
+    }
+    &.behance {
+      background: url(../img/social-icons/behance.png) left bottom no-repeat;
+    }
+    &.blogger {
+      background: url(../img/social-icons/blogger.png) left bottom no-repeat;
+    }
+    &.slashdot {
+      background: url(../img/social-icons/slashdot.png) left bottom no-repeat;
+    }
+    &.technorati {
+      background: url(../img/social-icons/technorati.png) left bottom no-repeat;
+    }
+    &.googleplus {
+      background: url(../img/social-icons/googleplus.png) left bottom no-repeat;
+    }
+    &.apple {
+      background: url(../img/social-icons/apple.png) left bottom no-repeat;
+    }
+    &.myspace {
+      background: url(../img/social-icons/myspace.png) left bottom no-repeat;
+    }
+    &.sharethis {
+      background: url(../img/social-icons/sharethis.png) left bottom no-repeat;
+    }
+    &.yelp {
+      background: url(../img/social-icons/yelp.png) left bottom no-repeat;
+    }
+    &.delicious {
+      background: url(../img/social-icons/delicious.png) left bottom no-repeat;
+    }
+    &.lastfm {
+      background: url(../img/social-icons/lastfm.png) left bottom no-repeat;
+    }
+    &.youtube {
+      background: url(../img/social-icons/youtube.png) left bottom no-repeat;
+    }
+    &.skype {
+      background: url(../img/social-icons/skype.png) left bottom no-repeat;
+    }
+    &.tumblr {
+      background: url(../img/social-icons/tumblr.png) left bottom no-repeat;
+    }
+    &.aim {
+      background: url(../img/social-icons/aim.png) left bottom no-repeat;
+    }
+    &.google {
+      background: url(../img/social-icons/google.png) left bottom no-repeat;
+    }
+    &:hover {
+      background-position: left top;
+    }
+  }
+}
+
+.copyright {
+  margin: 8px 40px 0 0;
+  padding-top: 10px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  border-top: 1px dashed #f8f8f8;
+}
+
+/* ----- Media queries ----- */
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .row-fluid .page-description {
+    width: 90%;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-container {
+    padding: 0 0 40px 0;
+  }
+  .page-title, .page-description, .subscription-form, .timer {
+    padding: 0 20px;
+  }
+  .footer {
+    padding: 30px 0;
+  }
+  .show-tweets, .flickr-feed, .social-links, .copyright {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .flickr-feed, .social-links {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 539px) {
+  .subscription-form {
+    input {
+      width: 80%;
+    }
+    button {
+      width: 88%;
+      margin-top: 7px;
+    }
+  }
+}

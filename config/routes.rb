@@ -1,4 +1,5 @@
 Doorsnwindows::Application.routes.draw do
+
   resources :leads
 	resources :users
   resources :activities
@@ -11,6 +12,9 @@ Doorsnwindows::Application.routes.draw do
 
 	match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
+
+  match '/savings/doors',   to: 'landing_pages#doors',    via: 'get'
+  match '/savings/windows', to: 'landing_pages#windows',  via: 'get'
 
   root to: 'static_pages#home'
 

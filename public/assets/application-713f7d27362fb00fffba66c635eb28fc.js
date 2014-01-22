@@ -17004,6 +17004,1524 @@ bootstrap_badge = function(content, badge_class) {
 }
 ;
 (function() {
+
+
+}).call(this);
+/*! Backstretch - v2.0.4 - 2013-06-19
+* http://srobbin.com/jquery-plugins/backstretch/
+* Copyright (c) 2013 Scott Robbin; Licensed MIT */
+
+(function(a,d,p){a.fn.backstretch=function(c,b){(c===p||0===c.length)&&a.error("No images were supplied for Backstretch");0===a(d).scrollTop()&&d.scrollTo(0,0);return this.each(function(){var d=a(this),g=d.data("backstretch");if(g){if("string"==typeof c&&"function"==typeof g[c]){g[c](b);return}b=a.extend(g.options,b);g.destroy(!0)}g=new q(this,c,b);d.data("backstretch",g)})};a.backstretch=function(c,b){return a("body").backstretch(c,b).data("backstretch")};a.expr[":"].backstretch=function(c){return a(c).data("backstretch")!==p};a.fn.backstretch.defaults={centeredX:!0,centeredY:!0,duration:5E3,fade:0};var r={left:0,top:0,overflow:"hidden",margin:0,padding:0,height:"100%",width:"100%",zIndex:-999999},s={position:"absolute",display:"none",margin:0,padding:0,border:"none",width:"auto",height:"auto",maxHeight:"none",maxWidth:"none",zIndex:-999999},q=function(c,b,e){this.options=a.extend({},a.fn.backstretch.defaults,e||{});this.images=a.isArray(b)?b:[b];a.each(this.images,function(){a("<img />")[0].src=this});this.isBody=c===document.body;this.$container=a(c);this.$root=this.isBody?l?a(d):a(document):this.$container;c=this.$container.children(".backstretch").first();this.$wrap=c.length?c:a('<div class="backstretch"></div>').css(r).appendTo(this.$container);this.isBody||(c=this.$container.css("position"),b=this.$container.css("zIndex"),this.$container.css({position:"static"===c?"relative":c,zIndex:"auto"===b?0:b,background:"none"}),this.$wrap.css({zIndex:-999998}));this.$wrap.css({position:this.isBody&&l?"fixed":"absolute"});this.index=0;this.show(this.index);a(d).on("resize.backstretch",a.proxy(this.resize,this)).on("orientationchange.backstretch",a.proxy(function(){this.isBody&&0===d.pageYOffset&&(d.scrollTo(0,1),this.resize())},this))};q.prototype={resize:function(){try{var a={left:0,top:0},b=this.isBody?this.$root.width():this.$root.innerWidth(),e=b,g=this.isBody?d.innerHeight?d.innerHeight:this.$root.height():this.$root.innerHeight(),j=e/this.$img.data("ratio"),f;j>=g?(f=(j-g)/2,this.options.centeredY&&(a.top="-"+f+"px")):(j=g,e=j*this.$img.data("ratio"),f=(e-b)/2,this.options.centeredX&&(a.left="-"+f+"px"));this.$wrap.css({width:b,height:g}).find("img:not(.deleteable)").css({width:e,height:j}).css(a)}catch(h){}return this},show:function(c){if(!(Math.abs(c)>this.images.length-1)){var b=this,e=b.$wrap.find("img").addClass("deleteable"),d={relatedTarget:b.$container[0]};b.$container.trigger(a.Event("backstretch.before",d),[b,c]);this.index=c;clearInterval(b.interval);b.$img=a("<img />").css(s).bind("load",function(f){var h=this.width||a(f.target).width();f=this.height||a(f.target).height();a(this).data("ratio",h/f);a(this).fadeIn(b.options.speed||b.options.fade,function(){e.remove();b.paused||b.cycle();a(["after","show"]).each(function(){b.$container.trigger(a.Event("backstretch."+this,d),[b,c])})});b.resize()}).appendTo(b.$wrap);b.$img.attr("src",b.images[c]);return b}},next:function(){return this.show(this.index<this.images.length-1?this.index+1:0)},prev:function(){return this.show(0===this.index?this.images.length-1:this.index-1)},pause:function(){this.paused=!0;return this},resume:function(){this.paused=!1;this.next();return this},cycle:function(){1<this.images.length&&(clearInterval(this.interval),this.interval=setInterval(a.proxy(function(){this.paused||this.next()},this),this.options.duration));return this},destroy:function(c){a(d).off("resize.backstretch orientationchange.backstretch");clearInterval(this.interval);c||this.$wrap.remove();this.$container.removeData("backstretch")}};var l,f=navigator.userAgent,m=navigator.platform,e=f.match(/AppleWebKit\/([0-9]+)/),e=!!e&&e[1],h=f.match(/Fennec\/([0-9]+)/),h=!!h&&h[1],n=f.match(/Opera Mobi\/([0-9]+)/),t=!!n&&n[1],k=f.match(/MSIE ([0-9]+)/),k=!!k&&k[1];l=!((-1<m.indexOf("iPhone")||-1<m.indexOf("iPad")||-1<m.indexOf("iPod"))&&e&&534>e||d.operamini&&"[object OperaMini]"==={}.toString.call(d.operamini)||n&&7458>t||-1<f.indexOf("Android")&&e&&533>e||h&&6>h||"palmGetResource"in d&&e&&534>e||-1<f.indexOf("MeeGo")&&-1<f.indexOf("NokiaBrowser/8.5.0")||k&&6>=k)})(jQuery,window);
+// jquery.tweet.js - See http://tweet.seaofclouds.com/ or https://github.com/seaofclouds/tweet for more info
+// Copyright (c) 2008-2012 Todd Matthews & Steve Purcell
+// Modified by Stan Scates for https://github.com/StanScates/Tweet.js-Mod
+
+(function (factory) {
+	if (typeof define === 'function' && define.amd)
+	define(['jquery'], factory); // AMD support for RequireJS etc.
+	else
+	factory(jQuery);
+}(function ($) {
+	$.fn.tweet = function(o){
+		var s = $.extend({
+			modpath: "/twitter/",                     // [string]   relative URL to Tweet.js mod (see https://github.com/StanScates/Tweet.js-Mod)
+			username: null,                           // [string or array] required unless using the 'query' option; one or more twitter screen names (use 'list' option for multiple names, where possible)
+			list_id: null,                            // [integer]  ID of list to fetch when using list functionality
+			list: null,                               // [string]   optional slug of list belonging to username
+			favorites: false,                         // [boolean]  display the user's favorites instead of his tweets
+			query: null,                              // [string]   optional search query (see also: http://search.twitter.com/operators)
+			avatar_size: null,                        // [integer]  height and width of avatar if displayed (48px max)
+			count: 3,                                 // [integer]  how many tweets to display?
+			fetch: null,                              // [integer]  how many tweets to fetch via the API (set this higher than 'count' if using the 'filter' option)
+			page: 1,                                  // [integer]  which page of results to fetch (if count != fetch, you'll get unexpected results)
+			retweets: true,                           // [boolean]  whether to fetch (official) retweets (not supported in all display modes)
+			intro_text: null,                         // [string]   do you want text BEFORE your your tweets?
+			outro_text: null,                         // [string]   do you want text AFTER your tweets?
+			join_text:  null,                         // [string]   optional text in between date and tweet, try setting to "auto"
+			auto_join_text_default: "i said,",        // [string]   auto text for non verb: "i said" bullocks
+			auto_join_text_ed: "i",                   // [string]   auto text for past tense: "i" surfed
+			auto_join_text_ing: "i am",               // [string]   auto tense for present tense: "i was" surfing
+			auto_join_text_reply: "i replied to",     // [string]   auto tense for replies: "i replied to" @someone "with"
+			auto_join_text_url: "i was looking at",   // [string]   auto tense for urls: "i was looking at" http:...
+			loading_text: null,                       // [string]   optional loading text, displayed while tweets load
+			refresh_interval: null ,                  // [integer]  optional number of seconds after which to reload tweets
+			twitter_url: "twitter.com",               // [string]   custom twitter url, if any (apigee, etc.)
+			twitter_api_url: "api.twitter.com",       // [string]   custom twitter api url, if any (apigee, etc.)
+			twitter_search_url: "api.twitter.com", // [string]   custom twitter search url, if any (apigee, etc.)
+			template: "{avatar}{time}{join}{text}",   // [string or function] template used to construct each tweet <li> - see code for available vars
+			comparator: function(tweet1, tweet2) {    // [function] comparator used to sort tweets (see Array.sort)
+				return tweet2["tweet_time"] - tweet1["tweet_time"];
+			},
+			filter: function(tweet) {                 // [function] whether or not to include a particular tweet (be sure to also set 'fetch')
+				return true;
+			}
+		// You can attach callbacks to the following events using jQuery's standard .bind() mechanism:
+		//   "loaded" -- triggered when tweets have been fetched and rendered
+		}, o);
+
+		// See http://daringfireball.net/2010/07/improved_regex_for_matching_urls
+		var url_regexp = /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/gi;
+
+		// Expand values inside simple string templates with {placeholders}
+		function t(template, info) {
+			if (typeof template === "string") {
+				var result = template;
+				for(var key in info) {
+					var val = info[key];
+					result = result.replace(new RegExp('{'+key+'}','g'), val === null ? '' : val);
+				}
+				return result;
+			} else return template(info);
+		}
+		// Export the t function for use when passing a function as the 'template' option
+		$.extend({tweet: {t: t}});
+
+		function replacer (regex, replacement) {
+			return function() {
+				var returning = [];
+				this.each(function() {
+					returning.push(this.replace(regex, replacement));
+				});
+				return $(returning);
+			};
+		}
+
+		function escapeHTML(s) {
+			return s.replace(/</g,"&lt;").replace(/>/g,"^&gt;");
+		}
+
+		$.fn.extend({
+			linkUser: replacer(/(^|[\W])@(\w+)/gi, "$1<span class=\"at\">@</span><a href=\"http://"+s.twitter_url+"/$2\">$2</a>"),
+			// Support various latin1 (\u00**) and arabic (\u06**) alphanumeric chars
+			linkHash: replacer(/(?:^| )[\#]+([\w\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u00ff\u0600-\u06ff]+)/gi,
+				' <a href="https://twitter.com/search?q=%23$1'+((s.username && s.username.length == 1 && !s.list) ? '&from='+s.username.join("%2BOR%2B") : '')+'" class="tweet_hashtag">#$1</a>'),
+			makeHeart: replacer(/(&lt;)+[3]/gi, "<tt class='heart'>&#x2665;</tt>")
+		});
+
+		function linkURLs(text, entities) {
+			return text.replace(url_regexp, function(match) {
+				var url = (/^[a-z]+:/i).test(match) ? match : "http://"+match;
+				var text = match;
+				for(var i = 0; i < entities.length; ++i) {
+					var entity = entities[i];
+					if (entity.url == url && entity.expanded_url) {
+						url = entity.expanded_url;
+						text = entity.display_url;
+						break;
+					}
+				}
+				return "<a href=\""+escapeHTML(url)+"\">"+escapeHTML(text)+"</a>";
+			});
+		}
+
+		function parse_date(date_str) {
+			// The non-search twitter APIs return inconsistently-formatted dates, which Date.parse
+			// cannot handle in IE. We therefore perform the following transformation:
+			// "Wed Apr 29 08:53:31 +0000 2009" => "Wed, Apr 29 2009 08:53:31 +0000"
+			return Date.parse(date_str.replace(/^([a-z]{3})( [a-z]{3} \d\d?)(.*)( \d{4})$/i, '$1,$2$4$3'));
+		}
+
+		function relative_time(date) {
+			var relative_to = (arguments.length > 1) ? arguments[1] : new Date();
+			var delta = parseInt((relative_to.getTime() - date) / 1000, 10);
+			var r = '';
+			if (delta < 1) {
+				r = 'just now';
+			} else if (delta < 60) {
+				r = delta + ' seconds ago';
+			} else if(delta < 120) {
+				r = 'about a minute ago';
+			} else if(delta < (45*60)) {
+				r = 'about ' + (parseInt(delta / 60, 10)).toString() + ' minutes ago';
+			} else if(delta < (2*60*60)) {
+				r = 'about an hour ago';
+			} else if(delta < (24*60*60)) {
+				r = 'about ' + (parseInt(delta / 3600, 10)).toString() + ' hours ago';
+			} else if(delta < (48*60*60)) {
+				r = 'about a day ago';
+			} else {
+				r = 'about ' + (parseInt(delta / 86400, 10)).toString() + ' days ago';
+			}
+			return r;
+		}
+
+		function build_auto_join_text(text) {
+			if (text.match(/^(@([A-Za-z0-9-_]+)) .*/i)) {
+				return s.auto_join_text_reply;
+			} else if (text.match(url_regexp)) {
+				return s.auto_join_text_url;
+			} else if (text.match(/^((\w+ed)|just) .*/im)) {
+				return s.auto_join_text_ed;
+			} else if (text.match(/^(\w*ing) .*/i)) {
+				return s.auto_join_text_ing;
+			} else {
+				return s.auto_join_text_default;
+			}
+		}
+
+		function build_api_request() {
+			var modpath = s.modpath,
+				count = (s.fetch === null) ? s.count : s.fetch,
+				defaults = {
+					include_entities: 1
+				};
+
+			if (s.list) {
+				return {
+					host: s.twitter_api_url,
+					url: "/1.1/lists/statuses.json",
+					parameters: $.extend({}, defaults, {
+						list_id: s.list_id,
+						slug: s.list,
+						owner_screen_name: s.username,
+						page: s.page,
+						count: count,
+						include_rts: (s.retweets ? 1 : 0)
+					})
+				};
+			} else if (s.favorites) {
+				return {
+					host: s.twitter_api_url,
+					url: "/1.1/favorites/list.json",
+					parameters: $.extend({}, defaults, {
+						list_id: s.list_id,
+						screen_name: s.username,
+						page: s.page,
+						count: count
+					})
+				};
+			} else if (s.query === null && s.username.length === 1) {
+				return {
+					host: s.twitter_api_url,
+					url: "/1.1/statuses/user_timeline.json",
+					parameters: $.extend({}, defaults, {
+						screen_name: s.username,
+						page: s.page,
+						count: count,
+						include_rts: (s.retweets ? 1 : 0)
+					})
+				};
+			} else {
+				var query = (s.query || 'from:'+s.username.join(' OR from:'));
+				return {
+					host: s.twitter_search_url,
+					url: "/1.1/search/tweets.json",
+					parameters: $.extend({}, defaults, {
+						q: query,
+						count: count
+					})
+				};
+			}
+		}
+
+		function extract_avatar_url(item, secure) {
+			if (secure) {
+				return ('user' in item) ?
+					item.user.profile_image_url_https :
+					extract_avatar_url(item, false).
+					replace(/^http:\/\/[a-z0-9]{1,3}\.twimg\.com\//, "https://s3.amazonaws.com/twitter_production/");
+			} else {
+				return item.profile_image_url || item.user.profile_image_url;
+			}
+		}
+
+		// Convert twitter API objects into data available for
+		// constructing each tweet <li> using a template
+		function extract_template_data(item) {
+			var o = {};
+			o.item = item;
+			o.source = item.source;
+			// The actual user name is not returned by all Twitter APIs, so please do not file an issue if it is empty.
+			o.name = item.from_user_name || item.user.name;
+			o.screen_name = item.from_user || item.user.screen_name;
+			o.avatar_size = s.avatar_size;
+			o.avatar_url = extract_avatar_url(item, (document.location.protocol === 'https:'));
+			o.retweet = typeof(item.retweeted_status) != 'undefined';
+			o.tweet_time = parse_date(item.created_at);
+			o.join_text = s.join_text == "auto" ? build_auto_join_text(item.text) : s.join_text;
+			o.tweet_id = item.id_str;
+			o.twitter_base = "http://"+s.twitter_url+"/";
+			o.user_url = o.twitter_base+o.screen_name;
+			o.tweet_url = o.user_url+"/status/"+o.tweet_id;
+			o.reply_url = o.twitter_base+"intent/tweet?in_reply_to="+o.tweet_id;
+			o.retweet_url = o.twitter_base+"intent/retweet?tweet_id="+o.tweet_id;
+			o.favorite_url = o.twitter_base+"intent/favorite?tweet_id="+o.tweet_id;
+			o.retweeted_screen_name = o.retweet && item.retweeted_status.user.screen_name;
+			o.tweet_relative_time = relative_time(o.tweet_time);
+			o.entities = item.entities ? (item.entities.urls || []).concat(item.entities.media || []) : [];
+			o.tweet_raw_text = o.retweet ? ('RT @'+o.retweeted_screen_name+' '+item.retweeted_status.text) : item.text; // avoid '...' in long retweets
+			o.tweet_text = $([linkURLs(o.tweet_raw_text, o.entities)]).linkUser().linkHash()[0];
+			o.tweet_text_fancy = $([o.tweet_text]).makeHeart()[0];
+
+			// Default spans, and pre-formatted blocks for common layouts
+			o.user = t('<a class="tweet_user" href="{user_url}">{screen_name}</a>', o);
+			o.join = s.join_text ? t(' <span class="tweet_join">{join_text}</span> ', o) : ' ';
+			o.avatar = o.avatar_size ?
+				t('<a class="tweet_avatar" href="{user_url}"><img src="{avatar_url}" height="{avatar_size}" width="{avatar_size}" alt="{screen_name}\'s avatar" title="{screen_name}\'s avatar" border="0"/></a>', o) : '';
+			o.time = t('<span class="tweet_time"><a href="{tweet_url}" title="view tweet on twitter">{tweet_relative_time}</a></span>', o);
+			o.text = t('<span class="tweet_text">{tweet_text_fancy}</span>', o);
+			o.reply_action = t('<a class="tweet_action tweet_reply" href="{reply_url}">reply</a>', o);
+			o.retweet_action = t('<a class="tweet_action tweet_retweet" href="{retweet_url}">retweet</a>', o);
+			o.favorite_action = t('<a class="tweet_action tweet_favorite" href="{favorite_url}">favorite</a>', o);
+			return o;
+		}
+
+		return this.each(function(i, widget){
+			var list = $('<ul class="tweet_list">');
+			var intro = '<p class="tweet_intro">'+s.intro_text+'</p>';
+			var outro = '<p class="tweet_outro">'+s.outro_text+'</p>';
+			var loading = $('<p class="loading">'+s.loading_text+'</p>');
+
+			if(s.username && typeof(s.username) == "string"){
+				s.username = [s.username];
+			}
+
+			$(widget).unbind("tweet:load").bind("tweet:load", function(){
+				if (s.loading_text) $(widget).empty().append(loading);
+
+				$.ajax({
+					dataType: "json",
+					type: "post",
+					async: false,
+					url: s.modpath || "/twitter/",
+					data: { request: build_api_request() },
+					success: function(data, status) {
+
+						if(data.message) {
+							console.log(data.message);
+						}
+
+						var response = data.response;
+						$(widget).empty().append(list);
+						if (s.intro_text) list.before(intro);
+						list.empty();
+
+						if(response.statuses !== undefined) {
+							resp = response.statuses;
+						} else if(response.results !== undefined) {
+							resp = response.results;
+						} else {
+							resp = response;
+						}
+
+						var tweets = $.map(resp, extract_template_data);
+							tweets = $.grep(tweets, s.filter).sort(s.comparator).slice(0, s.count);
+
+						list.append($.map(tweets, function(o) { return "<li>" + t(s.template, o) + "</li>"; }).join('')).
+							children('li:first').addClass('tweet_first').end().
+							children('li:odd').addClass('tweet_even').end().
+							children('li:even').addClass('tweet_odd');
+
+						if (s.outro_text) list.after(outro);
+						$(widget).trigger("loaded").trigger((tweets ? "empty" : "full"));
+						if (s.refresh_interval) {
+							window.setTimeout(function() { $(widget).trigger("tweet:load"); }, 1000 * s.refresh_interval);
+						}
+					}
+				});
+			}).trigger("tweet:load");
+		});
+	};
+}));
+/*
+* Copyright (C) 2009 Joel Sutherland
+* Licenced under the MIT license
+* http://www.newmediacampaigns.com/page/jquery-flickr-plugin
+*
+* Available tags for templates:
+* title, link, date_taken, description, published, author, author_id, tags, image*
+*/
+
+(function($) {
+	$.fn.jflickrfeed = function(settings, callback) {
+		settings = $.extend(true, {
+			flickrbase: 'http://api.flickr.com/services/feeds/',
+			feedapi: 'photos_public.gne',
+			limit: 20,
+			qstrings: {
+				lang: 'en-us',
+				format: 'json',
+				jsoncallback: '?'
+			},
+			cleanDescription: true,
+			useTemplate: true,
+			itemTemplate: '',
+			itemCallback: function(){}
+		}, settings);
+
+		var url = settings.flickrbase + settings.feedapi + '?';
+		var first = true;
+
+		for(var key in settings.qstrings){
+			if(!first)
+				url += '&';
+			url += key + '=' + settings.qstrings[key];
+			first = false;
+		}
+
+		return $(this).each(function(){
+			var $container = $(this);
+			var container = this;
+			$.getJSON(url, function(data){
+				$.each(data.items, function(i,item){
+					if(i < settings.limit){
+					
+						// Clean out the Flickr Description
+						if(settings.cleanDescription){
+							var regex = /<p>(.*?)<\/p>/g;
+							var input = item.description;
+							if(regex.test(input)) {
+								item.description = input.match(regex)[2]
+								if(item.description!=undefined)
+									item.description = item.description.replace('<p>','').replace('</p>','');
+							}
+						}
+						
+						// Add Image Sizes
+						// http://www.flickr.com/services/api/misc.urls.html
+						item['image_s'] = item.media.m.replace('_m', '_s');
+						item['image_t'] = item.media.m.replace('_m', '_t');
+						item['image_m'] = item.media.m.replace('_m', '_m');
+						item['image'] = item.media.m.replace('_m', '');
+						item['image_b'] = item.media.m.replace('_m', '_b');
+						delete item.media;
+						
+						// Use Template
+						if(settings.useTemplate){
+							var template = settings.itemTemplate;
+							for(var key in item){
+								var rgx = new RegExp('{{' + key + '}}', 'g');
+								template = template.replace(rgx, item[key]);
+							}
+							$container.append(template)
+						}
+						
+						//itemCallback
+						settings.itemCallback.call(container, item);
+					}
+				});
+				if($.isFunction(callback)){
+					callback.call(container, data);
+				}
+			});
+		});
+	}
+})(jQuery);
+/*
+    Background slideshow
+*/
+
+jQuery(document).ready(function() {
+    $.backstretch([
+      "/assets/backgrounds/1.jpg"
+    , "/assets/backgrounds/2.jpg"
+    , "/assets/backgrounds/3.jpg"
+    , "/assets/backgrounds/4.jpg"
+    , "/assets/backgrounds/5.jpg"
+    , "/assets/backgrounds/6.jpg"
+    , "/assets/backgrounds/7.jpg"
+  ], {duration: 4000, fade: 1000});
+});
+/*
+    Countdown initializer
+*/
+
+$(function() {
+    var now = new Date();
+    var countTo = 25 * 24 * 60 * 60 * 1000 + now.valueOf();
+    $('.timer').countdown(countTo, function(event) {
+        var $this = $(this);
+        switch(event.type) {
+            case "seconds":
+            case "minutes":
+            case "hours":
+            case "days":
+            case "weeks":
+            case "daysLeft":
+                $this.find('span.'+event.type).html(event.value);
+                break;
+            case "finished":
+                $this.hide();
+                break;
+        }
+    });
+});
+
+/*
+    Show latest tweet
+*/
+jQuery(function($) {
+    $(".show-tweets").tweet({
+    	modpath: "assets/twitter/",
+        username: "anli_zaimi",
+        join_text: "auto",
+        count: 1,
+        loading_text: "loading tweet...",
+        template: "{time} {text}"
+    });
+});
+
+
+/*
+    Flickr photos
+*/
+$(document).ready(function() {
+    $('.flickr-feed').jflickrfeed({
+        limit: 16,
+        qstrings: {
+            id: '52617155@N08'
+        },
+        itemTemplate: '<li><a href="{{link}}" target="_blank"><img src="{{image_s}}" alt="{{title}}" /></a></li>'
+    });
+});
+
+
+/*
+    Progress bar
+*/
+var percentage = $('.progress .bar').attr("data-percentage");
+$('.progress .bar').animate({width: (percentage)+'%'}, 1000);
+
+
+/*
+    Show/hide button (top of page)
+*/
+jQuery(document).ready(function() {
+
+    $('.show-hide a').tooltip();
+
+    $('.show-hide a').click(function(e) {
+        e.preventDefault();
+        var isHidden = $('.show-hide a').html();
+        if(isHidden == '+') {
+            $('.progress').slideDown('slow');
+            $('.footer').slideDown('slow');
+            $('.show-hide a').html('-');
+            $('.show-hide a').attr('data-original-title', 'Hide footer');
+            $('.show-hide a').tooltip('hide');
+        }
+        if(isHidden == '-') {
+            $('.progress').slideUp('slow');
+            $('.footer').slideUp('slow');
+
+            // adjust slider size
+            if($(window).width() >= 980) {
+                $('div.backstretch').css('width', '100%');
+                $('div.backstretch img').css('width', '100%');
+            }
+
+            // adjust gridrotator size
+            if($(window).width() > 1024) {
+                $('#ri-grid ul li').css('width', 100/8 + '%');
+            }
+            if($(window).width() <= 1024) {
+                $('#ri-grid ul li').css('width', 100/6 + '%');
+            }
+            if($(window).width() <= 768) {
+                $('#ri-grid ul li').css('width', 100/5 + '%');
+            }
+            if($(window).width() <= 480) {
+                $('#ri-grid ul li').css('width', 100/4 + '%');
+            }
+            if($(window).width() <= 320) {
+                $('#ri-grid ul li').css('width', 100/2 + '%');
+            }
+            if($(window).width() <= 240) {
+                $('#ri-grid ul li').css('width', 100/1 + '%');
+            }
+            $('#ri-grid ul li a').css('width', '100%');
+
+            $('.show-hide a').html('+');
+            $('.show-hide a').attr('data-original-title', 'Show footer');
+            $('.show-hide a').tooltip('hide');
+        }
+    });
+});
+
+
+/*
+    Subscription form
+*/
+jQuery(document).ready(function() {
+
+    $('.success-message').hide();
+    $('.error-message').hide();
+
+    $('.subscription-form form').submit(function() {
+        var postdata = $('.subscription-form form').serialize();
+        $.ajax({
+            type: 'POST',
+            url: 'assets/sendmail.php',
+            data: postdata,
+            dataType: 'json',
+            success: function(json) {
+                if(json.valid == 0) {
+                    $('.success-message').hide();
+                    $('.error-message').hide();
+                    $('.error-message').html(json.message);
+                    $('.progress').css('margin', '10px 0 0 0');
+                    $('.error-message').fadeIn();
+                }
+                else {
+                    $('.error-message').hide();
+                    $('.success-message').hide();
+                    $('.subscription-form form').hide();
+                    $('.success-message').html(json.message);
+                    $('.success-message').fadeIn();
+                }
+            }
+        });
+        return false;
+    });
+});
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
+// about supported directives.
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+;
+jQuery(document).ready(function() {
+			
+    $( '#ri-grid' ).gridrotator({
+        rows : 6,
+        columns : 8,
+        maxStep : 2,
+        interval : 2000,
+        w1024 : {
+            rows : 6,
+            columns : 6
+        },
+        w768 : {
+            rows : 8,
+            columns : 5
+        },
+        w480 : {
+            rows : 9,
+            columns : 4
+        },
+        w320 : {
+            rows : 8,
+            columns : 2
+        },
+        w240 : {
+            rows : 5,
+            columns : 1
+        },
+    });
+			
+});
+/*
+ * jQuery The Final Countdown plugin v1.0.0 beta
+ * http://github.com/hilios/jquery.countdown
+ *
+ * Copyright (c) 2011 Edson Hilios
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+(function($) {
+  
+  $.fn.countdown = function(toDate, callback) {
+    var handlers = ['seconds', 'minutes', 'hours', 'days', 'weeks', 'daysLeft'];
+    
+    function delegate(scope, method) {
+      return function() { return method.call(scope) }
+    }
+    
+    return this.each(function() {
+      // Convert
+      if(!(toDate instanceof Date)) {
+        if(String(toDate).match(/^[0-9]*$/)) {
+          toDate = new Date(toDate);
+        } else if( toDate.match(/([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})\s([0-9]{1,2})\:([0-9]{2})\:([0-9]{2})/) ||
+            toDate.match(/([0-9]{2,4})\/([0-9]{1,2})\/([0-9]{1,2})\s([0-9]{1,2})\:([0-9]{2})\:([0-9]{2})/)
+            ) {
+          toDate = new Date(toDate);
+        } else if(toDate.match(/([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{2,4})/) || 
+                  toDate.match(/([0-9]{2,4})\/([0-9]{1,2})\/([0-9]{1,2})/)
+                  ) {
+          toDate = new Date(toDate)
+        } else {
+          throw new Error("Doesn't seen to be a valid date object or string")
+        }
+      }
+      
+      var $this = $(this),
+          values = {},
+          lasting = {},
+          interval = $this.data('countdownInterval'),
+          currentDate = new Date(),
+          secondsLeft = Math.floor((toDate.valueOf() - currentDate.valueOf()) / 1000);
+      
+      function triggerEvents() {
+        // Evaluate if this node is included in the html
+        if($this.closest('html').length === 0) {
+          stop(); // Release the memory
+          dispatchEvent('removed');
+          return;
+        }
+        // Calculate the time offset
+        secondsLeft--;
+        if(secondsLeft < 0) {
+          secondsLeft = 0;
+        }
+        lasting = {
+          seconds : secondsLeft % 60,
+          minutes : Math.floor(secondsLeft / 60) % 60,
+          hours   : Math.floor(secondsLeft / 60 / 60) % 24,
+          days    : Math.floor(secondsLeft / 60 / 60 / 24),
+          weeks   : Math.floor(secondsLeft / 60 / 60 / 24 / 7),
+          daysLeft: Math.floor(secondsLeft / 60 / 60 / 24) % 7
+        }
+        for(var i=0; i<handlers.length; i++) {
+          var eventName = handlers[i];
+          if(values[eventName] != lasting[eventName]) {
+            values[eventName] = lasting[eventName];
+            dispatchEvent(eventName);
+          }
+        }
+        if(secondsLeft == 0) { 
+          stop();
+          dispatchEvent('finished');
+        }
+      }
+      triggerEvents();
+      
+      function dispatchEvent(eventName) {
+        var event     = $.Event(eventName);
+        event.date    = new Date(new Date().valueOf() + secondsLeft);
+        event.value   = values[eventName] || "0";
+        event.toDate  = toDate;
+        event.lasting = lasting;
+        switch(eventName) {
+          case "seconds":
+          case "minutes":
+          case "hours":
+            event.value = event.value < 10 ? '0'+event.value.toString() : event.value.toString();
+            break;
+          default:
+            if(event.value) {
+              event.value = event.value.toString();
+            }
+            break;
+        }
+        callback.call($this, event);
+      }
+      
+      function stop() {
+        clearInterval(interval);
+      }
+
+      function start() {
+        $this.data('countdownInterval', setInterval(delegate($this, triggerEvents), 1000));
+        interval = $this.data('countdownInterval');
+      }
+      
+      if(interval) stop();
+      start();
+    });
+  }
+})(jQuery);
+/**
+ * jquery.gridrotator.js v1.1.0
+ * http://www.codrops.com
+ *
+ * Licensed under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ * 
+ * Copyright 2012, Codrops
+ * http://www.codrops.com
+ */
+
+;( function( $, window, undefined ) {
+	
+	'use strict';
+
+	/*
+	* debouncedresize: special jQuery event that happens once after a window resize
+	*
+	* latest version and complete README available on Github:
+	* https://github.com/louisremi/jquery-smartresize/blob/master/jquery.debouncedresize.js
+	*
+	* Copyright 2011 @louis_remi
+	* Licensed under the MIT license.
+	*/
+	var $event = $.event,
+	$special,
+	resizeTimeout;
+
+	$special = $event.special.debouncedresize = {
+		setup: function() {
+			$( this ).on( "resize", $special.handler );
+		},
+		teardown: function() {
+			$( this ).off( "resize", $special.handler );
+		},
+		handler: function( event, execAsap ) {
+			// Save the context
+			var context = this,
+				args = arguments,
+				dispatch = function() {
+					// set correct event type
+					event.type = "debouncedresize";
+					$event.dispatch.apply( context, args );
+				};
+
+			if ( resizeTimeout ) {
+				clearTimeout( resizeTimeout );
+			}
+
+			execAsap ?
+				dispatch() :
+				resizeTimeout = setTimeout( dispatch, $special.threshold );
+		},
+		threshold: 100
+	};
+
+	// http://www.hardcode.nl/subcategory_1/article_317-array-shuffle-function
+	Array.prototype.shuffle = function() {
+		var i=this.length,p,t;
+		while (i--) {
+			p = Math.floor(Math.random()*i);
+			t = this[i];
+			this[i]=this[p];
+			this[p]=t;
+		}
+		return this;
+	};
+
+	// HTML5 PageVisibility API
+	// http://www.html5rocks.com/en/tutorials/pagevisibility/intro/
+	// by Joe Marini (@joemarini)
+	function getHiddenProp(){
+		var prefixes = ['webkit','moz','ms','o'];
+
+		// if 'hidden' is natively supported just return it
+		if ('hidden' in document) return 'hidden';
+
+		// otherwise loop over all the known prefixes until we find one
+		for (var i = 0; i < prefixes.length; i++){
+			if ((prefixes[i] + 'Hidden') in document) 
+				return prefixes[i] + 'Hidden';
+		}
+
+		// otherwise it's not supported
+		return null;
+	}
+	function isHidden() {
+		var prop = getHiddenProp();
+		if (!prop) return false;
+
+		return document[prop];
+	}
+
+	function isEmpty( obj ) {
+		return Object.keys(obj).length === 0;
+	}
+
+	// global
+	var $window = $( window ),
+		Modernizr = window.Modernizr;
+
+	$.GridRotator = function( options, element ) {
+		
+		this.$el = $( element );
+		if( Modernizr.backgroundsize ) {
+
+			var self = this;
+			this.$el.addClass( 'ri-grid-loading' );
+			this._init( options );
+
+		}
+		
+	};
+
+	// the options
+	$.GridRotator.defaults = {
+		// number of rows
+		rows : 4,
+		// number of columns 
+		columns : 10,
+		w1024 : { rows : 3, columns : 8 },
+		w768 : {rows : 3,columns : 7 },
+		w480 : {rows : 3,columns : 5 },
+		w320 : {rows : 2,columns : 4 },
+		w240 : {rows : 2,columns : 3 },
+		// step: number of items that are replaced at the same time
+		// random || [some number]
+		// note: for performance issues, the number "can't" be > options.maxStep
+		step : 'random',
+		// change it as you wish..
+		maxStep : 3,
+		// prevent user to click the items
+		preventClick : true,
+		// animation type
+		// showHide || fadeInOut || 
+		// slideLeft || slideRight || slideTop || slideBottom || 
+		// rotateBottom || rotateLeft || rotateRight || rotateTop || 
+		// scale ||
+		// rotate3d ||
+		// rotateLeftScale || rotateRightScale || rotateTopScale || rotateBottomScale || 
+		// random
+		animType : 'random',
+		// animation speed
+		animSpeed : 800,
+		// animation easings
+		animEasingOut : 'linear',
+		animEasingIn: 'linear',
+		// the item(s) will be replaced every 3 seconds
+		// note: for performance issues, the time "can't" be < 300 ms
+		interval : 3000,
+		// if false the animations will not start
+		// use false if onhover is true for example
+		slideshow : true,
+		// if true the items will switch when hovered
+		onhover : false,
+		// ids of elements that shouldn't change
+		nochange : []
+	};
+
+	$.GridRotator.prototype = {
+
+		_init : function( options ) {
+			
+			// options
+			this.options = $.extend( true, {}, $.GridRotator.defaults, options );
+			// cache some elements + variables
+			this._config();
+
+		},
+		_config : function() {
+
+			var self = this,
+				transEndEventNames = {
+					'WebkitTransition' : 'webkitTransitionEnd',
+					'MozTransition' : 'transitionend',
+					'OTransition' : 'oTransitionEnd',
+					'msTransition' : 'MSTransitionEnd',
+					'transition' : 'transitionend'
+				};
+
+			// support CSS transitions and 3d transforms
+			this.supportTransitions = Modernizr.csstransitions;
+			this.supportTransforms3D = Modernizr.csstransforms3d;
+
+			this.transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ] + '.gridrotator';
+
+			// all animation types for the random option
+			this.animTypes = this.supportTransforms3D ? [
+				'fadeInOut',
+				'slideLeft', 
+				'slideRight', 
+				'slideTop', 
+				'slideBottom', 
+				'rotateLeft', 
+				'rotateRight', 
+				'rotateTop', 
+				'rotateBottom', 
+				'scale', 
+				'rotate3d', 
+				'rotateLeftScale', 
+				'rotateRightScale', 
+				'rotateTopScale', 
+				'rotateBottomScale' ] :
+				[ 'fadeInOut', 'slideLeft', 'slideRight', 'slideTop', 'slideBottom' ];
+
+			this.animType = this.options.animType;
+
+			if( this.animType !== 'random' && !this.supportTransforms3D && $.inArray( this.animType, this.animTypes ) === -1 && this.animType !== 'showHide' ) {
+
+				// fallback to 'fadeInOut' if user sets a type which is not supported
+				this.animType = 'fadeInOut';
+
+			}
+
+			this.animTypesTotal	= this.animTypes.length;
+
+			// the <ul> where the items are placed
+			this.$list = this.$el.children( 'ul' );
+			// remove images and add background-image to anchors
+			// preload the images before
+			var loaded = 0,
+				$imgs = this.$list.find( 'img' ),
+				count = $imgs.length;
+
+			$imgs.each( function() {
+
+				var $img = $( this ), src = $img.attr( 'src' );
+
+				$( '<img/>' ).load( function() {
+
+					++loaded;
+					$img.parent().css( 'background-image', 'url(' + src + ')' );
+
+					if( loaded === count ) {
+
+						$imgs.remove();
+						self.$el.removeClass( 'ri-grid-loading' );
+						// the items
+						self.$items = self.$list.children( 'li' );
+						// make a copy of the items
+						self.$itemsCache = self.$items.clone();
+						// total number of items
+						self.itemsTotal = self.$items.length;
+						// the items that will be out of the grid
+						// actually the item's child (anchor element)
+						self.outItems= [];
+						self._layout( function() {
+							self._initEvents();
+						} );
+						// replace [options.step] items after [options.interval] time
+						// the items that go out are randomly chosen, while the ones that get in
+						// follow a "First In First Out" logic
+						self._start();
+
+					}
+
+				} ).attr( 'src', src )
+				 
+			} );
+
+		},
+		_layout : function( callback ) {
+
+			var self = this;
+
+			// sets the grid dimentions based on the container's width
+			this._setGridDim();
+
+			// reset
+			this.$list.empty();
+			this.$items = this.$itemsCache.clone().appendTo( this.$list );
+			
+			var $outItems = this.$items.filter( ':gt(' + ( this.showTotal - 1 ) + ')' ),
+				$outAItems = $outItems.children( 'a' );
+
+			this.outItems.length = 0;
+
+			$outAItems.each( function( i ) {
+				self.outItems.push( $( this ) );
+			} );
+
+			$outItems.remove();
+
+				// container's width
+			var containerWidth = ( document.defaultView ) ? parseInt( document.defaultView.getComputedStyle( this.$el.get( 0 ), null ).width ) : this.$el.width(),
+				// item's width
+				itemWidth = Math.floor( containerWidth / this.columns ),
+				// calculate gap
+				gapWidth = containerWidth - ( this.columns * Math.floor( itemWidth ) );
+
+			for( var i = 0; i < this.rows; ++i ) {
+
+				for( var j = 0; j < this.columns; ++j ) {
+
+					var idx = this.columns * i + j,
+						$item = this.$items.eq( idx );
+
+					$item.css( {
+						width : j < Math.floor( gapWidth ) ? itemWidth + 1 : itemWidth,
+						height : itemWidth
+					} );
+
+					if( $.inArray( idx, this.options.nochange ) !== -1 ) {
+						$item.addClass( 'ri-nochange' ).data( 'nochange', true );
+					}
+
+				}
+
+			}
+
+			if( this.options.preventClick ) {
+
+				this.$items.children().css( 'cursor', 'default' ).on( 'click.gridrotator', false );
+
+			}
+
+			if( callback ) {
+				callback.call();
+			}
+
+		},
+		// set the grid rows and columns
+		_setGridDim	 : function() {
+
+			// container's width
+			var c_w = this.$el.width();
+
+			// we will choose the number of rows/columns according to the container's width and the values set in the plugin options 
+			switch( true ) {
+				case ( c_w < 240 ) : this.rows = this.options.w240.rows; this.columns = this.options.w240.columns; break;
+				case ( c_w < 320 ) : this.rows = this.options.w320.rows; this.columns = this.options.w320.columns; break;
+				case ( c_w < 480 ) : this.rows = this.options.w480.rows; this.columns = this.options.w480.columns; break;
+				case ( c_w < 768 ) : this.rows = this.options.w768.rows; this.columns = this.options.w768.columns; break;
+				case ( c_w < 1024 ) : this.rows = this.options.w1024.rows; this.columns = this.options.w1024.columns; break;
+				default : this.rows = this.options.rows; this.columns = this.options.columns; break;
+			}
+
+			this.showTotal = this.rows * this.columns;
+
+		},
+		// init window resize event
+		_initEvents : function() {
+
+			var self = this;
+
+			$window.on( 'debouncedresize.gridrotator', function() {
+				self._layout();
+			} );
+
+			// use the property name to generate the prefixed event name
+			var visProp = getHiddenProp();
+			
+			// HTML5 PageVisibility API
+			// http://www.html5rocks.com/en/tutorials/pagevisibility/intro/
+			// by Joe Marini (@joemarini)
+			if (visProp) {
+
+				var evtname = visProp.replace(/[H|h]idden/,'') + 'visibilitychange';
+				document.addEventListener(evtname, function() { self._visChange(); } );
+
+			}
+
+			if( !Modernizr.touch && this.options.onhover ) {
+				
+				self.$items.on( 'mouseenter.gridrotator', function() {
+
+					var $item = $( this );
+					if( !$item.data( 'active' ) && !$item.data( 'hovered' ) && !$item.data( 'nochange' ) ) {
+						$item.data( 'hovered', true );
+						self._replace( $item );
+					}
+
+				} ).on( 'mouseleave.gridrotator', function() {
+
+					$( this ).data( 'hovered', false );
+
+				} );
+
+			}
+
+		},
+		_visChange : function() {
+
+			isHidden() ? clearTimeout( this.playtimeout ) : this._start();
+
+		},
+		// start rotating elements
+		_start : function() {
+
+			if( this.showTotal < this.itemsTotal && this.options.slideshow ) {
+				this._showNext();
+			}
+
+		},
+		// get which type of animation
+		_getAnimType : function() {
+
+			return this.animType === 'random' ? this.animTypes[ Math.floor( Math.random() * this.animTypesTotal ) ] : this.animType;
+
+		},
+		// get css properties for the transition effect
+		_getAnimProperties : function( $out ) {
+
+			var startInProp = {}, startOutProp = {}, endInProp = {}, endOutProp = {},
+				animType = this._getAnimType(), speed, delay = 0;
+
+			switch( animType ) {
+
+				case 'showHide' :
+					
+					speed = 0;
+					endOutProp.opacity = 0;
+					break;
+
+				case 'fadeInOut' :
+
+					endOutProp.opacity = 0;
+					break;
+
+				case 'slideLeft' :
+					
+					startInProp.left = $out.width();
+					endInProp.left = 0;
+					endOutProp.left = -$out.width();
+					break;
+
+				case 'slideRight' :
+					
+					startInProp.left = -$out.width();
+					endInProp.left = 0;
+					endOutProp.left = $out.width();
+					break;
+
+				case 'slideTop' :
+					
+					startInProp.top = $out.height();
+					endInProp.top = 0;
+					endOutProp.top = -$out.height();
+					break;
+
+				case 'slideBottom' :
+					
+					startInProp.top = -$out.height();
+					endInProp.top = 0;
+					endOutProp.top = $out.height();
+					break;
+
+				case 'rotateLeft' :
+					
+					speed = this.options.animSpeed / 2;
+					startInProp.transform = 'rotateY(90deg)';
+					endInProp.transform = 'rotateY(0deg)';
+					delay = speed;
+					endOutProp.transform = 'rotateY(-90deg)';
+					break;
+
+				case 'rotateRight' :
+					
+					speed = this.options.animSpeed / 2;
+					startInProp.transform = 'rotateY(-90deg)';
+					endInProp.transform = 'rotateY(0deg)';
+					delay = speed;
+					endOutProp.transform = 'rotateY(90deg)';
+					break;
+
+				case 'rotateTop' :
+					
+					speed = this.options.animSpeed / 2;
+					startInProp.transform= 'rotateX(90deg)';
+					endInProp.transform = 'rotateX(0deg)';
+					delay = speed;
+					endOutProp.transform = 'rotateX(-90deg)';
+					break;
+
+				case 'rotateBottom' :
+					
+					speed = this.options.animSpeed / 2;
+					startInProp.transform = 'rotateX(-90deg)';
+					endInProp.transform = 'rotateX(0deg)';
+					delay = speed;
+					endOutProp.transform = 'rotateX(90deg)';
+					break;
+
+				case 'scale' :
+					
+					speed = this.options.animSpeed / 2;
+					startInProp.transform = 'scale(0)';
+					startOutProp.transform = 'scale(1)';
+					endInProp.transform = 'scale(1)';
+					delay = speed;
+					endOutProp.transform = 'scale(0)';
+					break;
+
+				case 'rotateLeftScale' :
+					
+					startOutProp.transform = 'scale(1)';
+					speed = this.options.animSpeed / 2;	
+					startInProp.transform = 'scale(0.3) rotateY(90deg)';
+					endInProp.transform = 'scale(1) rotateY(0deg)';
+					delay = speed;
+					endOutProp.transform = 'scale(0.3) rotateY(-90deg)';
+					break;
+
+				case 'rotateRightScale' :
+					
+					startOutProp.transform = 'scale(1)';
+					speed = this.options.animSpeed / 2;
+					startInProp.transform = 'scale(0.3) rotateY(-90deg)';
+					endInProp.transform = 'scale(1) rotateY(0deg)';
+					delay = speed;
+					endOutProp.transform = 'scale(0.3) rotateY(90deg)';
+					break;
+
+				case 'rotateTopScale' :
+					
+					startOutProp.transform = 'scale(1)';
+					speed = this.options.animSpeed / 2;
+					startInProp.transform = 'scale(0.3) rotateX(90deg)';
+					endInProp.transform = 'scale(1) rotateX(0deg)';
+					delay = speed;
+					endOutProp.transform = 'scale(0.3) rotateX(-90deg)';
+					break;
+
+				case 'rotateBottomScale' :
+					
+					startOutProp.transform = 'scale(1)';
+					speed = this.options.animSpeed / 2;
+					startInProp.transform = 'scale(0.3) rotateX(-90deg)';
+					endInProp.transform = 'scale(1) rotateX(0deg)';
+					delay = speed;
+					endOutProp.transform = 'scale(0.3) rotateX(90deg)';
+					break;
+
+				case 'rotate3d' :
+					
+					speed = this.options.animSpeed / 2;
+					startInProp.transform = 'rotate3d( 1, 1, 0, 90deg )';
+					endInProp.transform = 'rotate3d( 1, 1, 0, 0deg )';
+					delay = speed;
+					endOutProp.transform = 'rotate3d( 1, 1, 0, -90deg )';
+					break;
+
+			}
+
+			return {
+				startInProp : startInProp,
+				startOutProp : startOutProp,
+				endInProp : endInProp,
+				endOutProp : endOutProp,				
+				delay : delay,
+				animSpeed : speed != undefined ? speed : this.options.animSpeed
+			};
+
+		},
+		// show next [option.step] elements
+		_showNext : function( time ) {
+
+			var self = this;
+
+			clearTimeout( this.playtimeout );
+
+			this.playtimeout = setTimeout( function() {
+
+				var step = self.options.step, max= self.options.maxStep, min = 1;
+				
+				if( max > self.showTotal ) {
+					max = self.showTotal;
+				}
+
+					// number of items to swith at this point of time
+				var nmbOut	= step === 'random' ? Math.floor( Math.random() * max + min ) : Math.min( Math.abs( step ) , max ) ,
+					// array with random indexes. These will be the indexes of the items we will replace
+					randArr	= self._getRandom( nmbOut, self.showTotal );
+
+				for( var i = 0; i < nmbOut; ++i ) {
+
+					// element to go out
+					var $out = self.$items.eq( randArr[ i ] );
+
+					// if element is active, which means it is currently animating,
+					// then we need to get different positions.. 
+					if( $out.data( 'active' ) || $out.data( 'nochange' ) ) {
+
+						// one of the items is active, call again..
+						self._showNext( 1 );
+						return false;
+
+					}
+
+					self._replace( $out );
+
+				}
+
+				// again and again..
+				self._showNext();
+
+			}, time || Math.max( Math.abs( this.options.interval ) , 300 ) );
+
+		},
+		_replace : function( $out ) {
+
+			$out.data( 'active', true );
+
+			var self = this,
+				$outA = $out.children( 'a:last' ),
+				newElProp = {
+					width : $outA.width(),
+					height : $outA.height()
+				};
+
+			// element stays active
+			$out.data( 'active', true );
+
+			// get the element (anchor) that will go in (first one inserted in this.outItems)
+			var $inA = this.outItems.shift();
+
+			// save element that went out
+			this.outItems.push( $outA.clone().css( 'transition', 'none' ) );
+			
+			// prepend in element
+			$inA.css( newElProp ).prependTo( $out );
+
+			var animProp = this._getAnimProperties( $outA );
+
+			$inA.css( animProp.startInProp );
+			$outA.css( animProp.startOutProp );
+			
+			this._setTransition( $inA, 'all', animProp.animSpeed, animProp.delay, this.options.animEasingIn );
+			this._setTransition( $outA, 'all', animProp.animSpeed, 0, this.options.animEasingOut );
+
+			this._applyTransition( $inA, animProp.endInProp, animProp.animSpeed, function() {
+
+				var $el = $( this ),
+					t = animProp.animSpeed === self.options.animSpeed && isEmpty( animProp.endInProp ) ? animProp.animSpeed : 0;
+					
+				setTimeout( function() {
+					
+					if( self.supportTransitions ) {
+						$el.off( self.transEndEventName );
+					}
+					
+					$el.next().remove();
+					$el.parent().data( 'active', false );
+
+				}, t );
+
+			}, animProp.animSpeed === 0 || isEmpty( animProp.endInProp ) );
+			this._applyTransition( $outA, animProp.endOutProp, animProp.animSpeed );
+
+		},
+		_getRandom : function( cnt, limit ) {
+
+			var randArray = [];
+
+			for( var i = 0; i < limit; ++i ) {
+				randArray.push( i )
+			}
+			
+			return randArray.shuffle().slice( 0, cnt );
+
+		},
+		_setTransition : function( el, prop, speed, delay, easing ) {
+
+			setTimeout( function() {
+				el.css( 'transition', prop + ' ' + speed + 'ms ' + delay + 'ms ' + easing );
+			}, 25 );
+
+		},
+		_applyTransition : function( el, styleCSS, speed, fncomplete, force ) {
+
+			var self = this;
+			setTimeout( function() {
+				$.fn.applyStyle = self.supportTransitions ? $.fn.css : $.fn.animate;
+
+				if( fncomplete && self.supportTransitions ) {
+
+					el.on( self.transEndEventName, fncomplete );
+
+					if( force ) {
+						fncomplete.call( el );					
+					}
+
+				}
+
+				fncomplete = fncomplete || function() { return false; };
+
+				el.stop().applyStyle( styleCSS, $.extend( true, [], { duration : speed + 'ms', complete : fncomplete } ) );
+			}, 25 );
+
+		}
+
+	};
+	
+	var logError = function( message ) {
+
+		if ( window.console ) {
+
+			window.console.error( message );
+		
+		}
+
+	};
+	
+	$.fn.gridrotator = function( options ) {
+
+		var instance = $.data( this, 'gridrotator' );
+		
+		if ( typeof options === 'string' ) {
+			
+			var args = Array.prototype.slice.call( arguments, 1 );
+			
+			this.each(function() {
+			
+				if ( !instance ) {
+
+					logError( "cannot call methods on gridrotator prior to initialization; " +
+					"attempted to call method '" + options + "'" );
+					return;
+				
+				}
+				
+				if ( !$.isFunction( instance[options] ) || options.charAt(0) === "_" ) {
+
+					logError( "no such method '" + options + "' for gridrotator instance" );
+					return;
+				
+				}
+				
+				instance[ options ].apply( instance, args );
+			
+			});
+		
+		} 
+		else {
+		
+			this.each(function() {
+				
+				if ( instance ) {
+
+					instance._init();
+				
+				}
+				else {
+
+					instance = $.data( this, 'gridrotator', new $.GridRotator( options, this ) );
+				
+				}
+
+			});
+		
+		}
+		
+		return instance;
+		
+	};
+	
+} )( jQuery, window );
+/* Modernizr 2.6.2 (Custom Build) | MIT & BSD
+ * Build: http://modernizr.com/download/#-backgroundsize-csstransforms3d-csstransitions-touch-shiv-cssclasses-prefixed-teststyles-testprop-testallprops-prefixes-domprefixes-load
+ */
+
+;window.Modernizr=function(a,b,c){function z(a){j.cssText=a}function A(a,b){return z(m.join(a+";")+(b||""))}function B(a,b){return typeof a===b}function C(a,b){return!!~(""+a).indexOf(b)}function D(a,b){for(var d in a){var e=a[d];if(!C(e,"-")&&j[e]!==c)return b=="pfx"?e:!0}return!1}function E(a,b,d){for(var e in a){var f=b[a[e]];if(f!==c)return d===!1?a[e]:B(f,"function")?f.bind(d||b):f}return!1}function F(a,b,c){var d=a.charAt(0).toUpperCase()+a.slice(1),e=(a+" "+o.join(d+" ")+d).split(" ");return B(b,"string")||B(b,"undefined")?D(e,b):(e=(a+" "+p.join(d+" ")+d).split(" "),E(e,b,c))}var d="2.6.2",e={},f=!0,g=b.documentElement,h="modernizr",i=b.createElement(h),j=i.style,k,l={}.toString,m=" -webkit- -moz- -o- -ms- ".split(" "),n="Webkit Moz O ms",o=n.split(" "),p=n.toLowerCase().split(" "),q={},r={},s={},t=[],u=t.slice,v,w=function(a,c,d,e){var f,i,j,k,l=b.createElement("div"),m=b.body,n=m||b.createElement("body");if(parseInt(d,10))while(d--)j=b.createElement("div"),j.id=e?e[d]:h+(d+1),l.appendChild(j);return f=["&#173;",'<style id="s',h,'">',a,"</style>"].join(""),l.id=h,(m?l:n).innerHTML+=f,n.appendChild(l),m||(n.style.background="",n.style.overflow="hidden",k=g.style.overflow,g.style.overflow="hidden",g.appendChild(n)),i=c(l,a),m?l.parentNode.removeChild(l):(n.parentNode.removeChild(n),g.style.overflow=k),!!i},x={}.hasOwnProperty,y;!B(x,"undefined")&&!B(x.call,"undefined")?y=function(a,b){return x.call(a,b)}:y=function(a,b){return b in a&&B(a.constructor.prototype[b],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(b){var c=this;if(typeof c!="function")throw new TypeError;var d=u.call(arguments,1),e=function(){if(this instanceof e){var a=function(){};a.prototype=c.prototype;var f=new a,g=c.apply(f,d.concat(u.call(arguments)));return Object(g)===g?g:f}return c.apply(b,d.concat(u.call(arguments)))};return e}),q.touch=function(){var c;return"ontouchstart"in a||a.DocumentTouch&&b instanceof DocumentTouch?c=!0:w(["@media (",m.join("touch-enabled),("),h,")","{#modernizr{top:9px;position:absolute}}"].join(""),function(a){c=a.offsetTop===9}),c},q.backgroundsize=function(){return F("backgroundSize")},q.csstransforms3d=function(){var a=!!F("perspective");return a&&"webkitPerspective"in g.style&&w("@media (transform-3d),(-webkit-transform-3d){#modernizr{left:9px;position:absolute;height:3px;}}",function(b,c){a=b.offsetLeft===9&&b.offsetHeight===3}),a},q.csstransitions=function(){return F("transition")};for(var G in q)y(q,G)&&(v=G.toLowerCase(),e[v]=q[G](),t.push((e[v]?"":"no-")+v));return e.addTest=function(a,b){if(typeof a=="object")for(var d in a)y(a,d)&&e.addTest(d,a[d]);else{a=a.toLowerCase();if(e[a]!==c)return e;b=typeof b=="function"?b():b,typeof f!="undefined"&&f&&(g.className+=" "+(b?"":"no-")+a),e[a]=b}return e},z(""),i=k=null,function(a,b){function k(a,b){var c=a.createElement("p"),d=a.getElementsByTagName("head")[0]||a.documentElement;return c.innerHTML="x<style>"+b+"</style>",d.insertBefore(c.lastChild,d.firstChild)}function l(){var a=r.elements;return typeof a=="string"?a.split(" "):a}function m(a){var b=i[a[g]];return b||(b={},h++,a[g]=h,i[h]=b),b}function n(a,c,f){c||(c=b);if(j)return c.createElement(a);f||(f=m(c));var g;return f.cache[a]?g=f.cache[a].cloneNode():e.test(a)?g=(f.cache[a]=f.createElem(a)).cloneNode():g=f.createElem(a),g.canHaveChildren&&!d.test(a)?f.frag.appendChild(g):g}function o(a,c){a||(a=b);if(j)return a.createDocumentFragment();c=c||m(a);var d=c.frag.cloneNode(),e=0,f=l(),g=f.length;for(;e<g;e++)d.createElement(f[e]);return d}function p(a,b){b.cache||(b.cache={},b.createElem=a.createElement,b.createFrag=a.createDocumentFragment,b.frag=b.createFrag()),a.createElement=function(c){return r.shivMethods?n(c,a,b):b.createElem(c)},a.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+l().join().replace(/\w+/g,function(a){return b.createElem(a),b.frag.createElement(a),'c("'+a+'")'})+");return n}")(r,b.frag)}function q(a){a||(a=b);var c=m(a);return r.shivCSS&&!f&&!c.hasCSS&&(c.hasCSS=!!k(a,"article,aside,figcaption,figure,footer,header,hgroup,nav,section{display:block}mark{background:#FF0;color:#000}")),j||p(a,c),a}var c=a.html5||{},d=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,e=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,f,g="_html5shiv",h=0,i={},j;(function(){try{var a=b.createElement("a");a.innerHTML="<xyz></xyz>",f="hidden"in a,j=a.childNodes.length==1||function(){b.createElement("a");var a=b.createDocumentFragment();return typeof a.cloneNode=="undefined"||typeof a.createDocumentFragment=="undefined"||typeof a.createElement=="undefined"}()}catch(c){f=!0,j=!0}})();var r={elements:c.elements||"abbr article aside audio bdi canvas data datalist details figcaption figure footer header hgroup mark meter nav output progress section summary time video",shivCSS:c.shivCSS!==!1,supportsUnknownElements:j,shivMethods:c.shivMethods!==!1,type:"default",shivDocument:q,createElement:n,createDocumentFragment:o};a.html5=r,q(b)}(this,b),e._version=d,e._prefixes=m,e._domPrefixes=p,e._cssomPrefixes=o,e.testProp=function(a){return D([a])},e.testAllProps=F,e.testStyles=w,e.prefixed=function(a,b,c){return b?F(a,b,c):F(a,"pfx")},g.className=g.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(f?" js "+t.join(" "):""),e}(this,this.document),function(a,b,c){function d(a){return"[object Function]"==o.call(a)}function e(a){return"string"==typeof a}function f(){}function g(a){return!a||"loaded"==a||"complete"==a||"uninitialized"==a}function h(){var a=p.shift();q=1,a?a.t?m(function(){("c"==a.t?B.injectCss:B.injectJs)(a.s,0,a.a,a.x,a.e,1)},0):(a(),h()):q=0}function i(a,c,d,e,f,i,j){function k(b){if(!o&&g(l.readyState)&&(u.r=o=1,!q&&h(),l.onload=l.onreadystatechange=null,b)){"img"!=a&&m(function(){t.removeChild(l)},50);for(var d in y[c])y[c].hasOwnProperty(d)&&y[c][d].onload()}}var j=j||B.errorTimeout,l=b.createElement(a),o=0,r=0,u={t:d,s:c,e:f,a:i,x:j};1===y[c]&&(r=1,y[c]=[]),"object"==a?l.data=c:(l.src=c,l.type=a),l.width=l.height="0",l.onerror=l.onload=l.onreadystatechange=function(){k.call(this,r)},p.splice(e,0,u),"img"!=a&&(r||2===y[c]?(t.insertBefore(l,s?null:n),m(k,j)):y[c].push(l))}function j(a,b,c,d,f){return q=0,b=b||"j",e(a)?i("c"==b?v:u,a,b,this.i++,c,d,f):(p.splice(this.i++,0,a),1==p.length&&h()),this}function k(){var a=B;return a.loader={load:j,i:0},a}var l=b.documentElement,m=a.setTimeout,n=b.getElementsByTagName("script")[0],o={}.toString,p=[],q=0,r="MozAppearance"in l.style,s=r&&!!b.createRange().compareNode,t=s?l:n.parentNode,l=a.opera&&"[object Opera]"==o.call(a.opera),l=!!b.attachEvent&&!l,u=r?"object":l?"script":"img",v=l?"script":u,w=Array.isArray||function(a){return"[object Array]"==o.call(a)},x=[],y={},z={timeout:function(a,b){return b.length&&(a.timeout=b[0]),a}},A,B;B=function(a){function b(a){var a=a.split("!"),b=x.length,c=a.pop(),d=a.length,c={url:c,origUrl:c,prefixes:a},e,f,g;for(f=0;f<d;f++)g=a[f].split("="),(e=z[g.shift()])&&(c=e(c,g));for(f=0;f<b;f++)c=x[f](c);return c}function g(a,e,f,g,h){var i=b(a),j=i.autoCallback;i.url.split(".").pop().split("?").shift(),i.bypass||(e&&(e=d(e)?e:e[a]||e[g]||e[a.split("/").pop().split("?")[0]]),i.instead?i.instead(a,e,f,g,h):(y[i.url]?i.noexec=!0:y[i.url]=1,f.load(i.url,i.forceCSS||!i.forceJS&&"css"==i.url.split(".").pop().split("?").shift()?"c":c,i.noexec,i.attrs,i.timeout),(d(e)||d(j))&&f.load(function(){k(),e&&e(i.origUrl,h,g),j&&j(i.origUrl,h,g),y[i.url]=2})))}function h(a,b){function c(a,c){if(a){if(e(a))c||(j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}),g(a,j,b,0,h);else if(Object(a)===a)for(n in m=function(){var b=0,c;for(c in a)a.hasOwnProperty(c)&&b++;return b}(),a)a.hasOwnProperty(n)&&(!c&&!--m&&(d(j)?j=function(){var a=[].slice.call(arguments);k.apply(this,a),l()}:j[n]=function(a){return function(){var b=[].slice.call(arguments);a&&a.apply(this,b),l()}}(k[n])),g(a[n],j,b,n,h))}else!c&&l()}var h=!!a.test,i=a.load||a.both,j=a.callback||f,k=j,l=a.complete||f,m,n;c(h?a.yep:a.nope,!!i),i&&c(i)}var i,j,l=this.yepnope.loader;if(e(a))g(a,0,l,0);else if(w(a))for(i=0;i<a.length;i++)j=a[i],e(j)?g(j,0,l,0):w(j)?B(j):Object(j)===j&&h(j,l);else Object(a)===a&&h(a,l)},B.addPrefix=function(a,b){z[a]=b},B.addFilter=function(a){x.push(a)},B.errorTimeout=1e4,null==b.readyState&&b.addEventListener&&(b.readyState="loading",b.addEventListener("DOMContentLoaded",A=function(){b.removeEventListener("DOMContentLoaded",A,0),b.readyState="complete"},0)),a.yepnope=k(),a.yepnope.executeStack=h,a.yepnope.injectJs=function(a,c,d,e,i,j){var k=b.createElement("script"),l,o,e=e||B.errorTimeout;k.src=a;for(o in d)k.setAttribute(o,d[o]);c=j?h:c||f,k.onreadystatechange=k.onload=function(){!l&&g(k.readyState)&&(l=1,c(),k.onload=k.onreadystatechange=null)},m(function(){l||(l=1,c(1))},e),i?k.onload():n.parentNode.insertBefore(k,n)},a.yepnope.injectCss=function(a,c,d,e,g,i){var e=b.createElement("link"),j,c=i?h:c||f;e.href=a,e.rel="stylesheet",e.type="text/css";for(j in d)e.setAttribute(j,d[j]);g||(n.parentNode.insertBefore(e,n),m(c,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))};
+(function() {
   var ready;
 
   ready = function() {
