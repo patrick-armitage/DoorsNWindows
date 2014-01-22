@@ -15890,13 +15890,13 @@ jQuery.migrateMute===void 0&&(jQuery.migrateMute=!0),function(e,t,n){function r(
 
 jQuery(document).ready(function() {
     $.backstretch([
-      "/assets/backgrounds/1.jpg"
-    , "/assets/backgrounds/2.jpg"
-    , "/assets/backgrounds/3.jpg"
-    , "/assets/backgrounds/4.jpg"
-    , "/assets/backgrounds/5.jpg"
-    , "/assets/backgrounds/6.jpg"
-    , "/assets/backgrounds/7.jpg"
+      "/assets/1dnw.jpg"
+    , "/assets/2dnw.jpg"
+    , "/assets/3dnw.jpg"
+    , "/assets/4dnw.jpg"
+    , "/assets/5dnw.jpg"
+    , "/assets/6dnw.jpg"
+    , "/assets/7dnw.jpg"
   ], {duration: 4000, fade: 1000});
 });
 /*
