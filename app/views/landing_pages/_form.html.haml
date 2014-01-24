@@ -1,4 +1,4 @@
-= simple_form_for(@lead, :html => { :honeypot => true, :class => 'form-horizontal pull-right' }) do |f|
+= simple_form_for(@landinglead, :html => { :honeypot => true, :class => 'form-horizontal pull-right' }) do |f|
   = f.error_notification
 
   = f.input :name, placeholder: 'First Last', input_html: { pattern: "[a-zA-Z-. ]+" }
