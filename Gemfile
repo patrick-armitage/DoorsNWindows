@@ -22,12 +22,14 @@ gem 'public_activity'
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem 'capistrano', '~> 3.0.1'
-gem 'figaro'
 gem 'simple_form'
 gem 'button_link_to' # Buttons to other resources, within Forms
 gem 'honeypot-captcha'
-gem "roadie", "~> 2.4.3"
+gem 'roadie', '~> 2.4.3'
+gem 'geocoder'
+gem 'capistrano', '~> 3.0.1'
+gem 'figaro'
+
 gem 'rdiscount'
 group :development do
   gem 'better_errors'

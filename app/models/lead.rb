@@ -24,6 +24,9 @@ class Lead < ActiveRecord::Base
   validates_inclusion_of :interest, :in => :lead_interests
   validates_inclusion_of :status, :in => :lead_status_options
 
+  #geocoder
+  geocoded_by :zip
+
   def self.search(search, type=nil)
     type = 'name' unless type
     if search
@@ -31,6 +34,10 @@ class Lead < ActiveRecord::Base
     else
       all
     end
+  end
+
+  def self.center_point
+    [33.969732,-117.89976]
   end
 
   def log!

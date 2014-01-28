@@ -94,6 +94,7 @@ GEM
       rspec (~> 2.0)
       rspec-instafail (~> 0.2.0)
       ruby-progressbar (~> 1.0)
+    geocoder (1.1.9)
     growl (1.0.3)
     guard (2.2.4)
       formatador (>= 0.2.4)
@@ -303,6 +304,7 @@ DEPENDENCIES
   fancybox2-rails (~> 0.2.4)
   figaro
   fuubar
+  geocoder
   growl
   guard-bundler
   guard-rails
