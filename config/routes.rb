@@ -1,6 +1,7 @@
 Doorsnwindows::Application.routes.draw do
 
   resources :leads
+  resources :landing_leads
 	resources :users
   resources :activities
 	resources :sessions, only: [:new, :create, :destroy]
@@ -13,8 +14,8 @@ Doorsnwindows::Application.routes.draw do
 	match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
 
-  match '/savings/doors',   to: 'landing_pages#doors',    via: 'get'
-  match '/savings/windows', to: 'landing_pages#windows',  via: 'get'
+  match '/savings/doors',   to: 'landing_leads#doors',    via: 'get'
+  match '/savings/windows', to: 'landing_leads#windows',  via: 'get'
 
   root to: 'static_pages#home'
 

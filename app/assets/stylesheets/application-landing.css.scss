@@ -22,8 +22,12 @@
 
 //Template Imports
 @import "fancybox";
-@import "landing_pages/style";
-@import "landing_pages/elistyle";
+@import "style";
+@import "style-responsive";
+@import "simple_form";
+@import "majoostyle";
+@import "landing_leads/style";
+@import "landing_leads/elistyle";
 
 // rails dev
 .debug_dump {

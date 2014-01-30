@@ -18,8 +18,8 @@
 //= require button_link_to
 //= require bootstrap
 //= require fancybox
-//= require landing_pages/jquery.backstretch.min
-//= require landing_pages/jquery.tweet
-//= require landing_pages/jflickrfeed
-//= require landing_pages/backstretch-init
-//= require landing_pages/scripts
+//= require landing_leads/jquery.backstretch.min
+//= require landing_leads/jquery.tweet
+//= require landing_leads/jflickrfeed
+//= require landing_leads/backstretch-init
+//= require landing_leads/scripts

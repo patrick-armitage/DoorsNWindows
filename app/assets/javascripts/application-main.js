@@ -25,4 +25,5 @@
 //= require sliderjs
 //= require twitter
 //= require custom
-//= require_tree .
+//= require bootscript
+//= require_tree ./main

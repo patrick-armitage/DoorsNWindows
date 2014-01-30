@@ -1,0 +1,2 @@
+class LandingLead < Lead
+end
