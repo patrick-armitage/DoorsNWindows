@@ -28,9 +28,19 @@ class Lead < ActiveRecord::Base
   geocoded_by :zip
 
   def self.search(search, type=nil)
-    type = 'name' unless type
+    if type
+      fields = type+' ilike :q'
+    else
+      types = %w(name email phone zip status)
+      arr = []
+      types.each do |t|
+        arr << t+' ilike :q'
+      end
+      fields = arr.join(' or ')
+    end
+
     if search
-      where(type+' LIKE ?', "%#{search}%")
+      where(fields, q: "%#{search}%")
     else
       all
     end
