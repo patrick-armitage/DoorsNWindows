@@ -5,6 +5,7 @@ gem 'pg'
 gem 'puma'
 gem 'rack-cache'
 gem 'dalli'
+gem 'iron_cache' #heroku only
 gem 'sidekiq'
 # gem 'sinatra', :require=>false
 # gem 'slim'
