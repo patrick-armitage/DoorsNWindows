@@ -4,13 +4,16 @@ class LeadsController < ApplicationController
   # after_action :new_lead_notify, only: [:create]
 
   def index
-    @lead = Lead.new
     @leads = Lead.reorder(sort_column + " " + sort_direction).paginate(page: params[:page]).search(params[:search], params[:type])
+    fresh_when last_modified: @leads.maximum(:updated_at)
+    expires_in 5.minutes
   end
 
   def show
     @lead = Lead.find(params[:id])
     @activities = @lead.activities.paginate(page: params[:page])
+    fresh_when @lead, public: true
+    expires_in 5.minutes
   end
 
   def new
@@ -32,7 +35,7 @@ class LeadsController < ApplicationController
           @lead.create_activity :new, params: @lead.attributes
           render :thank_you
         end
-      else
+      else #error rerouting
         if request.env["HTTP_REFERER"].to_s.include? 'leads'
           render 'new'
         else
@@ -89,9 +92,6 @@ class LeadsController < ApplicationController
 
     def delete_activity
       @lead = Lead.find(params[:id])
-      @params = {}
-      @lead.attributes.each { |k, v| @params[k] = v }
-
-      @lead.create_activity :delete, owner: current_user, params: @params
+      @lead.create_activity :delete, owner: current_user, params: @lead.attributes
     end
 end

@@ -1,0 +1,14 @@
+%li
+  %small.muted #{ time_ago_in_words(activity.created_at) } ago
+  %br
+  A new lead was requested from
+  %code.label.label-success{ :data => { toggle: 'collapse', target: '#activity-'+activity.id.to_s } }
+    = activity.parameters['name']
+    = icon('icon-white icon-chevron-down')
+  %ul.collapse{ :id => 'activity-'+activity.id.to_s }
+    - activity.parameters.each do |key, value|
+      %li
+        - if key != 'notes'
+          %code.label.label-info= key.to_s.titleize + ": "
+          %code.label.label-success= value
+%li.divider

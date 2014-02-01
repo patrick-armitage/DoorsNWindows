@@ -3,6 +3,8 @@ ruby '2.0.0'
 gem 'rails', '4.0.2'
 gem 'pg'
 gem 'puma'
+gem 'rack-cache'
+gem 'dalli'
 gem 'sidekiq'
 # gem 'sinatra', :require=>false
 # gem 'slim'

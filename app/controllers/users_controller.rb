@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    fresh_when @user, public: true
+    expires_in 5.minutes
     @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: @user.id).paginate(page: params[:page])
   end
 
@@ -29,6 +31,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    fresh_when @user
   end
 
   def update

@@ -1,0 +1,15 @@
+%li
+  %small.muted #{ time_ago_in_words(activity.created_at) } ago
+  %br
+  = link_to activity.owner.name, {:controller => "users", :action => "show", :id => activity.owner.id } if activity.owner
+  deleted a lead
+  %code.label.label-important{ :data => { toggle: 'collapse', target: '#activity-'+activity.id.to_s } }
+    = activity.parameters['name']
+    = icon('icon-white icon-chevron-down')
+  %ul.collapse{ :id => 'activity-'+activity.id.to_s }
+    - activity.parameters.each do |key, value|
+      %li
+        - if key != 'notes'
+          %code.label.label-info= key.to_s.titleize + ": "
+          %code.label.label-important= value
+%li.divider
