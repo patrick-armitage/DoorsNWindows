@@ -1,19 +1,75 @@
+%li.dropdown
+  %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+    ABOUT US
+    %b.caret
+  %ul.dropdown-menu
+    %li= link_to 'DoorsNWindows Story', about_us_story_path
+    %li= link_to 'Services', about_us_services_path
+    %li= link_to 'Guarantee', about_us_guarantee_path
+%li.dropdown
+  %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+    PRODUCTS
+    %b.caret
+  %ul.dropdown-menu
+    %li= link_to 'Windows', products_windows_path
+    %li= link_to 'Doors', products_doors_path
+    %li= link_to 'Hardware', products_hardware_path
+%li.dropdown
+  %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+    MANUFACTURERS
+    %b.caret
+  %ul.dropdown-menu
+    %li= link_to 'Choosing a Manufacturer', manufacturers_choosing_path
+    %li
+      %a{href: "http://www.atrium.com/", target: "_blank"} Atrium
+    %li
+      %a{href: "http://www.aawdoors.com/", target: "_blank"} AAW Doors
+    %li
+      %a{href: "http://www.baldwinhardware.com/home.aspx", target: "_blank"} Baldwin Hardware
+    %li
+      %a{href: "http://www.escondoor.com/home.html", target: "_blank"} Escon Doors
+    %li
+      %a{href: "http://www.milgard.com/", target: "_blank"} Milgard
+    %li
+      %a{href: "http://www.pella.com/home/default.aspx", target: "_blank"} Pella
+    %li
+      %a{href: "http://www.kwikset.com/", target: "_blank"} Kwikset Locks
+    %li
+      %a{href: "http://www.superior-windows.com/", target: "_blank"} Superior
+%li.dropdown
+  %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+    INFO
+    %b.caret
+  %ul.dropdown-menu
+    %li= link_to "How it works", info_how_path
+    %li= link_to "FAQs", info_faqs_path
+    %li= link_to "Install Warranty", info_installs_path
+    %li= link_to "Mfg. Warranty", info_mfgs_path
+    %li= link_to "Historical Homes", info_historic_path
+%li.dropdown
+  %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+    CONTACT
+    %b.caret
+  %ul.dropdown-menu
+    %li= link_to "Email Us", contact_email_path
+    %li= link_to "Contact Info", contact_info_path
+
 - if signed_in?
   %li.dropdown
     %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
       ADMIN
       %b.caret
     %ul.dropdown-menu
-      %li= link_to "LEADS", leads_path
-      %li= link_to "USERS", users_path
-      %li= link_to "ACTIVITY", activities_path
+      %li= link_to "Leads", leads_path
+      %li= link_to "Users", users_path
+      %li= link_to "Activities", activities_path
   %li.dropdown
     %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
       ACCOUNT
       %b.caret
     %ul.dropdown-menu
-      %li= link_to "PROFILE", user_path(current_user)
-      %li= link_to "SETTINGS", edit_user_path(current_user)
-      %li= link_to "SIGN OUT", signout_path, method: "delete"
+      %li= link_to "Profile", user_path(current_user)
+      %li= link_to "Settings", edit_user_path(current_user)
+      %li= link_to "Sign Out", signout_path, method: "delete"
 - else
   %li= link_to "SIGN IN", signin_path
