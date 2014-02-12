@@ -22,8 +22,10 @@ main {
 
 // Widgets
 .widget-alt {
-  width: 30%;
-  max-width: 220px;
+  min-width: 210px;
+  width: auto;
+  max-width: 230px;
+  padding: 10px;
 }
 
 // Nav Styles
@@ -94,6 +96,22 @@ i {
 
 .label.label-info {
   background-color: #3A87AD;
+}
+
+// Thumbnail image styles
+
+img.thumbnail {
+  margin-bottom: 12px;
+  max-width: 300px;
+  width: 100%;
+
+  &.pull-left {
+    margin-right: 20px;
+  }
+
+  &.pull-right {
+    margin-left: 20px;
+  }
 }
 
 // SliderJS

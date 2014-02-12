@@ -1,7 +1,7 @@
 - provide(:title, 'About')
 
 #page-title
-  %h1 The DoorsNWindows Company Story
+  %h1 The DoorsNWindows Story
 .row-fluid
   .span3
     .widget-alt.well{data:{spy:"affix", offset:{top:"0"}}}
@@ -10,114 +10,116 @@
         %li
           %a{href: "#started"}
             How It Started
-            %i.icon-chevron-right.pull-right
+            %i.fa.fa-chevron-right.pull-right
         %li
           %a{href: "#values"}
-            Business Values
-            %i.icon-chevron-right.pull-right
+            Core Values
+            %i.fa.fa-chevron-right.pull-right
         %li
           %a{href: "#difference"}
             The DNW Difference
-            %i.icon-chevron-right.pull-right
-        %li
-          %a{href: "#experience"}
-            What You'll Experience
-            %i.icon-chevron-right.pull-right
+            %i.fa.fa-chevron-right.pull-right
   .span9
-    #started
+    #started.clearfix
       .headline
-        %h4 How we got started
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
+        %h3 How we got started
+      :markdown
+        #### *A family-owned operation*
 
-    #values
-      .headline
-        %h4 Business values the DoorsNWindows way
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
+      %img{class: "thumbnail pull-right", src:"#{image_url('company/family.jpg')}"}
 
-    #difference
-      .headline
-        %h4 The DoorsNWindows difference from competitors
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
+      :markdown
+        DoorsNWindows has always been a family owned & run operation.
+        My wife and I have been together since high school,
+        And we just celebrated our 25th anniversary.
+        We have been together for 29 years, and when I became
+        a window and door specialty license contractor three years
+        before we got married, we've worked together since.
+        We both handled different aspects of the job.
 
-    #experience
+        Our expertise comes from being actual installers that knows
+        precisely what's involved in a job. We have never had a career
+        in anything else but the window and door industry and we have
+        seen many things change. We are a small company and really
+        do not have any intention on being large. We want to keep
+        things less complicated. We are blessed with a beautiful
+        daughter 13 years old and committed to homeschooling her.
+
+        We have been blessed doing a trade and offering a service
+        we truly enjoy.
+
+        #### *Tough times*
+
+        We went through some very testing time losing a lot of money
+        and even our home during the housing bubble. We literally had
+        material for 10 homes and had completed multiple jobs where
+        customers had just abandoned their homes. This left us at major
+        loss. We thank God for his strength and pulling us through
+        those times. We remain obligated and committed to our customers
+        through all of this. This is why we still have a good name.
+
+    #values.clearfix
       .headline
-        %h4 What our customers experience with us
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
-      %p
-        Lorem Ipsum dolor...
+        %h3 Our core values
+      :markdown
+        #### *Help and expertise, without all the pressure*
+
+      %img{class: "thumbnail pull-left", src:"#{image_url('company/happy-owner.jpg')}"}
+
+      :markdown
+        We do not like playing salesman games. We only make our
+        money on the installation aspect and give you the best
+        price available on the product. We do not sell product
+        without our installation. We save our customers an enormous
+        amount of money. In fact we install many products customers
+        have bought from stores and we will go pick up and deliver
+        and install their product.
+
+        Customers will not speak to inexperienced salespeople but
+        to people that can help answer their questions. We will
+        gladly compete against our competitors for your business
+        and go over any differences for you to make an educated
+        investment.
+
+        We are not a large company with salespeople nor do we want
+        to be. We have done it before and there is a loss of quality.
+        In order to serve our customers efficiently and cut costs.
+        We depend heavily on keeping our overhead low. We do not have
+        physical showrooms that takes up money and man-hours that
+        would add to the customer's cost.
+
+    #difference.clearfix
+      .headline
+        %h3 The DoorsNWindows difference
+
+      .row-fluid
+        .span7
+          .pricing-table
+            .color-1
+              %h3 We go above and beyond the competition
+              %h4.center The best service at the lowest prices anywhere
+              %ul.unstyled
+                %li
+                  %i.fa.fa-phone
+                  You will only speak with knowlegable representatives
+                %li
+                  %i.fa.fa-ban
+                  We refuse to use high pressure sales with you
+                %li
+                  %i.fa.fa-thumbs-o-up
+                  Products from any manufacturer or store of your choice
+                %li
+                  %i.fa.fa-road
+                  Our install crew has 29 years of experience in quality
+                %li
+                  %i.fa.fa-star
+                  We only use the best materials and the best techniques
+                %li
+                  %i.fa.fa-certificate
+                  We offer a 5-year warranty on all our installations
+              %h4.center.sign-up
+                See for yourself:
+                = link_to "Get a Free Quote today!", savings_doors_path
+        .span5
+          %img{class: "thumbnail", src:"#{image_url('company/cup.jpg')}"}
+
