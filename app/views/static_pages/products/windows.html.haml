@@ -1,0 +1,139 @@
+- provide(:title, 'Windows')
+
+#page-title
+  %h1 New Windows
+
+.row-fluid
+  .span3
+    .widget-alt.well{data:{spy:"affix", offset:{top:"0"}}}
+      .headline Sections
+      %ul.nav.nav-list.links-list-alt
+        %li
+          %a{href: "#choosing"}
+            Choosing Windows
+            %i.fa.fa-chevron-right.pull-right
+        %li
+          %a{href: "#options"}
+            Window Options
+            %i.fa.fa-chevron-right.pull-right
+        %li
+          %a{href: "#examples"}
+            Examples
+            %i.fa.fa-chevron-right.pull-right
+        %li
+          %a{href: "#process"}
+            Installation Process
+            %i.fa.fa-chevron-right.pull-right
+  .span9
+    #choosing.clearfix
+      .headline
+        %h3 Choosing Your New Windows
+      %h4
+        %em When looking for new windows, DNW encourages customers to consider the following criteria
+
+      .row-fluid
+        .span7
+          .pricing-table
+            .color-1
+              %h3 Get the windows that are right for your home
+              %h4.center DNW can help you find the perfect fit
+              %ul.unstyled
+                %li
+                  %i.fa.fa-picture-o
+                  What is the best window material for your home
+                %li
+                  %i.fa.fa-list-ul
+                  Which window features you want to include
+                %li
+                  %i.fa.fa-arrows-h
+                  How to compare window lines, low-end to high-end
+                %li
+                  %i.fa.fa-angle-double-up
+                  The brand's overall reputation and history
+                %li
+                  %i.fa.fa-money
+                  How the brand's prices compare to other brands
+                %li
+                  %i.fa.fa-wrench
+                  What kind of maintenance the windows will require
+                %li
+                  %i.fa.fa-certificate
+                  The warranty the manufacturer offers on their products
+              %h4.center.sign-up
+                For more information:
+                = link_to "Choosing a Manufacturer", manufacturers_choosing_path
+        .span5
+          %img{class: "thumbnail", src:"#{image_url('milgard/tuscany-b.jpg')}"}
+
+    #options.clearfix
+      .headline
+        %h3 Window Options for Customers
+      :markdown
+        #### *DoorsNWindows will install windows from any store, retailer, or manufacturer*
+
+      %img{class: "thumbnail pull-left", src:"#{image_url('istockphoto/hardwood.jpg')}"}
+
+      :markdown
+        We are not committed to any one namebrand. There are certain
+        qualities and differences that might meet one customers need
+        better than the other. You will get our most unbiased opinion
+        that would be aimed towards your objective you're trying to accomplish.
+
+        Our product policy is very simple: we take full responsibility for
+        the installation of our customers' windows, provided we first come and
+        measure your home to ensure which windows and sizes will work.  So long
+        as the manufacturer builds your windows according to the spec we provide,
+        we ensure they will install properly.  DoorsNWindows will still install
+        windows we did not measure, but we cannot guarantee they will work in your
+        home unless we are able to first provide measurements.
+
+    #examples.clearfix
+      .headline
+        %h3 Window Examples
+        %h4
+          %em Manufacturers offer a wide variety of windows.  These are just a few examples
+
+      .row-fluid
+        .span4
+          .thumbnail
+            %img{src:"#{image_url('milgard/tuscany-e.jpg')}"}
+            .caption
+              %em Milgard Tuscany E Line offers performance and beauty at an affordable price
+        .span4
+          .thumbnail
+            %img{src:"#{image_url('pella/architect.jpg')}"}
+            .caption
+              %em Pella Architect series are some of the finest wood windows in the industry
+        .span4
+          .thumbnail
+            %img{src:"#{image_url('atrium/masterview.jpg')}"}
+            .caption
+              %em Atrium Masterview windows have top of the line durability and glass strength
+
+    #process
+      .headline
+        %h3 The Window Installation process
+
+      :markdown
+        #### *How DNW can help you get new windows, from start to finish*
+
+
+      :markdown
+        1. It really starts off with an accurate assessment and measurement of each opening.
+        2. We will remove any window treatments within the wall condition.
+        3. Clear out the opening removing sashes, stop etc.
+        4. We use the strongest the poly urethane sealant that will put behind the back of all
+        window fin. There are slight variations depending on the type of window application.
+        5. Windows are fastened with galvanize three-inch screws and squared into opening.
+        6. We will then inject a foam between any area or gap between the new frame and the old.
+        This will harden strengthening your window frame making it more rigid. It will also help with installation.
+        7. We will then trim around the perimeter of your window with a matching vinyl in most cases around the inside.
+        8. Your home will be Clean throughout the whole process and protected.
+        9. We will walk the job and verify everything as been done properly. If there are any
+        manufactured defect in the product not due to installation. Manufactures warranty and
+        service will handle this directly with the customer to schedule anything that needs to
+        be serviced or replaced. Payment for installation must still be paid if it is a manufactured
+        issue. If we for some reason receive merchandise that cannot be installed due to the
+        manufacture. These items may be deducted from your installation payment with the balance being paid on completion.
+
+

@@ -1,3 +1,11 @@
+// Heights
+.h150 {
+  $h: 150px;
+  min-height: $h;
+  height: $h;
+  max-height: $h;
+}
+
 // Typography
 .small {
   font-size: 85%;
@@ -5,6 +13,16 @@
 
 .center {
   text-align: center;
+}
+
+span.amp {
+  font-family:Baskerville,"Goudy Old Style","Palatino","Book Antiqua",serif;
+  font-size:110%;
+  font-style:italic;
+}
+
+em {
+
 }
 
 // Dropdown Navigation

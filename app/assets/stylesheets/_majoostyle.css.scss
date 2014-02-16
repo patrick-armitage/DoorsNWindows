@@ -28,6 +28,23 @@ main {
   padding: 10px;
 }
 
+//Pricing Tables
+.pricing-table {
+  h3, h4 {
+    a {
+      background-color: rgba(255,255,255,0.3);
+      border-radius: 4px;
+      color: #056832;
+      padding: 2px;
+
+      &:hover {
+        background-color: rgba(255,255,255,0.35);
+        color: #087135;
+      }
+    }
+  }
+}
+
 // Nav Styles
 
 .topnav {
@@ -104,6 +121,10 @@ img.thumbnail {
   margin-bottom: 12px;
   max-width: 300px;
   width: 100%;
+
+  &.vert-align {
+    margin-top: 30%;
+  }
 
   &.pull-left {
     margin-right: 20px;
