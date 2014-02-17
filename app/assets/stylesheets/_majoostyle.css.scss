@@ -61,7 +61,6 @@ main {
   overflow: visible;
 
   .navbar-inner {
-    height: 73px;
     margin-top: 0;
     overflow: visible;
 
@@ -78,6 +77,20 @@ main {
 
   img {
     display: block;
+  }
+}
+
+.nav {
+  .dropdown-menu {
+    .fa-stack {
+      height: auto;
+      line-height: 1.5em !important;
+
+      .fa-stack-2x {
+        font-size: 1.25em;
+        text-indent: 0.75em;
+      }
+    }
   }
 }
 
@@ -133,6 +146,27 @@ img.thumbnail {
   &.pull-right {
     margin-left: 20px;
   }
+}
+
+// FontAwesome Styles
+
+.fa-red {
+  color: #B94A48 !important;
+}
+.fa-green {
+  color: #0A8E42 !important;
+}
+.fa-green-dark {
+  color: #043D1D !important;
+}
+.fa-blue {
+  color: #3A87AD !important;
+}
+.fa-yellow {
+  color: #F89406 !important;
+}
+.fa-black {
+  color: #000000 !important;
 }
 
 // SliderJS
