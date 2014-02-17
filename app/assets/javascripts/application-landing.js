@@ -14,7 +14,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-migrate-min
-//= require turbolinks
 //= require button_link_to
 //= require bootstrap
 //= require fancybox
