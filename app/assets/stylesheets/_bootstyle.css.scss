@@ -27,7 +27,16 @@ em {
 
 // Dropdown Navigation
 .dropdown-menu {
-  z-index: 9999;
+  z-index: 5999;
+}
+
+//Popover
+.popover {
+  display: block;
+  z-index: 9999 !important;
+  * {
+    z-index: 9999 !important;
+  }
 }
 
 // Alert BG Colors
