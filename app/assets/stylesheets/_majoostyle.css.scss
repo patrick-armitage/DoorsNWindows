@@ -40,10 +40,33 @@ main {
 
 // Widgets
 .widget-alt {
-  min-width: 210px;
-  width: auto;
-  max-width: 230px;
-  padding: 10px;
+  border-radius: 4px;
+  height: 2000px;
+  @extend .bg10;
+
+  .headline {
+    border-bottom: 1px solid #aaa;
+  }
+  .well {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    min-width: 210px;
+    width: auto;
+    max-width: 230px;
+    padding: 10px;
+
+    a {
+      &:hover {
+        background-color: rgba(100,100,100,0.08);
+      }
+
+      i {
+        padding-top: 4px;
+      }
+    }
+  }
+
 }
 
 //Pricing Tables
