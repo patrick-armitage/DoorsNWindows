@@ -352,7 +352,7 @@ h1, h2, h3, h4, h6 {
   text-rendering: optimizelegibility;
 }
 
-#main-text h3 {
+.main-text h3 {
   font-size: 25px;
   line-height: 35px;
   font-weight: 100;
@@ -364,7 +364,7 @@ h1 {
   line-height: 40px;
 }
 
-#main-text {
+.main-text {
   h1 {
     font-size: 60px;
     line-height: 70px;
@@ -390,7 +390,7 @@ h1 {
   width: 200px;
 }
 
-#header header #hero #main-text #cta .btn {
+#header header #hero .main-text #cta .btn {
   font-size: 25px;
   width: 200px;
 }

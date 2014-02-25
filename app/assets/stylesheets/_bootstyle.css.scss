@@ -6,6 +6,20 @@
   max-height: $h;
 }
 
+.z-index {
+  z-index: 9999 !important;
+  * {
+    z-index: 9999 !important;
+  }
+}
+
+.no-z-index {
+  z-index: -1 !important;
+  * {
+    z-index: -1 !important;
+  }
+}
+
 // Typography
 .small {
   font-size: 85%;
@@ -33,10 +47,7 @@ em {
 //Popover
 .popover {
   display: block;
-  z-index: 9999 !important;
-  * {
-    z-index: 9999 !important;
-  }
+  @extend .z-index;
 }
 
 // Alert BG Colors
