@@ -3,12 +3,20 @@
 #page-title
   %h1 New Windows
 
-.row-fluid.overflow-hidden{style: "height: 1747px;"}
+.row-fluid.overflow-hidden{style: "height: auto;"}
   .span3.full-height
     .widget-alt.full-height
       .well{data:{spy:"affix", offset:{top:"0"}}}
         .headline Sections
         %ul.nav.nav-list.links-list-alt
+          %li
+            %a{href: "#pella"}
+              Pella® Examples
+              %i.fa.fa-chevron-right.pull-right
+          %li
+            %a{href: "#milgard"}
+              Milgard® Examples
+              %i.fa.fa-chevron-right.pull-right
           %li
             %a{href: "#choosing"}
               Choosing Windows
@@ -18,14 +26,97 @@
               Window Options
               %i.fa.fa-chevron-right.pull-right
           %li
-            %a{href: "#examples"}
-              Examples
-              %i.fa.fa-chevron-right.pull-right
-          %li
             %a{href: "#process"}
               Installation Process
               %i.fa.fa-chevron-right.pull-right
+
   .span9
+    #pella.clearfix
+      .headline
+        %h3 Pella® Window Examples
+
+      %img{class: "thumbnail pull-right", src:"#{image_url('pella/350/VP_Feature3.png')}"}
+
+      %h4
+        %em 350™ Series: Distinctive vinyl windows with superior performance
+
+      :markdown
+        *Reduces outside noise up to 88%.* Sound control glass helps keep out traffic and
+        lawn mower noise for more peace and quiet.
+
+        *Fewer worries about drafts.* Pella® 350
+        Series vinyl windows help minimize uncomfortable drafts up to three times better
+        than the industry standard.
+
+        - Exclusive SmoothSeam™ welded corners are virtually invisible.
+        - Stronger and more durable than typical vinyl windows.
+        - 54%-83% more energy efficient with triple-pane glass.
+
+      .clearfix
+      %hr
+
+      %img{class: "thumbnail pull-left", src:"#{image_url('pella/designer.jpg')}"}
+
+      %h4
+        %em Designer™ Series: Exclusive snap-in window fashion technology
+
+      :markdown
+        - Between-the-glass blinds, shades and grilles.
+        - Window fashions protect from dust and damage - reducing allergens.
+        - 53%-74% more energy efficient with triple-pane glass.
+
+    #milgard.clearfix
+      .headline
+        %h3 Milgard® Window Examples
+
+      %img{class: "thumbnail pull-right", src:"#{image_url('milgard/tuscany.jpg')}"}
+
+      %h4
+        %em Tuscany™ Vinyl Replacement Windows
+
+      :markdown
+        - Exceptionally energy efficient
+        - Extremely durable
+        - Non-corroding
+        - Virtually maintenance-free
+        - Available in a wide range of styles and shapes
+        - Cost effective
+
+      .clearfix
+      %hr
+
+      %img{class: "thumbnail pull-left", src:"#{image_url('milgard/style-line.jpg')}"}
+
+      %h4
+        %em Style Line™  Series Windows: More Light, More View
+
+      :markdown
+        Now you can have a contemporary design and energy efficiency all in one.
+        Enhance your home's design with a sleek, clean look. Milgard® Style Line™
+        Series windows will make your home feel expansive and the slim profile
+        allows for plenty of natural light. With clean lines, functionality and
+        durability, you will enjoy the light, the view and so much more for years
+        to come.
+
+      .clearfix
+      %hr
+
+      %img{class: "thumbnail pull-right", src:"#{image_url('milgard/woodclad.jpg')}"}
+
+      %h4
+        %em WoodClad™ Series: Beauty Meets Durability
+
+      :markdown
+        If you are looking for wood windows, you are in the right place. With
+        Milgard WoodClad windows, you get a carefree fiberglass exterior, plus the
+        interior rich, warm beauty of wood windows. Our WoodClad windows feature
+        furniture-grade, natural wood in Douglas Fir without a nail hole or staple
+        on them. Seal with a clear sealant or stain to match your existing woodwork.
+        For the exterior, order Milgard WoodClad Series fiberglass windows in any
+        of our factory-applied standard exterior colors. Customize even further
+        with our wide selection of hardware and grid options.
+
+
     #choosing.clearfix
       .headline
         %h3 Choosing Your New Windows
@@ -87,29 +178,6 @@
         we ensure they will install properly.  DoorsNWindows will still install
         windows we did not measure, but we cannot guarantee they will work in your
         home unless we are able to first provide measurements.
-
-    #examples.clearfix
-      .headline
-        %h3 Window Examples
-        %h4
-          %em Manufacturers offer a wide variety of windows.  These are just a few examples
-
-      .row-fluid
-        .span4
-          .thumbnail
-            %img{src:"#{image_url('milgard/tuscany-e.jpg')}"}
-            .caption
-              %em Milgard Tuscany E Line offers performance and beauty at an affordable price
-        .span4
-          .thumbnail
-            %img{src:"#{image_url('pella/architect.jpg')}"}
-            .caption
-              %em Pella Architect series are some of the finest wood windows in the industry
-        .span4
-          .thumbnail
-            %img{src:"#{image_url('atrium/masterview.jpg')}"}
-            .caption
-              %em Atrium Masterview windows have top of the line durability and glass strength
 
     #process
       .headline
