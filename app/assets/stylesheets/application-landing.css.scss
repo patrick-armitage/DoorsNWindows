@@ -41,9 +41,11 @@
 
 // popover
 .popover {
+  @extend .well;
   display: block;
   position: relative;
-  @extend .well;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 10px;
 
   .arrow:after {
     border-left-color: rgba(120, 120, 120, 0.5) !important;

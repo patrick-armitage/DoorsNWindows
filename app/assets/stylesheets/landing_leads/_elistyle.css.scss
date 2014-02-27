@@ -1,6 +1,7 @@
 //Library
 .well {
-  background-color: rgba(45, 45, 45, 0.4) !important;
+  background-color: rgba(45, 45, 45, 0.55) !important;
+  background-image: image-url('noise.png');
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
 
@@ -10,16 +11,9 @@ main {
     padding: 0;
 
     h1 {
-      margin-top: 35px !important;
+      margin-top: 0px;
       margin-bottom: 10px;
     }
-  }
-}
-
-// Body colors/styles
-body {
-  main {
-    background-color: transparent;
   }
 }
 
@@ -33,11 +27,51 @@ header.header {
   }
 
   h1 {
+    margin-top: 35px !important;
     width: auto;
   }
 }
 
-//SimpleForm
+// Body colors/styles
+body {
+  main {
+    background-color: transparent;
+  }
+}
+
+// Pricing Table
+.pricing-table {
+  margin-top: -20px;
+
+  .pro {
+    @extend .well;
+    border-radius: 10px;
+    border: 1px solid #FFF;
+    padding: 0;
+
+    h3 {
+      background-color: transparent;
+      background-image: none;
+      margin-top: 0;
+    }
+
+    h4 {
+      background-color: rgba(40, 192, 96, 0.5);
+    }
+
+    li {
+      background-color: rgba(255,255,255,0.75);
+      color: #555;
+    }
+    li:nth-child(2n) {
+      background-color: rgba(245,245,245,0.65);
+    }
+
+  }
+}
+
+
+// SimpleForm
 .subscription-form {
   margin: 0;
   padding: 0;
