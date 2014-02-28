@@ -6,32 +6,24 @@
           .row
             %ul.paging
               .slide-btn
+                .span2.offset2
+                  %li
+                    %a#pella.feature-tab{href: "#0"}
+                      %i
                 .span2
                   %li
-                    %a#sweepstake.feature-tab{href: "#0"}
-                      %i.fa.fa-group
+                    %a#milgard.feature-tab{href: "#1"}
+                      %i
                 .span2
                   %li
-                    %a#dashboard.feature-tab{href: "#1"}
-                      %i.fa.fa-signal
+                    %a#superior.feature-tab{href: "#2"}
+                      %i
                 .span2
                   %li
-                    %a#responsive.feature-tab{href: "#2"}
-                      %i.fa.fa-resize-full
-                .span2
-                  %li
-                    %a#cloud.feature-tab{href: "#3"}
-                      %i.fa.fa-cloud
-                .span2
-                  %li
-                    %a#security.feature-tab{href: "#4"}
-                      %i.fa.fa-lock
-                .span2
-                  %li
-                    %a#roi.feature-tab{href: "#5"}
-                      %i.fa.fa-bullhorn
+                    %a#aaw.feature-tab{href: "#3"}
+                      %i
           .feature-content.slides_container
-            #sweepstake-content.slide-content{style: "display:block"}
+            #pella-content.slide-content{style: "display:block"}
               .row
                 .span5
                   = image_tag "2.jpg", align: "right"
@@ -55,7 +47,7 @@
               /   %a.btn.btn-cta{href: "#", onclick: "show_feature('dashboard','link'); return false;"}
               /     Next
               /     %i.fa.fa-chevron-right.icon-white
-            #dashboard-content.slide-content
+            #milgard-content.slide-content
               .row
                 .span5
                   = image_tag "4.jpg", align: "right"
@@ -75,15 +67,7 @@
                     %li
                       %i.fa.fa-ok
                       feature 1
-              / .fslider-nav
-              /   .btn-group
-              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('sweepstake','link'); return false;"}
-              /       %i.fa.fa-chevron-left.icon-white
-              /       Previous
-              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('responsive','link'); return false;"}
-              /       Next
-              /       %i.fa.fa-chevron-right.icon-white
-            #responsive-content.slide-content
+            #superior-content.slide-content
               .row
                 .span5
                   = image_tag "5.jpg", align: "right"
@@ -103,15 +87,7 @@
                     %li
                       %i.fa.fa-ok
                       feature 1
-              / .fslider-nav
-              /   .btn-group
-              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('dashboard','link'); return false;"}
-              /       %i.fa.fa-chevron-left.icon-white
-              /       Previous
-              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('cloud','link'); return false;"}
-              /       Next
-              /       %i.fa.fa-chevron-right.icon-white
-            #cloud-content.slide-content
+            #aaw-content.slide-content
               .row
                 .span5
                   %br/
@@ -135,14 +111,6 @@
                     %li
                       %i.fa.fa-cloud
                       feature 1
-              / .fslider-nav
-              /   .btn-group
-              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('responsive','link'); return false;"}
-              /       %i.fa.fa-chevron-left.icon-white
-              /       Previous
-              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('security','link'); return false;"}
-              /       Next
-              /       %i.fa.fa-chevron-right.icon-white
             #security-content.slide-content
               .row{style: ""}
                 .span7
