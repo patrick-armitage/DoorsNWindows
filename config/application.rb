@@ -31,6 +31,6 @@ module Doorsnwindows
     ActiveModel::SecurePassword.min_cost = true
 
     # For Redis in Production
-    config.assets.initialize_on_precompile = false
+    #config.assets.initialize_on_precompile = false
   end
 end
