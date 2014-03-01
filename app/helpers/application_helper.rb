@@ -9,6 +9,10 @@ module ApplicationHelper
     end
   end
 
+  def body_id
+    params[:controller].to_s + '_' + params[:action].to_s
+  end
+
   def container_class
     if current_page?(controller: 'leads')
       'container-fluid'

@@ -8,14 +8,12 @@
     = javascript_include_tag "application-main", "data-turbolinks-track" => true
     = csrf_meta_tags
     = render 'layouts/shim'
-  %body
+  %body{:id => body_id}
     -# application layout styled for Twitter Bootstrap 2.3
     %header
       = render 'layouts/navigation'
     - if params[:controller] == "static_pages" && params[:action] == "home"
-      - sliders_init = true
       = render 'static_pages/home_extra'
-      / = render "layouts/majoo_js"
     %main{:role => "main"}
       %div{:class => container_class}
         .content{:id => params[:controller]}
@@ -25,5 +23,3 @@
               = yield
         = debug(params) if Rails.env.development?
     = render 'layouts/footer'
-    - if sliders_init == true
-      = javascript_include_tag "main/sliders_init"
