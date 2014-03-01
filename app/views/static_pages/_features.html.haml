@@ -23,7 +23,7 @@
                     %a#aaw.feature-tab{href: "#3"}
                       %i
           .feature-content.slides_container
-            #pella-content.slide-content{style: "display:block"}
+            #pella-content.slide-content
               .row
                 .span5
                   = image_tag "2.jpg", align: "right"
@@ -43,10 +43,6 @@
                     %li
                       %i.fa.fa-ok>
                       Other
-              / .fslider-nav
-              /   %a.btn.btn-cta{href: "#", onclick: "show_feature('dashboard','link'); return false;"}
-              /     Next
-              /     %i.fa.fa-chevron-right.icon-white
             #milgard-content.slide-content
               .row
                 .span5
@@ -111,60 +107,4 @@
                     %li
                       %i.fa.fa-cloud
                       feature 1
-            #security-content.slide-content
-              .row{style: ""}
-                .span7
-                  %h2 128 Bit Hash Security
-                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit elit, non suscipit elit. Duis quis nisl et orci pretium mollis ut a risus. Fusce dapibus euismod est, sed consectetur justo laoreet dapibus. Nullam aliquet erat sed tellus porttitor vehicula. Sed ac egestas purus.
-                  %ul.icons.unstyled
-                    %li
-                      %i.fa.fa-lock
-                      feature 1
-                    %li
-                      %i.fa.fa-lock
-                      feature 1
-                    %li
-                      %i.fa.fa-lock
-                      feature 1
-                    %li
-                      %i.fa.fa-lock
-                      feature 1
-                .span5
-                  = image_tag "3.jpg", align: "center"
-              / .fslider-nav
-              /   .btn-group
-              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('cloud','link'); return false;"}
-              /       %i.fa.fa-chevron-left.icon-white
-              /       Previous
-              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('roi','link'); return false;"}
-              /       Next
-              /       %i.fa.fa-chevron-right.icon-white
-            #roi-content.slide-content
-              .row
-                .span5
-                  = image_tag "1_1.png", align: "right"
-                .span7
-                  %h2 Clean & Simple Design
-                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit elit, non suscipit elit. Duis quis nisl et orci pretium mollis ut a risus. Fusce dapibus euismod est, sed consectetur justo laoreet dapibus. Nullam aliquet erat sed tellus porttitor vehicula. Sed ac egestas purus.
-                  %ul.icons.unstyled
-                    %li
-                      %i.fa.fa-ok
-                      feature 1
-                    %li
-                      %i.fa.fa-ok
-                      feature 1
-                    %li
-                      %i.fa.fa-ok
-                      feature 1
-                    %li
-                      %i.fa.fa-ok
-                      feature 1
-              / .fslider-nav
-              /   .btn-group
-              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('security','link'); return false;"}
-              /       %i.fa.fa-chevron-left.icon-white
-              /       Previous
-              /     %a.btn.btn-cta{href: "#", onclick: "show_feature('sweepstake','link'); return false;"}
-              /       Next
-              /       %i.fa.fa-chevron-right.icon-white
     %hr

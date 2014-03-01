@@ -25,4 +25,5 @@
 //= require twitter
 //= require custom
 //= require bootscript
+//= require turbolinks
 //= require_tree ./main
