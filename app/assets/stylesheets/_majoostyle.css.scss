@@ -213,6 +213,15 @@ i {
   color: #000000 !important;
 }
 
+// FlexSlider Image Slider
+
+.flexslider {
+  .main-text {
+    margin-left: 0;
+    margin-right: 2.5%;
+  }
+}
+
 // Features "Circle" Slider
 
 #static_pages_home {
@@ -286,6 +295,12 @@ i {
         i {
           opacity: 1;
         }
+      }
+    }
+
+    .slide-content {
+      img {
+        height: 220px;
       }
     }
 

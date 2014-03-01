@@ -6,7 +6,12 @@
           .row
             %ul.paging
               .slide-btn
-                .span2.offset2
+                .span2
+                  %h3
+                    %br
+                    Popular Products
+                    %i.fa.fa-lg.fa-arrow-right.pull-right
+                .span2.offset
                   %li
                     %a#pella.feature-tab{href: "#0"}
                       %i
@@ -22,89 +27,67 @@
                   %li
                     %a#aaw.feature-tab{href: "#3"}
                       %i
+                .span2
+                  %h3
+                    %br
+                    %br
+                    %i.fa.fa-lg.fa-arrow-left
           .feature-content.slides_container
             #pella-content.slide-content
               .row
-                .span5
-                  = image_tag "2.jpg", align: "right"
-                .span7
-                  %h2 24x7 Customer Support
-                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit elit, non suscipit elit. Duis quis nisl et orci pretium mollis ut a risus. Fusce dapibus euismod est, sed consectetur justo laoreet dapibus. Nullam aliquet erat sed tellus porttitor vehicula. Sed ac egestas purus.
-                  %ul.unstyled.icons
-                    %li
-                      %i.fa.fa-ok>
-                      Live Calls
-                    %li
-                      %i.fa.fa-ok>
-                      Email Support
-                    %li
-                      %i.fa.fa-ok>
-                      Forums
-                    %li
-                      %i.fa.fa-ok>
-                      Other
+                .span4
+                  .thumbnail
+                    = image_tag "pella/p-beauty-1.jpg"
+                    .caption.center Pella Architect Wood Windows
+                .span4
+                  .thumbnail
+                    = image_tag "pella/p-beauty-2.jpg"
+                    .caption.center Pella Proline Bay Window
+                .span4
+                  .thumbnail
+                    = image_tag "pella/p-beauty-3.jpg"
+                    .caption.center Pella Proline Patio Door
+
             #milgard-content.slide-content
               .row
-                .span5
-                  = image_tag "4.jpg", align: "right"
-                .span7
-                  %h2 Aliquam a nisi sed turpis ornare volutpat
-                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit elit, non suscipit elit. Duis quis nisl et orci pretium mollis ut a risus. Fusce dapibus euismod est, sed consectetur justo laoreet dapibus. Nullam aliquet erat sed tellus porttitor vehicula. Sed ac egestas purus.
-                  %ul.icons.unstyled
-                    %li
-                      %i.fa.fa-ok
-                      feature 1
-                    %li
-                      %i.fa.fa-ok
-                      feature 1
-                    %li
-                      %i.fa.fa-ok
-                      feature 1
-                    %li
-                      %i.fa.fa-ok
-                      feature 1
+                .span4
+                  .thumbnail
+                    = image_tag "milgard/m-beauty-1.jpg"
+                    .caption.center Milgard StyleLine Vinyl Windows
+                .span4
+                  .thumbnail
+                    = image_tag "milgard/m-beauty-2.jpg"
+                    .caption.center Milgard Tuscany Vinyl Windows
+                .span4
+                  .thumbnail
+                    = image_tag "milgard/m-beauty-3.jpg"
+                    .caption.center Milgard Essence Wood Windows
             #superior-content.slide-content
               .row
-                .span5
-                  = image_tag "5.jpg", align: "right"
-                .span7
-                  %h2 Full Responsive
-                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit elit, non suscipit elit. Duis quis nisl et orci pretium mollis ut a risus. Fusce dapibus euismod est, sed consectetur justo laoreet dapibus. Nullam aliquet erat sed tellus porttitor vehicula. Sed ac egestas purus.
-                  %ul.icons.unstyled
-                    %li
-                      %i.fa.fa-ok
-                      feature 1
-                    %li
-                      %i.fa.fa-ok
-                      feature 1
-                    %li
-                      %i.fa.fa-ok
-                      feature 1
-                    %li
-                      %i.fa.fa-ok
-                      feature 1
+                .span4
+                  .thumbnail
+                    = image_tag "superior/s-beauty-1.jpg"
+                    .caption.center Superior Ultima Vinyl Window
+                .span4
+                  .thumbnail
+                    = image_tag "superior/s-beauty-2.jpg"
+                    .caption.center Superior Series 9001 Vinyl Windows
+                .span4
+                  .thumbnail
+                    = image_tag "superior/s-beauty-3.jpg"
+                    .caption.center Superior Geometric Windows
             #aaw-content.slide-content
               .row
-                .span5
-                  %br/
-                  %br/
-                  %i#features-icon.icon-cloud
-                  %i#features-icon.icon-cloud{style: "color:#f4f4f4; font-size:10em;"}
-                  %i#features-icon.icon-cloud{style: "color:#d8d8d8; font-size:8em;"}
-                .span7
-                  %h2 100% Cloud Computing
-                  %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget velit elit, non suscipit elit. Duis quis nisl et orci pretium mollis ut a risus. Fusce dapibus euismod est, sed consectetur justo laoreet dapibus. Nullam aliquet erat sed tellus porttitor vehicula. Sed ac egestas purus.
-                  %ul.icons.unstyled
-                    %li
-                      %i.fa.fa-cloud
-                      feature 1
-                    %li
-                      %i.fa.fa-cloud
-                      feature 1
-                    %li
-                      %i.fa.fa-cloud
-                      feature 1
-                    %li
-                      %i.fa.fa-cloud
-                      feature 1
+                .span4
+                  .thumbnail
+                    = image_tag "aaw/a-beauty-1.jpg"
+                    .caption.center AAW H-Series Decorative Glass Door
+                .span4
+                  .thumbnail
+                    = image_tag "aaw/a-beauty-2.jpg"
+                    .caption.center AAW 101-A Unique Entry Door
+                .span4
+                  .thumbnail
+                    = image_tag "aaw/a-beauty-3.jpg"
+                    .caption.center AAW 525-A Unique Entry Door
     %hr
