@@ -2,7 +2,7 @@
 
 #page-title
   %h1 The DoorsNWindows Story
-.row-fluid.overflow-hidden{style: "height: 1362px;"}
+.row-fluid.overflow-hidden{style: "height: 1436px;"}
   .span3.full-height
     .widget-alt.full-height
       .well{data:{spy:"affix", offset:{top:"0"}}}
@@ -27,37 +27,36 @@
       :markdown
         #### *A family-owned operation*
 
-      %img{class: "thumbnail pull-right", src:"#{image_url('company/family.jpg')}"}
+      %img{class: "thumbnail pull-right", src:"#{image_url('company/logo.jpg')}", style:"max-width:400px;"}
 
       :markdown
-        DoorsNWindows has always been a family owned & run operation.
-        My wife and I have been together since high school,
-        And we just celebrated our 25th anniversary.
-        We have been together for 29 years, and when I became
-        a window and door specialty license contractor three years
-        before we got married, we've worked together since.
-        We both handled different aspects of the job.
+        We are a small, family-owned and operated window and door company.
+        Company founder Louis Ottrando and his wife Christine entered the
+        home replacement industry in 1985 and have been committed to great
+        service ever since.
 
-        Our expertise comes from being actual installers that knows
-        precisely what's involved in a job. We have never had a career
-        in anything else but the window and door industry and we have
-        seen many things change. We are a small company and really
-        do not have any intention on being large. We want to keep
-        things less complicated. We are blessed with a beautiful
-        daughter 13 years old and committed to homeschooling her.
+        Our expertise comes from being actual installers who know precisely
+        what's involved in an installation job. Having been in the window
+        and door industry for our entire professional career, we have seen
+        and adapted to the many changes in this industry. We are a small
+        company with no intention of growing much larger; we want to keep
+        things less complicated. We have been blessed doing a trade and
+        offering a service we truly enjoy and we do not sub-out our window
+        installations.
 
-        We have been blessed doing a trade and offering a service
-        we truly enjoy.
+        If you choose to work with DoorsNWindows, you will notice our
+        professionalism and experience. We are not interested in pressuring
+        you into a purchase that you neither want nor need. Our aim is to
+        make it easy for you to replace your doors and windows and help you
+        save money in the process. Since we are a small company, you will
+        not have the commission mark-up of a typical sales-team.  We run a
+        no-pressure, homeowner-oriented business.
 
-        #### *Tough times*
+        Unlike most door and window companies, we will install most products*
+        customers have bought from large warehouse stores and will pick up,
+        deliver, and install their products.
 
-        We went through some very testing time losing a lot of money
-        and even our home during the housing bubble. We literally had
-        material for 10 homes and had completed multiple jobs where
-        customers had just abandoned their homes. This left us at major
-        loss. We thank God for his strength and pulling us through
-        those times. We remain obligated and committed to our customers
-        through all of this. This is why we still have a good name.
+        ###### *Please call for a price and to verify that we will install the product you have purchased.
 
     #values.clearfix
       .headline
@@ -65,7 +64,11 @@
       :markdown
         #### *Help and expertise, without all the pressure*
 
-      %img{class: "thumbnail pull-left", src:"#{image_url('company/happy-owner.jpg')}"}
+      .thumbnail.pull-left
+        = image_tag 'company/packing-house-1.jpg'
+        .caption
+          :markdown
+            ##### Our beautiful new showroom in the historical downtown Claremont Packing House is located upstairs just above Z-Pizza.
 
       :markdown
         We do not like playing salesman games. We only make our
@@ -82,12 +85,12 @@
         and go over any differences for you to make an educated
         investment.
 
-        We are not a large company with salespeople nor do we want
-        to be. We have done it before and there is a loss of quality.
-        In order to serve our customers efficiently and cut costs.
-        We depend heavily on keeping our overhead low. We do not have
-        physical showrooms that takes up money and man-hours that
-        would add to the customer's cost.
+        We have a beautiful new location in the historical downtown
+        Claremont Packing House: 532 W First St., Suite #202 Claremont,
+        CA 91711. Located upstairs above Z-Pizza.  Our showroom is by
+        appointment only. Please call beforehand to set-up an appointment.
+        (909)912-8510. We have a small assortment of window styles located
+        in our showroom.
 
     #difference.clearfix
       .headline
@@ -122,5 +125,6 @@
                 See for yourself:
                 = link_to "Get a Free Quote today!", savings_doors_path
         .span5
-          %img{class: "thumbnail", src:"#{image_url('company/cup.jpg')}"}
+          %img{class: "thumbnail pull-right", src:"#{image_url('company/happy-owner.jpg')}"}
+
 
