@@ -13,12 +13,16 @@ html {
 body {
   height: 100%;
   background-color: #FFFFFF;
-  color: #69747A;
+  color: #49545A;
   font-family: 'Carrois Gothic', sans-serif;
   font-size: 15px;
   line-height: 20px;
   margin: 0;
   font-weight: 100 !Important;
+
+  p {
+    font-size: 16px;
+  }
 }
 
 .topnav {
@@ -345,7 +349,7 @@ header {
 }
 
 h1, h2, h3, h4, h6 {
-  color: #5D676C;
+  color: #4D575C;
   font-weight: 100;
   line-height: 1;
   margin: 10px 0;
@@ -528,7 +532,7 @@ h5 {
     margin: 0;
   }
   li {
-    color: #888;
+    color: #666;
     background: #fdfdfd;
     text-align: center;
     padding: 11px 0;
