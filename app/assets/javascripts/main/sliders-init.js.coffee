@@ -16,6 +16,7 @@ slidersStart = ->
   $("#slides").slides
     effect: "fade"
     autoWidth: true
+    autoHeight: true
     paginationClass: "paging"
     start: 1
 

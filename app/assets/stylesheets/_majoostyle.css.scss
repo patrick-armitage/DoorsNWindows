@@ -18,7 +18,8 @@ main {
   overflow: hidden;
 
   .well {
-    background-color: rgba(235,245,235,0.85);
+    background-color: rgba(235,250,235,0.5);
+    @extend .bgt2
   }
 
   .flexslider {
