@@ -27,8 +27,8 @@ Doorsnwindows::Application.routes.draw do
   match '/contact/email',       to: 'static_pages#contact_email',  via: 'get'
   match '/contact/info',        to: 'static_pages#contact_info',   via: 'get'
 
-  match '/savings/doors',       to: 'landing_leads#doors',    via: 'get'
-  match '/savings/windows',     to: 'landing_leads#windows',  via: 'get'
+  match '/savings',             to: 'landing_leads#savings',       via: 'get'
+  match '/savings/windows',     to: 'landing_leads#windows',       via: 'get'
 
   root to: 'static_pages#home'
 

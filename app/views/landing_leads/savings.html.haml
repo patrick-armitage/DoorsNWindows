@@ -1,0 +1,46 @@
+.row-fluid
+  .span6
+    .page-title
+      %h1 Renewed Comfort <span class="amp">&</span> Beauty
+    .row-fluid
+      .span6#popover-cont
+        .popover.left
+          .arrow
+          .popover-content
+            .page-description
+              :markdown
+                Whether you need the *best price*, the *best products* or the *best services and installations*,
+                DoorsNWindows is the perfect fit for your home replacement needs.
+      .span6
+        .pricing-table
+          .color-1.pro
+            %h3
+              %em A Better Company
+            %ul.unstyled
+              %li
+                %i.fa.fa-lg.fa-money
+                Best Price Guaranteed
+              %li
+                %i.fa.fa-lg.fa-home
+                Family Owned and Operated
+              %li
+                %i.fa.fa-lg.fa-truck
+                In Business since 1985
+              %li
+                %i.fa.fa-lg.fa-warning
+                No Sub-Contractors
+              %li
+                %i.fa.fa-lg.fa-ban
+                No High-Pressue Sales
+              %li
+                %i.fa.fa-lg.fa-shopping-cart
+                Many Product Options
+              %li
+                %i.fa.fa-lg.fa-plus
+                Cost Effective
+            %h3.center.sign-up Get a Free Quote today!
+  .span5.offset1.well
+    .subscription-form
+      .page-title
+        %h1 Get a Free Quote!
+      = render 'form'

@@ -1,7 +1,7 @@
 class LandingLeadsController < ApplicationController
   layout 'landing_page'
 
-  def doors
+  def savings
     @landinglead = LandingLead.new
   end
 

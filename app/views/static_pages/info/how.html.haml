@@ -12,27 +12,27 @@
         .span2
           %li
             %a#sweepstake.feature-tab{href: "#0"}
-              %i.fa.fa-group
+              %i 1
         .span2
           %li
             %a#dashboard.feature-tab{href: "#1"}
-              %i.fa.fa-signal
+              %i 2
         .span2
           %li
             %a#responsive.feature-tab{href: "#2"}
-              %i.fa.fa-resize-full
+              %i 3
         .span2
           %li
             %a#cloud.feature-tab{href: "#3"}
-              %i.fa.fa-cloud
+              %i 4
         .span2
           %li
             %a#security.feature-tab{href: "#4"}
-              %i.fa.fa-lock
+              %i 5
         .span2
           %li
             %a#roi.feature-tab{href: "#5"}
-              %i.fa.fa-bullhorn
+              %i 6
   .feature-content.slides_container
     #sweepstake-content.slide-content{style: "display:block"}
       .row
@@ -163,37 +163,3 @@
             %li
               %i.fa.fa-ok
               feature 1
-
-:javascript
-  //  Slider
-  $(document).ready(function(){
-    $('#slides').slides({
-      effect: 'fade',
-      play: 2000,
-      pause: 2500,
-      autoWidth: true,
-      hoverPause: true,
-      paginationClass: 'paging',
-      start: 1
-    });
-  });
-
-  //Slider End
-:javascript
-  $(".feature-tab").click(function(){
-    show_feature($(this).attr("id"),this)
-    return false;
-  });
-
-  var show_feature = function(feature,from){
-    $(".feature-tab").removeClass("current");
-    $("#" + feature).addClass("current");
-    $(".slide-content").hide();
-    if(from != 'link'){
-      $("#" + feature + "-content").removeClass("hide");
-    }else{
-      $("#" + feature + "-content").fadeIn('slow');
-    }
-  }
-
-  $('a[href$="#0"]').trigger('click');
