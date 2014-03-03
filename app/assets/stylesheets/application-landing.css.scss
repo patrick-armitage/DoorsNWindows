@@ -47,6 +47,7 @@
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
   border-radius: 10px;
+  max-width: 100%;
 
   .arrow:after {
     border-left-color: rgba(100, 100, 100, 0.5) !important;
