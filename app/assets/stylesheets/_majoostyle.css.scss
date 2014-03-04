@@ -224,95 +224,6 @@ i {
   }
 }
 
-// Features "Circle" Slider
-
-#static_pages_home {
-  #slides {
-
-    .feature-tab {
-      background-color: #7d6a55;
-      border: 1px solid;
-      border-color: #5b4833;
-      overflow: hidden;
-
-      @include transition (background-color 0.15s ease-in-out, border-color 0.15s ease-in-out);
-
-      i {
-        background-position: left top;
-        background-repeat: no-repeat;
-        border-radius: 100px;
-        display: block;
-        height: 100%;
-        width: 100%;
-        opacity: 0.5;
-
-        @include transition (opacity 0.15s ease-in-out);
-      }
-
-      &#pella {
-        i {
-          background-image: image-url("logos/pella-circle.png");
-        }
-      }
-
-      &#milgard {
-        i {
-          background-image: image-url("logos/milgard-circle.png");
-        }
-      }
-
-      &#superior {
-        i {
-          background-image: image-url("logos/superior-circle.png");
-        }
-      }
-
-      &#aaw {
-        i {
-          background-image: image-url("logos/aaw-circle.png");
-        }
-      }
-
-      &.current {
-        &#pella {
-          background-color: #fee252;
-          border-color: #000;
-        }
-
-        &#milgard {
-          background-color: #ed1c24;
-          border-color: #cb0a02;
-        }
-
-        &#superior {
-          background-color: #1483ba;
-          border-color: #026198;
-        }
-
-        &#aaw {
-          background-color: #2a5635;
-          border-color: #083413;
-        }
-
-        i {
-          opacity: 1;
-        }
-      }
-    }
-
-    .slide-content {
-      .thumbnail {
-        max-width: 90%;
-        margin-left: 5%;
-
-        img {
-          height: 245px;
-        }
-      }
-    }
-  }
-}
-
 // Helper Styles
 
 .no-height {
@@ -333,6 +244,22 @@ i {
       .well {
         height: 350px;
         padding: 12px;
+      }
+    }
+  }
+}
+
+// Footer
+
+#footer {
+  .brand {
+    color: #fff;
+
+    a {
+      color: #bfb;
+
+      &:hover {
+        color: #aea;
       }
     }
   }

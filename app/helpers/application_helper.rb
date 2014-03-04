@@ -14,7 +14,7 @@ module ApplicationHelper
   end
 
   def container_class
-    if current_page?(controller: 'leads')
+    if current_page?(controller: 'leads') || current_page?(action: 'contact_info')
       'container-fluid'
     else
       'container'

@@ -4,8 +4,8 @@
     %b.caret
   %ul.dropdown-menu
     %li= link_to 'DoorsNWindows Story', about_us_story_path, 'data-no-turbolink' => true
-    %li= link_to 'Services', about_us_services_path, 'data-no-turbolink' => true
-    %li= link_to 'Guarantee', about_us_guarantee_path, 'data-no-turbolink' => true
+    / %li= link_to 'Services', about_us_services_path, 'data-no-turbolink' => true
+    %li= link_to 'Guarantee', about_us_guarantee_path
 %li.dropdown
   %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
     PRODUCTS
@@ -75,9 +75,9 @@
   %ul.dropdown-menu
     %li= link_to "How it works", info_how_path
     %li= link_to "FAQs", info_faqs_path
-    %li= link_to "Install Warranty", info_installs_path
-    %li= link_to "Mfg. Warranty", info_mfgs_path
-    %li= link_to "Historical Homes", info_historic_path
+    / %li= link_to "Install Warranty", info_installs_path
+    / %li= link_to "Mfg. Warranty", info_mfgs_path
+    / %li= link_to "Historical Homes", info_historic_path
 %li.dropdown
   %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
     CONTACT
@@ -103,5 +103,3 @@
       %li= link_to "Profile", user_path(current_user)
       %li= link_to "Settings", edit_user_path(current_user)
       %li= link_to "Sign Out", signout_path, method: "delete"
-- else
-  %li= link_to "SIGN IN", signin_path

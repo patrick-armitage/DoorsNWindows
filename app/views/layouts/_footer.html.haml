@@ -8,22 +8,9 @@
 /       %li= link_to "About", about_path
 #footer
   .container
-    %span ©
-    = link_to 'DoorsNWindows', root_path
-    %span #{Time.now.year}
+    %span.brand
+      ©
+      = link_to 'DoorsNWindows', root_path
+      #{Time.now.year}
     .links
-      %ul.unstyled
-        %li
-          %a{href: "#"} About Us
-        %li
-          %a{href: "#"} Press
-        %li
-          %a{href: "#"} Partner with maJoo
-        %li
-          %a{href: "#"} Terms
-        %li
-          %a{href: "#"} Privacy Policy
-        %li
-          %a{href: "#"} Jobs
-        %li
-          %a{href: "#"} Contact Us
+      = render 'layouts/footer_navigation'
