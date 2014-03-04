@@ -4,6 +4,6 @@
   = f.input :name, placeholder: 'First Last', input_html: { pattern: "[a-zA-Z-. ]+" }
   = f.input :email, placeholder: 'name@example.com'
   / = f.input :type, :collection => inquiry_types, :as => :radio_buttons, :item_wrapper_class => 'inline'
-  = f.input :message, as: :text
+  = f.input :message, as: :text, :input_html => { :rows => 4 }
 
   = f.button :submit, "Send", :class => 'btn-large btn-majoo pull-right'
