@@ -33,7 +33,7 @@ class LeadsController < ApplicationController
           redirect_to leads_path
         else
           @lead.create_activity :new, params: @lead.attributes
-          render :thank_you
+          redirect_to thank_you_path
         end
       else #error rerouting
         if request.env["HTTP_REFERER"].to_s.include? 'leads'
@@ -43,7 +43,7 @@ class LeadsController < ApplicationController
         end
       end
     else
-      render :sorry
+      redirect_to no_service_path
     end
   end
 

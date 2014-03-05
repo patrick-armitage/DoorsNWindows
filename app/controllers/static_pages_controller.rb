@@ -3,6 +3,14 @@ class StaticPagesController < ApplicationController
     @lead = Lead.new
   end
 
+  def redirect_thank_you
+    render 'static_pages/redirects/thank_you'
+  end
+
+  def redirect_no_service
+    render 'static_pages/redirects/no_service'
+  end
+
   def about_story
     render 'static_pages/about_us/about'
   end
