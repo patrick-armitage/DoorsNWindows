@@ -1,4 +1,4 @@
-/* 
+/*
     Document   : default.css
     Created on : Dec 20, 2012, 5:20:18 PM
     Author     : Aslam
@@ -6,9 +6,11 @@
         Purpose of the stylesheet follows.
 */
 
-.accordion-toggle, .label, .badge {
-  background: #087135;
-  background-image: url(../images/noise.png);
-  border-top: 1px solid #358B5A;
-  border-bottom: 1px solid #000;
+#static_pages_info_faqs {
+  .accordion-toggle, .label, .badge {
+    background: #087135;
+    background-image: image-url('noise.png');
+    border-top: 1px solid #358B5A;
+    border-bottom: 1px solid #000;
+  }
 }

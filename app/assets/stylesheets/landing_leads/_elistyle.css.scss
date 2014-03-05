@@ -162,17 +162,22 @@ body {
 }
 
 // Footer
+.footer {
+  .container {
+    text-align: center;
 
-.container {
-  text-align: center;
-  ul li {
-    display: inline;
-    line-height: 0px;
-    padding: 0 5px;
-    a {
-      display: inline-block;
-      padding-top: 35px;
+    .links {
+      margin-top: 0;
+
+      ul li {
+        display: inline;
+        line-height: 0px;
+        padding: 0 5px;
+        a {
+          display: inline-block;
+          padding-top: 35px;
+        }
+      }
     }
   }
 }
-

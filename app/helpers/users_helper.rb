@@ -19,6 +19,8 @@ module UsersHelper
 
     def correct_user
       @user = User.find(params[:id])
+      fresh_when @user, public: true
+      expires_in 5.minutes
       redirect_to(root_url) unless current_user?(@user)
     end
 
