@@ -68,20 +68,25 @@ Doorsnwindows::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Change mail delvery to either :smtp, :sendmail, :file, :test
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    # domain: "railscasts.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["DEV_GMAIL_USERNAME"],
-    password: ENV["DEV_GMAIL_PASSWORD"]
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address: "smtp.gmail.com",
+  #   port: 587,
+  #   # domain: "railscasts.com",
+  #   authentication: "plain",
+  #   enable_starttls_auto: true,
+  #   user_name: ENV["DEV_GMAIL_USERNAME"],
+  #   password: ENV["DEV_GMAIL_PASSWORD"]
+  # }
+
+  config.action_mailer.delivery_method = :ses
+  config.action_mailer.default_options = {
+    from: "DoorsNWindows <info@doorsnwindows.com>"
   }
 
   # Specify what domain to use for mailer URLs
   config.action_mailer.default_url_options = {
-    host: "doorsnwindows.herokuapp.com"
+    host: "doorsnwindows.com"
     # ,port: 3000
   }
 

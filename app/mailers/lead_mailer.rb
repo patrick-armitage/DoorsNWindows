@@ -1,5 +1,5 @@
 class LeadMailer < ActionMailer::Base
-  default from: "no-reply@doorsnwindows.com"
+  # default from: "no-reply@doorsnwindows.com"
 
   def request_received(lead)
     @lead = lead
