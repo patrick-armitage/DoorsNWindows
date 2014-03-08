@@ -34,6 +34,9 @@ gem 'roadie'
 gem 'geocoder'
 gem 'capistrano', '~> 2.15.5'
 gem 'figaro'
+gem 'rubber'
+gem 'open4'
+gem 'unf'
 
 gem 'rdiscount'
 group :development do
