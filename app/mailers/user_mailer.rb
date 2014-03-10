@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: ENV['AWS_EMAIL_NOREPLY']
+  default from: ENV['AWS_EMAIL_SALES']
 
   def new_lead_notice(lead)
     @users = User.all

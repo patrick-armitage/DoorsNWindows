@@ -1,5 +1,5 @@
 class LeadMailer < ActionMailer::Base
-  default from: ENV['AWS_EMAIL_SALES']
+  default from: ENV['AWS_EMAIL_NOREPLY']
 
   def request_received(lead)
     @lead = lead
