@@ -81,7 +81,7 @@ Doorsnwindows::Application.configure do
 
   config.action_mailer.delivery_method = :ses
   config.action_mailer.default_options = {
-    from: ENV['DEFAULT_FROM_EMAIL']
+    from: ENV['AWS_EMAIL_NOREPLY']
   }
 
   # Specify what domain to use for mailer URLs
