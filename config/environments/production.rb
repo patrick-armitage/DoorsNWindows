@@ -81,7 +81,7 @@ Doorsnwindows::Application.configure do
 
   config.action_mailer.delivery_method = :ses
   config.action_mailer.default_options = {
-    from: "DoorsNWindows <info@doorsnwindows.com>"
+    from: "info@doorsnwindows.com"
   }
 
   # Specify what domain to use for mailer URLs
