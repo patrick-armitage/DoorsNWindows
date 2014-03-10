@@ -12,14 +12,20 @@ end
 
 # Use a simple directory tree copy here to make demo easier.
 # You probably want to use your own repository for a real app
-default_run_options[:pty] = true  # Must be set for the password prompt
-                                  # from git to work
-set :repository, "git@github.com:patrick-armitage/DoorsNWindows.git"  # Your clone URL
-set :scm, "git" # The server's user for deploys
-set :scm_passphrase, ENV['GITHUB-PASSWORD']  # The deploy user's password
-# set :ssh_options, { :forward_agent => true }
-set :branch, "master"
-set :deploy_via, :remote_cache
+# default_run_options[:pty] = true  # Must be set for the password prompt
+#                                   # from git to work
+# set :repository, "git@github.com:patrick-armitage/DoorsNWindows.git"  # Your clone URL
+# set :scm, "git" # The server's user for deploys
+# set :scm_passphrase, ENV['GITHUB-PASSWORD']  # The deploy user's password
+# # set :ssh_options, { :forward_agent => true }
+# set :branch, "master"
+# set :deploy_via, :remote_cache
+
+# Use a simple directory tree copy here to make demo easier.
+# You probably want to use your own repository for a real app
+set :scm, :none
+set :repository, "."
+set :deploy_via, :copy
 
 # Easier to do system level config as root - probably should do it through
 # sudo in the future.  We use ssh keys for access, so no passwd needed
