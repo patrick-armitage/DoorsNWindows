@@ -1,0 +1,65 @@
+---
+- !ruby/object:Rubber::Configuration::InstanceItem
+  name: production
+  domain: doorsnwindows.com
+  roles:
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: background_worker
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: sidekiq
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: common
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: monit
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: db
+    options:
+      primary: true
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: postgresql
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: postgresql_master
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: memcached
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: nginx
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: puma
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: redis
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: redis_master
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: web
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: web_tools
+    options: {}
+  instance_id: i-6c425e65
+  image_type: m1.small
+  image_id: ami-58a3cf68
+  security_groups:
+  - default
+  - web
+  - web_tools
+  external_host: ec2-54-186-83-119.us-west-2.compute.amazonaws.com
+  external_ip: 54.186.83.119
+  internal_host: ip-172-31-26-148.us-west-2.compute.internal
+  internal_ip: 172.31.26.148
+  zone: us-west-2a
+  provider: aws
+  platform: linux
+  root_device_type: instance-store
+- volumes: {}
+  static_ips: {}

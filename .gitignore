@@ -15,9 +15,6 @@
 /vendor/bundle/
 /vendor/ruby/
 
-#rubber
-/config/rubber/
-
 # minimal Rails specific artifacts
 db/*.sqlite3
 /log/*
