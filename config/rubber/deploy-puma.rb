@@ -16,7 +16,7 @@ namespace :rubber do
 
     desc "Starts the puma server"
     task :start, :roles => :puma do
-      rsudo "cd #{current_path} && bundle exec puma -C <%=Rubber.root%>/config/puma.rb"
+      rsudo "cd #{current_path} && bundle exec puma -C #{Rubber.root}/config/puma.rb"
     end
 
     desc "Restarts the puma server"
@@ -27,7 +27,7 @@ namespace :rubber do
 
     desc "Reloads the puma web server"
     task :reload, :roles => :puma do
-      rsudo "if [ -f /var/run/puma.pid ]; then pid=`cat /var/run/puma.pid` && kill -USR2 $pid; else cd #{current_path} && bundle exec puma -C <%=Rubber.root%>/config/puma.rb; fi"
+      rsudo "if [ -f /var/run/puma.pid ]; then pid=`cat /var/run/puma.pid` && kill -USR2 $pid; else cd #{current_path} && bundle exec puma -C #{Rubber.root}/config/puma.rb; fi"
     end
 
   end
