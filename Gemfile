@@ -5,11 +5,11 @@ gem 'pg'
 gem 'puma'
 gem 'rack-cache'
 gem 'dalli'
-gem 'iron_cache' #heroku only
+# gem 'iron_cache' #heroku only
 gem 'sidekiq'
 # gem 'sinatra', :require=>false
 # gem 'slim'
-gem "aws-ses", "~> 0.5.0", :require => 'aws/ses'
+gem 'aws-ses', '~> 0.5.0', :require => 'aws/ses'
 gem 'sass-rails'
 gem 'bootstrap-sass', '~> 2.3.2.2'
 gem 'bourbon'
