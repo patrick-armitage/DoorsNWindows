@@ -12,7 +12,7 @@ Doorsnwindows::Application.configure do
   config.dependency_loading = true if $rails_rake_task
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local       = true
   config.action_controller.perform_caching = true
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
