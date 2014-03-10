@@ -12,9 +12,14 @@ end
 
 # Use a simple directory tree copy here to make demo easier.
 # You probably want to use your own repository for a real app
-set :scm, :none
-set :repository, "."
-set :deploy_via, :copy
+default_run_options[:pty] = true  # Must be set for the password prompt
+                                  # from git to work
+set :repository, "git@github.com:patrick-armitage/DoorsNWindows.git"  # Your clone URL
+set :scm, "git" # The server's user for deploys
+set :scm_passphrase, ENV['GITHUB-PASSWORD']  # The deploy user's password
+# set :ssh_options, { :forward_agent => true }
+set :branch, "master"
+set :deploy_via, :remote_cache
 
 # Easier to do system level config as root - probably should do it through
 # sudo in the future.  We use ssh keys for access, so no passwd needed
@@ -30,11 +35,11 @@ set :keep_releases, 3
 
 # Lets us work with staging instances without having to checkin config files
 # (instance*.yml + rubber*.yml) for a deploy.  This gives us the
-# convenience of not having to checkin files for staging, as well as 
+# convenience of not having to checkin files for staging, as well as
 # the safety of forcing it to be checked in for production.
 set :push_instance_config, Rubber.env != 'production'
 
-# don't waste time bundling gems that don't need to be there 
+# don't waste time bundling gems that don't need to be there
 set :bundle_without, [:development, :test, :staging] if Rubber.env == 'production'
 
 # Allow us to do N hosts at a time for all tasks - useful when trying
@@ -80,7 +85,7 @@ after "deploy", "cleanup"
 after "deploy:migrations", "cleanup"
 task :cleanup, :except => { :no_release => true } do
   count = fetch(:keep_releases, 5).to_i
-  
+
   rsudo <<-CMD
     all=$(ls -x1 #{releases_path} | sort -n);
     keep=$(ls -x1 #{releases_path} | sort -n | tail -n #{count});
