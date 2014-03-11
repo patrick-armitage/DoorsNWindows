@@ -21,3 +21,28 @@
 @import "static_pages";
 @import "simple_form";
 @import "leads";
+
+//Import Mobile Styles
+@media only screen and (min-width: 980px) and (max-width: 1199px) {
+  @import "responsive/small-desktop";
+}
+
+@media only screen and (max-width: 979px) {
+  @import "responsive/phone+tablet";
+}
+
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+  @import "responsive/tablet";
+}
+
+@media only screen and (max-width: 767px) {
+  @import "responsive/phone";
+}
+
+// @media only screen and (min-width: 768px) {
+//   @import "size/full+landscape";
+// }
+
+// @media only screen and (min-width: 980px) {
+//   @import "size/full";
+// }

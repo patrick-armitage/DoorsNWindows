@@ -26,8 +26,8 @@ slidersStart = ->
     return
 
   show_feature = (feature, from) ->
-    $(".feature-tab").removeClass "current"
-    $("#" + feature).addClass "current"
+    $(".feature-tab").removeClass("current").css({"position":"none", "z-index":"-1"})
+    $("#" + feature).addClass("current").css({"position":"relative", "z-index":"9999"})
     $(".slide-content").hide()
     $("#" + feature + "-content").fadeIn "slow"
     return

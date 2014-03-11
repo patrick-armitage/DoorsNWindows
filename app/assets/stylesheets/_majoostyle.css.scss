@@ -1,3 +1,5 @@
+@import "typography";
+
 // BG Colors
 
 body {
@@ -21,6 +23,21 @@ main {
     background-color: rgba(200,230,200,0.8);
     box-shadow: inset 0 0 20px #fff;
     @extend .bgt2
+  }
+
+  .row.no-height {
+    h2 {
+      clear: both;
+      float: none;
+      text-align: right;
+      width: 100%;
+
+      .visible-desktop {
+        @media only screen and (min-width: 980px) {
+          display: inline !important;
+        }
+      }
+    }
   }
 
   .flexslider {

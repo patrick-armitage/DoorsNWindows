@@ -134,7 +134,7 @@
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers)
 ====================================================================== */
-@media only screen and (min-width: 480px) and (max-width: 767px) {
+@media only screen and (max-width: 979px) {
   body {
     color: #69747A;
     font-size: 14px;
@@ -176,7 +176,7 @@
     padding: 0px 10px;
   }
   header, #recent-blog {
-    padding: 0px 20px !important;
+    // padding: 0px 20px !important;
   }
   .pricing-table {
     margin-bottom: 10px;

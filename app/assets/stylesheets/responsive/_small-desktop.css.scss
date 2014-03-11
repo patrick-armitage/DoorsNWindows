@@ -1,0 +1,16 @@
+#static_pages_home {
+  // Flexslider
+  .main-container {
+    .row.no-height {
+      .span4 {
+        width: auto;
+      }
+    }
+  }
+  .flexslider {
+    .main-text {
+      position: absolute;
+      left: 0;
+    }
+  }
+}

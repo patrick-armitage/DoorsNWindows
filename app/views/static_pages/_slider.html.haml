@@ -4,10 +4,12 @@
       .span4.pull-right
         %div
           .well
-            %h2.pull-right Get a FREE Quote Today!
+            %h2.pull-right
+              Get a FREE Quote
+              %span.hidden-tablet Today!
             = render "leads/form"
     .clear
-    .flexslider.image-slider
+    .flexslider.image-slider.hidden-phone
       %ul.slides
         %li
           .row-fluid
@@ -82,7 +84,7 @@
             .span8
               .row-fluid
                 .span6.no-z-index.pull-right
-                  = image_tag "flexslider/overlay/vinyl.jpg", alt: "image", style: "min-width: 794px; margin-left: -200px;"
+                  = image_tag "flexslider/overlay/vinyl.jpg", alt: "image", style: "width: 794px; margin-left: -200px;"
                 .main-text.span6.z-index.well
                   %h1 COLOR OPTIONS
                   %h3 Match the look of your home!

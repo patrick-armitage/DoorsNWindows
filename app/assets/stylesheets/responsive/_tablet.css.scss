@@ -1,0 +1,30 @@
+// Homepage
+#static_pages_home {
+  // Flexslider
+  .row.no-height {
+    h2 {
+      margin: 0 !important;
+    }
+  }
+  .flexslider {
+    .no-z-index {
+      img {
+        margin-left: -235px !important;
+        max-width: 720px;
+        min-width: 680px !important;
+      }
+    }
+  }
+  // SlidesJS
+  #slides {
+    .slides_control {
+      height: 200px !important;
+
+      .slide-content {
+        .thumbnail img {
+          height: 150px;
+        }
+      }
+    }
+  }
+}

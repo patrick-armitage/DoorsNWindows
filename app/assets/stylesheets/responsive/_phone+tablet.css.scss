@@ -1,0 +1,189 @@
+// Typography
+h1 { @include h2; }
+h2 { @include h3; }
+h3 { @include h4; }
+h4 { @include h5; }
+h5 { @include h6; }
+
+// Logo
+#logo {
+  margin-top: 0;
+  top: 0;
+
+  img {
+    height: 78px;
+    width: auto;
+  }
+}
+
+// Navigation
+.navbar-responsive-collapse {
+  ul {
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 5px 5px 0 0;
+    box-shadow: inset 0 0 60px #097236;
+
+    li {
+      a {
+        text-align: center;
+      }
+    }
+  }
+}
+
+// Simple Form
+.simple_form {
+  max-width: 100%;
+
+  .control-group {
+    margin-bottom: 5px;
+
+    &.radio_buttons {
+      .controls {
+        margin-left: -2.5%;
+        margin-bottom: 5px;
+        min-width: 105%;
+
+        .radio.inline {
+          line-height: 0px;
+          padding-top: 0;
+
+          .radio_buttons {
+            margin-top: 0;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .controls {
+    margin-left: 0;
+  }
+
+  label, input {
+    &.string, &.tel, &.email, &.radio_buttons {
+      clear: both;
+      display: block;
+      float: left;
+      margin-bottom: 0;
+      text-align: left;
+      width: 90%;
+    }
+
+    abbr {
+      border-bottom: none;
+    }
+  }
+
+  input.btn-majoo {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+}
+
+// BG Colors
+
+body {
+
+}
+
+main {
+
+
+  .container {
+    padding: 20px 0;
+  }
+}
+
+
+.main-top {
+  height: 410px;
+  max-height: 410px;
+  overflow: hidden;
+
+  .well {
+
+  }
+
+  .flexslider {
+    height: 340px;
+    max-height: 340px;
+
+    .slides {
+
+      img {
+        display: inline;
+        height: 410px;
+        margin-top: -21px;
+        max-width: 800px;
+        z-index: -1;
+      }
+    }
+  }
+}
+
+
+// Widgets
+.widget-alt {
+
+}
+
+//Pricing Tables
+.pricing-table {
+
+}
+
+// Nav Styles
+
+.topnav {
+
+}
+
+.navbar-static-top {
+
+}
+
+#logo {
+
+  img {
+
+  }
+}
+
+.nav {
+
+}
+
+// Font Styles
+
+h1, h2, h3, h4, h5, h6 {
+  &.center {
+    text-align: center;
+  }
+}
+
+
+// Thumbnail image styles
+
+.thumbnail {
+
+}
+
+// FlexSlider Image Slider
+
+.flexslider {
+
+}
+
+// Helper Styles
+
+.no-height {
+
+}
+
+// Footer
+
+#footer {
+
+}

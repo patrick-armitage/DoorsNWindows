@@ -1,0 +1,24 @@
+@mixin h1() {
+  font-size: 36px !important;
+  line-height: 40px !important;
+}
+@mixin h2() {
+  font-size: 30px !important;
+  line-height: 35px !important;
+}
+@mixin h3() {
+  font-size: 25px !important;
+  line-height: 30px !important;
+}
+@mixin h4() {
+  font-size: 20px !important;
+  line-height: 25px !important;
+}
+@mixin h5() {
+  font-size: 16px !important;
+  line-height: 20px !important;
+}
+@mixin h6() {
+  font-size: 13px !important;
+  line-height: 16px !important;
+}
