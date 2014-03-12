@@ -11,6 +11,11 @@ h3 { @include h4; }
 h4 { @include h5; }
 h5 { @include h6; }
 
+.topnav {
+  .container ul {
+    padding-right: 40px;
+  }
+}
 .popover-content {
   padding: 3px 5px;
 
