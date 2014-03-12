@@ -79,7 +79,7 @@ namespace :deploy do
       end
     end
 
-    task :precompile, :except => { :no_release => true } do
+    task :precompilation do
       run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} #{asset_env} assets:precompile}
       # from = source.next_revision(current_revision)
       # if releases.length <= 1 || capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
@@ -120,4 +120,5 @@ if Rubber::Util.has_asset_pipeline?
   callbacks[:before].delete_if {|c| c.source == "deploy:assets:symlink"}
   before "deploy:assets:precompile", "deploy:assets:symlink"
   after "rubber:config", "deploy:assets:precompile"
+  after "deploy:assets:precompile", "deploy:assets:precompilation"
 end
