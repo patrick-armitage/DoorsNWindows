@@ -1,7 +1,15 @@
 // Navigation
 .topnav {
   .container ul {
-    padding-right: 5%;
+    padding-right: 40px;
+  }
+}
+.navbar {
+  max-width: 100% !important;
+
+  .navbar-inner {
+    min-width: 100%;
+    padding-right: 0;
   }
 }
 
