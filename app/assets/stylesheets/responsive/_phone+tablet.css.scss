@@ -45,12 +45,12 @@ h5 { @include h6; }
         min-width: 105%;
 
         .radio.inline {
-          line-height: 0px;
+          line-height: 20px;
           padding-top: 0;
 
           .radio_buttons {
             margin-top: 0;
-            width: 100%;
+            width: 18px;
           }
         }
       }
