@@ -6,6 +6,11 @@
 # web_tools_port: 8080
 
 nginx_log_dir: /mnt/nginx/logs
+use_ssl_key: true
+#if you use an ssl key, put your cert and key
+# in
+# #{Rubber.root}/config/#{rubber_env.domain} .crt and .key
+#otherwise defaults to key included with linux
 
 roles:
   nginx:

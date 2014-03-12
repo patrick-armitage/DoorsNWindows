@@ -21,6 +21,9 @@
 # rubber config
 /config/rubber/rubber.yml
 
+#SSL keys
+/config/doorsnwindows.com*
+
 # minimal Rails specific artifacts
 db/*.sqlite3
 /log/*

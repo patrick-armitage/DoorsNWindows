@@ -1,3 +1,5 @@
+use_ssl_key: true
+
 role_dependencies:
   puma: [nginx]
 roles:
