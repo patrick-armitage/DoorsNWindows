@@ -3,7 +3,7 @@ DoorsNWindows
 
 The [DoorsNWindows.com](https://doorsnwindows.com/) Source Code Repository
 
-Doorsnwindows.com is a [Ruby 2.0.0](http://www.ruby-doc.org/core-2.0.0/) on [Rails 4.0.1](http://api.rubyonrails.org/) application which uses the following:
+[DoorsNWindows.com](https://doorsnwindows.com/) is a [Ruby 2.0.0](http://www.ruby-doc.org/core-2.0.0/) on [Rails 4.0.1](http://api.rubyonrails.org/) application which uses the following:
 
 - Custom authentication/registration inspired by [RailsTutorial](http://ruby.railstutorial.org/chapters/sign-up#top) examples
 - [Haml](http://haml.info/) for HTML generation
