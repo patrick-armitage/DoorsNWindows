@@ -45,7 +45,7 @@ If you make improvements to this application, feel free to contribute to the cod
 - Fork the project on GitHub.
 - Make your feature addition or bug fix.
 - Commit with Git.
-- Send a pull request to @patrick-armitage.
+- Send a pull request to [@patrick-armitage](https://github.com/patrick-armitage).
 
 If you add functionality to this application, create an alternative implementation,
 or build an application that is similar, please contact me and I'll add a note to
