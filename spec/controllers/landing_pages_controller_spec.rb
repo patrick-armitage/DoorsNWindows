@@ -1,17 +1,10 @@
 require 'spec_helper'
 
-describe LandingPagesController do
+describe LandingLeadsController do
 
-  describe "GET 'doors'" do
+  describe "GET 'savings'" do
     it "returns http success" do
-      get 'doors'
-      response.should be_success
-    end
-  end
-
-  describe "GET 'windows'" do
-    it "returns http success" do
-      get 'windows'
+      get 'savings'
       response.should be_success
     end
   end
