@@ -4,7 +4,7 @@ describe StaticPagesController do
 
   describe "GET 'about'" do
     it "returns http success" do
-      get 'about'
+      get 'about_story'
       response.should be_success
     end
   end

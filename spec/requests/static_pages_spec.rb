@@ -11,10 +11,10 @@ describe "StaticPages" do
     it { should_not have_title('| About') }
   end
 
-  describe "About page" do
-    before { visit about_path }
+  describe "DoorsNWindows Story page" do
+    before { visit about_us_story_path }
 
-    it { should have_content('About') }
+    it { should have_content('Story') }
     it { should have_title(full_title('About')) }
   end
 end

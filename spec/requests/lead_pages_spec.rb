@@ -13,7 +13,7 @@ describe "Lead Pages" do
 
         before { click_button "Free Quote" }
 
-        it { should have_content('Free Quote') }
+        it { should have_content('FREE Quote') }
         it { should have_selector('div.alert.alert-error', text: 'error') }
       end
 
@@ -22,7 +22,7 @@ describe "Lead Pages" do
         let(:lead) { FactoryGirl.create(:lead) }
         before { lead_gen lead }
 
-        it { should have_content('Free Quote') }
+        it { should have_content('FREE Quote') }
         it { should have_selector('div.alert.alert-success', text: 'received') }
 
       end
