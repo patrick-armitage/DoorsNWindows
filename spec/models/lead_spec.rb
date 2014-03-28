@@ -4,7 +4,7 @@ describe Lead do
 
   before do
     @lead = Lead.new(name: "John Customer", phone: "1234567890",
-                     email: "john@customer.com", zip: "12345",
+                     email: "john@customer.com", zip: "90001",
                      interest: "Both", status: "New Lead")
   end
 

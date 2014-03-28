@@ -5,7 +5,8 @@ FactoryGirl.define do
     name "John Customer"
     phone "123-456-7890"
     email "john@customers.com"
-    zip "12345"
+    zip "90001"
     interest "Both"
+    status "New Lead"
   end
 end
