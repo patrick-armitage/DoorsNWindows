@@ -22,28 +22,26 @@ class LeadsController < ApplicationController
 
   def create
     @lead = Lead.new(lead_params)
-    @lead.geocode if @lead.valid?
 
-    if @lead.geocoded? && @lead.distance_from(Lead.center_point) < 40
-      if @lead.save
-        MailerWorker.perform_async(@lead.id)
-        if signed_in?
-          @lead.create_activity :create, owner: current_user, params: @lead.attributes
-          flash[:success] = "#{ current_user.name } successfully created a lead."
-          redirect_to leads_path
-        else
-          @lead.create_activity :new, params: @lead.attributes
-          redirect_to thank_you_path
+    if @lead.valid?
+      @lead.geocode
+      if @lead.geocoded? && @lead.distance_from(Lead.center_point) < 40
+        if @lead.save
+          MailerWorker.perform_async(@lead.id)
+          if signed_in?
+            @lead.create_activity :create, owner: current_user, params: @lead.attributes
+            flash[:success] = "#{ current_user.name } successfully created a lead."
+            redirect_to leads_path
+          else
+            @lead.create_activity :new, params: @lead.attributes
+            redirect_to thank_you_path
+          end
         end
-      else #error rerouting
-        if request.env["HTTP_REFERER"].to_s.include? 'leads'
-          render 'new'
-        else
-          render 'static_pages/home'
-        end
+      else
+        redirect_to no_service_path
       end
-    else
-      redirect_to no_service_path
+    else #error rerouting
+      render :errors
     end
   end
 

@@ -12,7 +12,7 @@
     -# application layout styled for Twitter Bootstrap 2.3
     %header
       = render 'layouts/navigation'
-    - if params[:controller] == "static_pages" && params[:action] == "home"
+    - if is_home_form?
       = render 'static_pages/home_extra'
     %main{:role => "main"}
       %div{:class => container_class}

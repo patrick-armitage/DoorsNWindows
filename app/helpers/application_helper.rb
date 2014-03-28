@@ -21,6 +21,14 @@ module ApplicationHelper
     end
   end
 
+  def is_home_form?
+    if params[:controller] == "static_pages" && params[:action] == "home"
+      true
+    else
+      false
+    end
+  end
+
   def icon(css_class, opaque=nil)
     opaque_class = opaque ? " icon-opaque" : ""
     content_tag(:i, "", :class => css_class + opaque_class).html_safe
