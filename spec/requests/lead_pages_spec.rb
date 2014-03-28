@@ -13,8 +13,7 @@ describe "Lead Pages" do
 
         before { click_button "Free Quote" }
 
-        it { should have_content('FREE Quote') }
-        it { should have_selector('div.alert.alert-error', text: 'error') }
+        it { should have_content('error') }
       end
 
       describe "with valid lead info" do
@@ -22,8 +21,7 @@ describe "Lead Pages" do
         let(:lead) { FactoryGirl.create(:lead) }
         before { lead_gen lead }
 
-        it { should have_content('FREE Quote') }
-        it { should have_selector('div.alert.alert-success', text: 'received') }
+        it { should have_content('Thank you') }
 
       end
     end
@@ -38,7 +36,6 @@ describe "Lead Pages" do
 
         it { should have_content('All Leads') }
         it { should have_xpath("//input[@value='" + lead.name + "']") }
-        it { should have_selector('div.alert.alert-success', text: 'received') }
 
       end
     end
