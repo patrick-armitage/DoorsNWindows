@@ -65,6 +65,9 @@ Spork.prefork do
     config.filter_run_excluding :slow unless ENV["SLOW_SPECS"]
   end
 
+  RSpec::Sidekiq.configure do |config|
+    config.warn_when_jobs_not_processed_by_sidekiq = false
+  end
 end
 
 Spork.each_run do

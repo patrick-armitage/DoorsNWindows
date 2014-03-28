@@ -63,6 +63,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'email_spec'
+  gem 'rspec-sidekiq'
 end
 group :production do
   gem 'rails_12factor'
