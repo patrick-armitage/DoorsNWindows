@@ -35,9 +35,9 @@ Doorsnwindows::Application.configure do
     host: "localhost",
     port: 3000
   }
-  # config.action_mailer.default_options = {
-  #   from: "info@doorsnwindows.com"
-  # }
+  config.action_mailer.default_options = {
+    from: "info@doorsnwindows.com"
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
