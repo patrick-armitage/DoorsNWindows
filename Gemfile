@@ -37,6 +37,7 @@ gem 'figaro'
 gem 'rubber'
 gem 'open4'
 gem 'unf'
+gem 'coveralls', require: false
 
 gem 'rdiscount'
 group :development do
