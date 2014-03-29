@@ -1,6 +1,8 @@
 DoorsNWindows
 =============
 
+[![Build Status](https://travis-ci.org/patrick-armitage/DoorsNWindows.svg?branch=master)](https://travis-ci.org/patrick-armitage/DoorsNWindows)
+
 The [DoorsNWindows.com](https://doorsnwindows.com/) Source Code Repository
 
 [DoorsNWindows.com](https://doorsnwindows.com/) is a [Ruby 2.0.0](http://www.ruby-doc.org/core-2.0.0/) on [Rails 4.0.1](http://api.rubyonrails.org/) application which uses the following:
