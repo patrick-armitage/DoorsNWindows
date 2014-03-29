@@ -2,6 +2,7 @@ DoorsNWindows
 =============
 
 [![Build Status](https://travis-ci.org/patrick-armitage/DoorsNWindows.svg?branch=master)](https://travis-ci.org/patrick-armitage/DoorsNWindows)
+[![Code Climate](https://codeclimate.com/github/patrick-armitage/DoorsNWindows.png)](https://codeclimate.com/github/patrick-armitage/DoorsNWindows)
 
 The [DoorsNWindows.com](https://doorsnwindows.com/) Source Code Repository
 
