@@ -2,22 +2,20 @@ class UserMailer < ActionMailer::Base
   default from: ENV['AWS_EMAIL_SALES']
 
   def new_lead_notice(lead)
-    @users = User.all
     @lead = lead
 
-    @users.each do |user|
-      @user = user #for haml email template
-      mail to: user.email, subject: "New Lead: #{ @lead.name }"
+    User.all.each do |user|
+      @user = user
+      mail to: @user.email, subject: "New Lead: #{ @lead.name }"
     end
   end
 
   def new_inquiry_notice(inquiry)
-    @users = User.all
     @inquiry = inquiry
 
-    @users.each do |user|
+    User.all.each do |user|
       @user = user
-      mail to: user.email, subject: "Inquiry received from: #{ @inquiry.email }"
+      mail to: @user.email, subject: "Inquiry received from: #{ @inquiry.email }"
     end
   end
 end

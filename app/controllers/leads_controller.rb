@@ -1,7 +1,6 @@
 class LeadsController < ApplicationController
   before_action :signed_in_user, only: [:index, :show, :update, :destroy]
   before_action :delete_activity, only: [:destroy]
-  # after_action :new_lead_notify, only: [:create]
 
   def index
     @leads = Lead.reorder(sort_column + " " + sort_direction).paginate(page: params[:page]).search(params[:search], params[:type])
@@ -24,18 +23,16 @@ class LeadsController < ApplicationController
     @lead = Lead.new(lead_params)
 
     if @lead.valid?
-      @lead.geocode
-      if @lead.geocoded? && @lead.distance_from(Lead.center_point) < 40
-        if @lead.save
-          MailerWorker.perform_async(@lead.id)
-          if signed_in?
-            @lead.create_activity :create, owner: current_user, params: @lead.attributes
-            flash[:success] = "#{ current_user.name } successfully created a lead."
-            redirect_to leads_path
-          else
-            @lead.create_activity :new, params: @lead.attributes
-            redirect_to thank_you_path
-          end
+      if @lead.geocode && @lead.distance_from(Lead.center_point) < 40
+        @lead.save
+        MailerWorker.perform_async(@lead.id)
+        if signed_in?
+          @lead.create_activity :create, owner: current_user, params: @lead.attributes
+          flash[:success] = "#{ current_user.name } successfully created a lead."
+          redirect_to leads_path
+        else
+          @lead.create_activity :new, params: @lead.attributes
+          redirect_to thank_you_path
         end
       else
         redirect_to no_service_path
