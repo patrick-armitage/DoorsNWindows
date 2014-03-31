@@ -54,9 +54,7 @@ class LeadsController < ApplicationController
         format.js   {}
         format.json { render json: @lead, status: :updated, location: @lead }
       else
-        format.html { render action: "index" }
-        format.js   {}
-        format.json { render json: @lead.errors, status: :unprocessable_entity }
+        format_error(format, @lead)
       end
     end
   end
@@ -72,12 +70,11 @@ class LeadsController < ApplicationController
         format.js   {}
         format.json { render json: @lead, status: :deleted, location: @lead }
       else
-        format.html { render action: "index" }
-        format.js   {}
-        format.json { render json: @lead.errors, status: :unprocessable_entity }
+        format_error(format, @lead)
       end
     end
   end
+
 
   private
     def lead_params
@@ -88,5 +85,11 @@ class LeadsController < ApplicationController
     def delete_activity
       @lead = Lead.find(params[:id])
       @lead.create_activity :delete, owner: current_user, params: @lead.attributes
+    end
+
+    def format_error(f, v)
+      f.html { render action: "index" }
+      f.js   {}
+      f.json { render json: v.errors, status: :unprocessable_entity }
     end
 end
